@@ -4,11 +4,11 @@ title: About
 permalink: /about/
 ---
 
-I like mathematics, statistics, science, and anything interesting and meaningful!
+I like statistics, mathematics, literature, science, history, and anything interesting and meaningful!
 
 ### More Information
 
-I also like classical music, particularly anything written by Gustav Mahler.
+I also like music, particularly anything written by Gustav Mahler.
 
 ### Contact me
 
