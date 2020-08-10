@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I like mathematics, statistics, science, and anything interesting and meaningful!
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+I also like classical music, particularly anything written by Gustav Mahler.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[sprim@ncsu.edu](mailto:sprim@ncsu.edu)
