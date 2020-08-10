@@ -11,7 +11,3 @@ These duties and knowledge areas are similar to those of statisticians. Data ana
 
 Personally, statisticians’ emphasis on quantifying uncertainty, modeling methods, and understanding of experimental designs are more attractive to me than processing real-time big data to predict a user’s preference, because I am more interested in research than the business world. Nonetheless, tools used in data science—data mining, machine learning, etc.—still appeal to me, because I believe that they are invaluable to research and statisticians should continue to acquire skills that are not yet included in the core skills expected of statisticians.
 
-
-![_config.yml]({{ site.baseurl }}/images/config.png)
-
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
