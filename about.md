@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+toc: true
 ---
 
 I like **statistics**, mathematics, literature, science, history, and anything interesting and meaningful!
