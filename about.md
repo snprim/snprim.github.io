@@ -12,6 +12,6 @@ I like **statistics**, **mathematics**, literature, science, history, and anythi
 
 I also like music, particularly anything written by *Gustav Mahler*.
 
-# Contact me
+### Contact me
 
 [sprim@ncsu.edu](mailto:sprim@ncsu.edu)
