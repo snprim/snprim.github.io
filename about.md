@@ -2,15 +2,14 @@
 layout: page
 title: About
 permalink: /about/
-toc: true
 ---
 
-I like **statistics**, mathematics, literature, science, history, and anything interesting and meaningful!
+I like **statistics**, **mathematics**, literature, science, history, and anything interesting and meaningful!
 
-### More Information
+## More Information
 
 I also like music, particularly anything written by *Gustav Mahler*.
 
-### Contact me
+## Contact me
 
 [sprim@ncsu.edu](mailto:sprim@ncsu.edu)
