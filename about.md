@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-## About Me
-
 I like **statistics**, **mathematics**, literature, science, history, and anything interesting and meaningful!
 
 ## More Information
