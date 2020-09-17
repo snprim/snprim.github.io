@@ -1,4 +1,7 @@
-## Accessing NHL Data via APIs
+---
+layout: post
+title: Accessing NHL Data via APIs and Creating Functions
+---
 
 In this project, I created functions to demonstrate how to retrieve information via APIs using two APIs of the National Hockey League, clean up or combine data, and then doing exploratory data analysis. All the steps are presented in [my vignette](https://snprim.github.io/ST558_project_1/). This project has shown me the power and challenges of using APIs. 
 
