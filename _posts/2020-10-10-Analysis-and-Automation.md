@@ -3,7 +3,7 @@ layout: post
 title: Model Fitting and Report Automation
 ---
 
-For [this project](https://snprim.github.io/ST558_project_2/), I used bike sharing data to demonstrate model fitting and automating reports. It was yet another opportunity to practice the process of using Github, analyzing data, and communicating results, all of which essential to data science.
+For [this project](https://snprim.github.io/ST558_project_2/), I used bike sharing data to demonstrate model fitting and automating reports. The files can be found in my [repo]( https://github.com/snprim/ST558_project_2). It was yet another opportunity to practice the process of using Github, analyzing data, and communicating results, all of which essential to data science.
 
 I tend to focus on the big picture whenever I start a reasonably big project and want to get the structure ready. For example, for this project, I worked on automating reports before working on the analysis, which resulted in large numbers of files created every time I had one chunk of code completed and long knitting time after each revisions. With some added bad choice of function, I ended up creating a project with a massive number of files (more than 200,000 files!), which made my Rstudio so slow that I had to start over with a new repo and a new R project. When I do a similar project in the future, I would try to break up the task to save memory and running time, either by only using a subset of the data or adding one section at a time. A bottom-up approach of coding will hopefully help me avoid the mistake of creating a massive program from the beginning.
 
