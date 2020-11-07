@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reflection at the end of ST 558 (Data Science for Statisticians)
+title: Reflections at the end of ST 558 (Data Science for Statisticians)
 ---
 After one semester of learning how to use R for data science, I have about the same thoughts on data science as those stated in [my blogpost on data science](https://snprim.github.io/First-Blog-Post/). Data science’s focus on building models and making predictions is apparent throughout the semester. With any dataset, our goal is to make good predictions. Often, the models are like black boxes. We are not so concerned with how the models fit the data, but we use some kind of measurements—such as RMSE or accuracy—to decide which models among those we fit perform the best. We also don’t quantify the uncertainty as we do with statistical analyses. Our results do not state the confidence intervals and hypothesis test results; although we can easily find these results, they are not the focus of data science. 
 
