@@ -7,6 +7,7 @@ htfcss: cmtt font-family: monospace,monospace;
 File: blog.html
 File: blog.css
 File: blog.tmp
+Font_Class(1,"1"): <img  src="" alt="" class="%s-%dx-x-%x" />
 Css: p{margin-top:0;margin-bottom:0}
 Css: p.indent{text-indent:0;}
 Css: p + p{margin-top:1em;}
@@ -160,9 +161,62 @@ File: nocolor.png
 File: clustering.png
 File: tensor.png
 --- needs --- blog.idv[8] ==> blog3x.png ---
---- needs --- blog.idv[10] ==> blog4x.png ---
+--- needs --- blog.idv[9] ==> blog4x.png ---
+--- needs --- blog.idv[10] ==> blog5x.png ---
+--- needs --- blog.idv[11] ==> blog6x.png ---
+--- needs --- blog.idv[12] ==> blog7x.png ---
+--- needs --- blog.idv[13] ==> blog8x.png ---
+--- needs --- blog.idv[14] ==> blog9x.png ---
+--- needs --- blog.idv[16] ==> blog10x.png ---
+--- needs --- blog.idv[17] ==> blog11x.png ---
+--- needs --- blog.idv[18] ==> blog12x.png ---
+--- needs --- blog.idv[19] ==> blog13x.png ---
+--- needs --- blog.idv[21] ==> blog14x.png ---
+--- needs --- blog.idv[22] ==> blog15x.png ---
+--- needs --- blog.idv[24] ==> blog16x.png ---
+--- needs --- blog.idv[25] ==> blog17x.png ---
+--- needs --- blog.idv[27] ==> blog18x.png ---
+--- needs --- blog.idv[28] ==> blog19x.png ---
+--- needs --- blog.idv[29] ==> blog20x.png ---
+--- needs --- blog.idv[31] ==> blog21x.png ---
+--- needs --- blog.idv[33] ==> blog22x.png ---
+--- needs --- blog.idv[34] ==> blog23x.png ---
+--- needs --- blog.idv[35] ==> blog24x.png ---
+--- needs --- blog.idv[36] ==> blog25x.png ---
+--- needs --- blog.idv[37] ==> blog26x.png ---
+--- needs --- blog.idv[38] ==> blog27x.png ---
+--- needs --- blog.idv[40] ==> blog28x.png ---
+--- needs --- blog.idv[41] ==> blog29x.png ---
+--- needs --- blog.idv[42] ==> blog30x.png ---
+--- needs --- blog.idv[43] ==> blog31x.png ---
+--- needs --- blog.idv[45] ==> blog32x.png ---
+--- needs --- blog.idv[46] ==> blog33x.png ---
+--- needs --- blog.idv[47] ==> blog34x.png ---
+--- needs --- blog.idv[49] ==> blog35x.png ---
+--- needs --- blog.idv[50] ==> blog36x.png ---
+--- needs --- blog.idv[51] ==> blog37x.png ---
+--- needs --- blog.idv[53] ==> blog38x.png ---
+--- needs --- blog.idv[54] ==> blog39x.png ---
+--- needs --- blog.idv[55] ==> blog40x.png ---
+--- needs --- blog.idv[57] ==> blog41x.png ---
+--- needs --- blog.idv[58] ==> blog42x.png ---
+--- needs --- blog.idv[59] ==> blog43x.png ---
+--- needs --- blog.idv[60] ==> blog44x.png ---
+--- needs --- blog.idv[62] ==> blog45x.png ---
+--- needs --- blog.idv[63] ==> blog46x.png ---
+--- needs --- blog.idv[64] ==> blog47x.png ---
+--- needs --- blog.idv[65] ==> blog48x.png ---
+--- needs --- blog.idv[66] ==> blog49x.png ---
+--- needs --- blog.idv[68] ==> blog50x.png ---
+--- needs --- blog.idv[69] ==> blog51x.png ---
+--- needs --- blog.idv[70] ==> blog52x.png ---
+--- needs --- blog.idv[71] ==> blog53x.png ---
+--- needs --- blog.idv[72] ==> blog54x.png ---
+--- needs --- blog.idv[73] ==> blog55x.png ---
+--- needs --- blog.idv[74] ==> blog56x.png ---
+--- needs --- blog.idv[76] ==> blog57x.png ---
 Css: #TBL-2-1{border-right:1px solid black;}
---- needs --- blog.idv[12] ==> blog5x.png ---
+--- needs --- blog.idv[78] ==> blog58x.png ---
 Css: #TBL-3-1{border-right:1px solid black;}
 Css: #TBL-4-1{border-right:1px solid black;}
 File: sim_error.png
@@ -176,12 +230,17 @@ Font("cmr","6","6","100")
 Font("cmmi","8","8","100")
 Font("cmmi","6","6","100")
 Font("cmsy","8","8","100")
+Font("cmsy","6","6","100")
 Font("cmex","8","8","100")
 Font("cmtt","10","10","109")
 Font("cmbx","10","10","109")
 Font("cmmi","10","10","109")
 Font("cmsy","10","10","109")
+--- needs --- blog.idv[80] ==> cmsy10-58.png ---
+--- needs --- blog.idv[81] ==> cmsy10-47.png ---
 Font("cmex","10","10","109")
+Font("msbm","10","10","109")
+Font("stmary","10","10","109")
 Font("cmmib","10","10","109")
 Font("cmmib","8","8","100")
 Font("cmbsy","8","8","100")

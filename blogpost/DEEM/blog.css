@@ -8,12 +8,15 @@
 .cmmi-8{font-size:72%;font-style: italic;}
 .cmmi-6{font-size:54%;font-style: italic;}
 .cmsy-8{font-size:72%;}
+.cmsy-6{font-size:54%;}
 .cmex-8{font-size:72%;}
 .cmtt-10x-x-109{font-family: monospace,monospace;}
 .cmbx-10x-x-109{ font-weight: bold;}
 .cmmi-10x-x-109{font-style: italic;}
 .cmsy-10x-x-109{}
 .cmex-10x-x-109{}
+.msbm-10x-x-109{}
+.stmary-10x-x-109{}
 .cmmib-10x-x-109{font-style: italic; font-weight: bold;}
 .cmmib-8{font-size:72%;font-style: italic; font-weight: bold;}
 .cmbsy-8{font-size:72%;font-weight: bold;}

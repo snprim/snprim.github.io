@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  2 DEC 2023 21:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  3 DEC 2023 16:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -735,20 +735,20 @@ File: l3backend-dvips.def 2023-11-09 L3 backend support: dvips
 (./blog.aux)
 \openout1 = `blog.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count295
@@ -756,42 +756,42 @@ Package caption Info: End \AtBeginDocument code.
  [1
 
 ] [2]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
  (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
 
 (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 3
 5.
 
 (c:/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 
 Package natbib Warning: Citation `dempster1977EM' on page 3 undefined on input 
-line 29.
+line 39.
 
 
 Package natbib Warning: Citation `mai2022DEEM' on page 3 undefined on input lin
-e 29.
+e 39.
 
 [3]
-l. 42 Writing blog.idv[1] (blog0x.png)
+l. 52 Writing blog.idv[1] (blog0x.png)
  Excluding 'comment' comment. [4]
-l. 65 Writing blog.idv[2] (blog1x.png)
+l. 75 Writing blog.idv[2] (blog1x.png)
  [5]
-l. 67 Writing blog.idv[3] (blog2x.png)
+l. 77 Writing blog.idv[3] (blog2x.png)
  [6] [7
 
 ]
-l.75 --- TeX4ht warning --- File `"nocolor.xbb"' not found ---
-l.75 --- TeX4ht warning --- Cannot determine size of graphic in "nocolor.xbb" (
+l.85 --- TeX4ht warning --- File `"nocolor.xbb"' not found ---
+l.85 --- TeX4ht warning --- Cannot determine size of graphic in "nocolor.xbb" (
 no BoundingBox) ---
-l. 75 --- needs --- nocolor.png ---
+l. 85 --- needs --- nocolor.png ---
 [8
 
 ] [9
@@ -799,112 +799,180 @@ l. 75 --- needs --- nocolor.png ---
 ] [10
 
 ]
-l.83 --- TeX4ht warning --- File `"clustering.xbb"' not found ---
-l.83 --- TeX4ht warning --- Cannot determine size of graphic in "clustering.xbb
+l.93 --- TeX4ht warning --- File `"clustering.xbb"' not found ---
+l.93 --- TeX4ht warning --- Cannot determine size of graphic in "clustering.xbb
 " (no BoundingBox) ---
-l. 83 --- needs --- clustering.png ---
+l. 93 --- needs --- clustering.png ---
 [11
 
-]
-
-Package natbib Warning: Citation `kolda2009review' on page 12 undefined on inpu
-t line 91.
-
-
-Package natbib Warning: Citation `mai2022DEEM' on page 12 undefined on input li
-ne 91.
-
-[12
+] [12
 
 ] [13
 
 ]
-l.95 --- TeX4ht warning --- File `"tensor.xbb"' not found ---
-l.95 --- TeX4ht warning --- Cannot determine size of graphic in "tensor.xbb" (n
-o BoundingBox) ---
-l. 95 --- needs --- tensor.png ---
+l.105 --- TeX4ht warning --- File `"tensor.xbb"' not found ---
+l.105 --- TeX4ht warning --- Cannot determine size of graphic in "tensor.xbb" (
+no BoundingBox) ---
+l. 105 --- needs --- tensor.png ---
 
 Package natbib Warning: Citation `kolda2009review' on page 14 undefined on inpu
-t line 96.
+t line 106.
 
 
 Package natbib Warning: Citation `kolda2009review' on page 14 undefined on inpu
-t line 96.
+t line 106.
 
 [14
 
 ]
 
-Package natbib Warning: Citation `mai2022DEEM' on page 15 undefined on input li
-ne 106.
-
-l. 107 Writing blog.idv[4] (blog3x.png)
-
-LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 108.
+Package natbib Warning: Citation `kolda2009review' on page 15 undefined on inpu
+t line 110.
 
 
-Package natbib Warning: Citation `mai2022DEEM' on page 15 undefined on input li
-ne 110.
+Package natbib Warning: Citation `kolda2009review' on page 15 undefined on inpu
+t line 110.
 
-l. 111 Writing blog.idv[5] (blog4x.png)
+l. 110 Writing blog.idv[4] (blog3x.png)
+l. 110 Writing blog.idv[5] (blog4x.png)
+l. 111 Writing blog.idv[6] (blog5x.png)
+l. 115 Writing blog.idv[7] (blog6x.png)
+l. 120 Writing blog.idv[8] (blog7x.png)
+l. 120 Writing blog.idv[9] (blog8x.png)
+l. 120 Writing blog.idv[10] (blog9x.png)
+l. 121 Writing blog.idv[11] (blog10x.png)
 [15
 
 ]
 
-Package natbib Warning: Citation `mai2022DEEM' on page 16 undefined on input li
-ne 115.
+Package natbib Warning: Citation `kolda2009review' on page 16 undefined on inpu
+t line 124.
 
-[16] [17
+l. 129 Writing blog.idv[12] (blog11x.png)
+l. 130 Writing blog.idv[13] (blog12x.png)
+l. 132 Writing blog.idv[14] (blog13x.png)
+l. 135 Writing blog.idv[15] (blog14x.png)
+l. 140 Writing blog.idv[16] (blog15x.png)
+[16]
+l. 143 Writing blog.idv[17] (blog16x.png)
+l. 147 Writing blog.idv[18] (blog17x.png)
+ [17]
+l. 161 Writing blog.idv[19] (blog18x.png)
+l. 161 Writing blog.idv[20] (blog19x.png)
+l. 162 Writing blog.idv[21] (blog20x.png)
+l. 166 Writing blog.idv[22] (blog21x.png)
+ [18]
+l. 170 Writing blog.idv[23] (blog22x.png)
+l. 173 Writing blog.idv[24] (blog23x.png)
+l. 175 Writing blog.idv[25] (blog24x.png)
+l. 181 Writing blog.idv[26] (blog25x.png)
+l. 181 Writing blog.idv[27] (blog26x.png)
+l. 183 Writing blog.idv[28] (blog27x.png)
+ [19]
+l. 187 Writing blog.idv[29] (blog28x.png)
+l. 191 Writing blog.idv[30] (blog29x.png)
+l. 194 Writing blog.idv[31] (blog30x.png)
+l. 195 Writing blog.idv[32] (blog31x.png)
+l. 203 Writing blog.idv[33] (blog32x.png)
+ [20]
+l. 206 Writing blog.idv[34] (blog33x.png)
+l. 207 Writing blog.idv[35] (blog34x.png)
+l. 211 Writing blog.idv[36] (blog35x.png)
+l. 211 Writing blog.idv[37] (blog36x.png)
+l. 212 Writing blog.idv[38] (blog37x.png)
+ [21]
+l. 216 Writing blog.idv[39] (blog38x.png)
+l. 224 Writing blog.idv[40] (blog39x.png)
+l. 225 Writing blog.idv[41] (blog40x.png)
+l. 229 Writing blog.idv[42] (blog41x.png)
+ [22]
+l. 233 Writing blog.idv[43] (blog42x.png)
+l. 239 Writing blog.idv[44] (blog43x.png)
+l. 243 Writing blog.idv[45] (blog44x.png)
+ [23]
+l. 247 Writing blog.idv[46] (blog45x.png)
+l. 252 Writing blog.idv[47] (blog46x.png)
+l. 255 Writing blog.idv[48] (blog47x.png)
+l. 255 Writing blog.idv[49] (blog48x.png)
+l. 256 Writing blog.idv[50] (blog49x.png)
+ [24]
+l. 266 Writing blog.idv[51] (blog50x.png)
+l. 266 Writing blog.idv[52] (blog51x.png)
+l. 266 Writing blog.idv[53] (blog52x.png)
+l. 266 Writing blog.idv[54] (blog53x.png)
+l. 267 Writing blog.idv[55] (blog54x.png)
+l. 272 Writing blog.idv[56] (blog55x.png)
 
-] [18
+
+Package natbib Warning: Citation `mai2022DEEM' on page 25 undefined on input li
+ne 282.
+
+l. 283 Writing blog.idv[57] (blog56x.png)
+
+LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
+(Font)              using `U/stmry/m/n' instead on input line 284.
+
+
+Package natbib Warning: Citation `mai2022DEEM' on page 25 undefined on input li
+ne 286.
+
+l. 287 Writing blog.idv[58] (blog57x.png)
+[25]
+
+Package natbib Warning: Citation `mai2022DEEM' on page 26 undefined on input li
+ne 291.
+
+[26] [27
+
+] [28
 
 ]
-l. 141 Writing blog.idv[6] (blog5x.png)
- [19
+l. 317 Writing blog.idv[59] (blog58x.png)
+ [29
 
-] [20] [21
+] [30] [31
 
-] [22
+] [32
 
-] [23
+] [33
 
-] [24
+] [34
 
-] [25
+] [35
 
-] [26
+] [36
 
-] [27
+] [37
 
 ]
-l.187 --- TeX4ht warning --- File `"sim_error.xbb"' not found ---
-l.187 --- TeX4ht warning --- Cannot determine size of graphic in "sim_error.xbb
+l.363 --- TeX4ht warning --- File `"sim_error.xbb"' not found ---
+l.363 --- TeX4ht warning --- Cannot determine size of graphic in "sim_error.xbb
 " (no BoundingBox) ---
-l. 187 --- needs --- sim_error.png ---
-[28
+l. 363 --- needs --- sim_error.png ---
+[38
 
-] [29
+] [39
 
-] [30
+] [40
 
 ]
-l.194 --- TeX4ht warning --- File `"sim_time.xbb"' not found ---
-l.194 --- TeX4ht warning --- Cannot determine size of graphic in "sim_time.xbb"
+l.370 --- TeX4ht warning --- File `"sim_time.xbb"' not found ---
+l.370 --- TeX4ht warning --- Cannot determine size of graphic in "sim_time.xbb"
  (no BoundingBox) ---
-l. 194 --- needs --- sim_time.png ---
-[31
+l. 370 --- needs --- sim_time.png ---
+[41
 
 ]
 
-Package natbib Warning: Citation `mai2022DEEM' on page 32 undefined on input li
-ne 204.
+Package natbib Warning: Citation `mai2022DEEM' on page 42 undefined on input li
+ne 380.
 
+Excluding 'comment' comment.
 No file blog.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-[32
+[42
 
 ] (./blog.aux)
  ***********
@@ -917,12 +985,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 11097 strings out of 474268
- 158619 string characters out of 5751485
- 1931555 words of memory out of 5000000
- 33046 multiletter control sequences out of 15000+600000
- 569227 words of font info for 78 fonts, out of 8000000 for 9000
+ 11156 strings out of 474268
+ 159468 string characters out of 5751485
+ 1933555 words of memory out of 5000000
+ 33101 multiletter control sequences out of 15000+600000
+ 570385 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,13n,89p,1664b,510s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,15n,89p,1691b,510s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on blog.dvi (32 pages, 57180 bytes).
+Output written on blog.dvi (42 pages, 101240 bytes).

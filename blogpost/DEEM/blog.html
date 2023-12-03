@@ -22,40 +22,40 @@ for Model-Based Tensor Clustering&#8221; by Mai et al</h2>
  <div class="author" ><span 
 class="cmr-12">Ayumi Mutoh, Jisu Oh, Shih-Ni Prim</span></div><br />
 <div class="date" ><span 
-class="cmr-12">December 2, 2023</span></div>
+class="cmr-12">December 3, 2023</span></div>
    </div>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
  id="x1-10001"></a>Introduction</h3>
-<!--l. 29--><p class="noindent" >In recent decades, tensor data have gained popularity in modern science, their high-dimensional
+<!--l. 39--><p class="noindent" >In recent decades, while tensor data have gained popularity in modern science, their high-dimensional
 structures often pose challenges for statistical analysis, specifically in model-based clustering.
-Model-based clustering is a statistical approach to data clustering, where observed data is considered
-to have been created from a finite combination of component models, such as the Gaussian mixture
-model (GMM). Since the formalization of the expected-maximization (EM) algorithm by <span 
-class="cmbx-10x-x-109">?</span>, the EM
-algorithm has been widely employed in the majority of model-based clustering applications. While the
-GMMs can be readily extended to higher-order tensors using the standard EM algorithm, their
-performance can be further enhanced by integrating the DEEM algorithm, as proposed by <span 
-class="cmbx-10x-x-109">?</span>. Mai et
-al. consider a tensor normal mixture model (TNMM) that incorporates tensor correlation
+Model-based clustering is a statistical approach to data clustering, where observed data is
+considered to have been created from a finite combination of component models, such as the
+Gaussian mixture model (GMM). Since the formalization of the expected-maximization
+(EM) algorithm by <span 
+class="cmbx-10x-x-109">?</span>, the EM algorithm has been widely employed in the majority of
+model-based clustering applications. While the GMMs can be readily extended to higher-order
+tensors using the standard EM algorithm, their performance can be further enhanced by
+integrating the Doubly Enhanced EM algorithm (DEEM), as proposed by <span 
+class="cmbx-10x-x-109">?</span>. Mai et al.
+consider a tensor normal mixture model (TNMM) that incorporates tensor correlation
 structure and variable selection for clustering and parameter estimation. They developed the
 DEEM algorithm which enables DEEM to excel in high-dimensional tensor data analysis.
 Similar to the EM algorithm, DEEM carries out an enhanced E-step and an enhanced
 M-step.
-<!--l. 31--><p class="indent" >   In this blogpost, we first introduce the DEEM methods with intermediate steps for the theoretical
+<!--l. 41--><p class="indent" >   In this blogpost, we first introduce the DEEM methods with intermediate steps for the theoretical
 explanation. The objective is to break down the steps, making the derivation more accessible for our
 readers to follow. Subsequently, we will conduct a simulation study to evaluate the performance of
 DEEM.
-<!--l. 35--><p class="noindent" >
-   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+<!--l. 45--><p class="noindent" >
+                                                                                      
+                                                                                      <h3 class="sectionHead"><span class="titlemark">2 </span> <a 
  id="x1-20002"></a>Theoretical Derivation</h3>
-                                                                                      
-                                                                                      
-<!--l. 36--><p class="noindent" >
+<!--l. 46--><p class="noindent" >
    <h4 class="subsectionHead"><span class="titlemark">2.1   </span> <a 
  id="x1-30002.1"></a>EM Algorithm</h4>
-<!--l. 37--><p class="noindent" >Before delving into DEEM, we would like to review the EM algorithm and its functioning in
+<!--l. 47--><p class="noindent" >Before delving into DEEM, we would like to review the EM algorithm and its functioning in
 clustering.
-<!--l. 39--><p class="indent" >   As we have learned in class, the EM algorithm is an iterative approach that cycles between two
+<!--l. 49--><p class="indent" >   As we have learned in class, the EM algorithm is an iterative approach that cycles between two
 steps for maximum likelihood estimation in the presence of latent variables. The observed data Y is
 incomplete and data Z is missing. The first step is to write down the joint likelihood, <span 
 class="cmmi-10x-x-109">L</span><sub><span 
@@ -70,7 +70,7 @@ class="cmmi-10x-x-109">L</span><sub><span
 class="cmmi-8">c</span></sub>(<span 
 class="cmmi-10x-x-109">&#x03B8;</span><span 
 class="cmsy-10x-x-109">|</span><span 
-class="cmmi-10x-x-109">Y,Z</span>), given Y assuming the true parameter value is
+class="cmmi-10x-x-109">Y,Z</span>), given Y, assuming the true parameter value is
 <span 
 class="cmmi-10x-x-109">&#x03B8;</span><sup><span 
 class="cmr-8">(</span><span 
@@ -78,9 +78,10 @@ class="cmmi-8">&#x03BD;</span><span
 class="cmr-8">)</span></sup>
    <div class="math-display" >
 <img 
-src="blog0x.png" alt="Q (&#x03B8;,&#x03B8;(&#x03BD;),Y ) = E &#x03B8;(&#x03BD;)(logLc (&#x03B8;|Y,Z )|Y ).
+src="blog0x.png" alt="Q (&#x03B8;,&#x03B8;(&#x03BD;),Y ) = E   (logL  (&#x03B8;|Y,Z )|Y ).
+                &#x03B8;(&#x03BD;)     c
 " class="math-display" ></div>
-<!--l. 43--><p class="indent" >   In the &#8220;M&#8221; step, we maximize <span 
+<!--l. 53--><p class="indent" >   In the &#8220;M&#8221; step, we maximize <span 
 class="cmmi-10x-x-109">Q</span>(<span 
 class="cmmi-10x-x-109">&#x03B8;,&#x03B8;</span><sup><span 
 class="cmr-8">(</span><span 
@@ -91,33 +92,34 @@ class="cmmi-10x-x-109">&#x03B8; </span>with <span
 class="cmmi-10x-x-109">&#x03B8;</span><sup><span 
 class="cmr-8">(</span><span 
 class="cmmi-8">&#x03BD;</span><span 
-class="cmr-8">)</span></sup> fixed.
-<!--l. 51--><p class="indent" >   The EM algorithm is well-known for use in unsupervised learning problems such as clustering with
+class="cmr-8">)</span></sup> fixed. We repeat the E step
+and M step until convergence.
+<!--l. 61--><p class="indent" >   The EM algorithm is well-known for use in unsupervised learning problems such as clustering with
 a mixture model. The process goes as follows:
      <ol  class="enumerate1" >
 <li 
   class="enumerate" id="x1-3002x1">
-     <!--l. 53--><p class="noindent" >Identify the number of clusters.
+     <!--l. 63--><p class="noindent" >Identify the number of clusters.
      </li>
 <li 
   class="enumerate" id="x1-3004x2">
-     <!--l. 54--><p class="noindent" >Define each cluster by generating a Gaussian model.
+     <!--l. 64--><p class="noindent" >Define each cluster by generating a Gaussian model.
      </li>
-<li 
-  class="enumerate" id="x1-3006x3">
                                                                                       
-                                                                                      <!--l. 55--><p class="noindent" >For every observation, calculate the probability that it belongs to each cluster (Ex.
+                                                                                      <li 
+  class="enumerate" id="x1-3006x3">
+     <!--l. 65--><p class="noindent" >For  every  observation,  calculate  the  probability  that  it  belongs  to  each  cluster  (Ex.
      observation 12 has 40% probability of belonging to Cluster A and 60% probability of
      belonging to Cluster B.)
      </li>
 <li 
   class="enumerate" id="x1-3008x4">
-     <!--l. 56--><p class="noindent" >Using the above probabilities, recalculate the Gaussian models.
+     <!--l. 66--><p class="noindent" >Using the above probabilities, recalculate the Gaussian models.
      </li>
 <li 
   class="enumerate" id="x1-3010x5">
-     <!--l. 57--><p class="noindent" >Repeat until observations &#8220;converge&#8221; on their assignments.</li></ol>
-<!--l. 60--><p class="indent" >   Let&#8217;s consider a simple example. Suppose we have data <span 
+     <!--l. 67--><p class="noindent" >Repeat until observations &#8220;converge&#8221; on their assignments.</li></ol>
+<!--l. 70--><p class="indent" >   Let&#8217;s consider a simple example. Suppose we have data <span 
 class="cmmi-10x-x-109">X</span><sub><span 
 class="cmmi-8">i</span></sub> as shown in Figure <a 
 href="#x1-3011r1">1<!--tex4ht:ref: fig:clustering1 --></a>, which comes
@@ -135,7 +137,7 @@ class="cmr-8">2</span></sub><span
 class="cmmi-10x-x-109">,&#x03C3;</span><sub><span 
 class="cmr-8">2</span></sub><sup><span 
 class="cmr-8">2</span></sup>.
-<!--l. 62--><p class="indent" >   We have &#8216;missing&#8217; data points <span 
+<!--l. 72--><p class="indent" >   We have &#8216;missing&#8217; data points <span 
 class="cmmi-10x-x-109">X</span><sub><span 
 class="cmmi-8">i</span></sub> that we believe belong to either of the two distributions. After
 initializing two random Gaussian models, we compute the likelihood of each observation, <span 
@@ -146,7 +148,7 @@ that each <span
 class="cmmi-10x-x-109">X</span><sub><span 
 class="cmmi-8">i</span></sub> can belong to any of two distributions. Now we have a probability of belonging to either
 distribution for each point.
-<!--l. 64--><p class="indent" >   In the M-step, we update the parameters, <span 
+<!--l. 74--><p class="indent" >   In the M-step, we update the parameters, <span 
 class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
 class="cmr-8">1</span></sub><span 
 class="cmmi-10x-x-109">,&#x03C3;</span><sub><span 
@@ -168,21 +170,20 @@ class="cmmi-8">i</span></sub> belongs to the first
 distribution.
    <div class="math-display" >
 <img 
-src="blog1x.png" alt="     p1X1-+-p2X2-+-&#x22C5;&#x22C5;&#x22C5;+-pnXn--
-&#x03BC;1 =     p1 + p2 + &#x22C5;&#x22C5;&#x22C5;+ pn
+src="blog1x.png" alt="&#x03BC;  = p1X1-+-p2X2-+-&#x22C5;&#x22C5;&#x22C5;+-pnXn--
+ 1       p1 + p2 + &#x22C5;&#x22C5;&#x22C5;+ pn
 " class="math-display" ></div>
-<!--l. 66--><p class="indent" >   The new <span 
+                                                                                      
+                                                                                      <!--l. 76--><p class="indent" >The new <span 
 class="cmmi-10x-x-109">&#x03C3;</span><sub><span 
-class="cmr-8">1</span></sub><sup><span 
-class="cmr-8">2</span></sup> can be updated similarly.
-                                                                                      
-                                                                                      
+class="cmr-8">1</span> </sub><sup><span 
+class="cmr-8">2</span> </sup> can be updated similarly.
    <div class="math-display" >
 <img 
 src="blog2x.png" alt=" 2   p1(X1---&#x03BC;1)2-+-p2(X2---&#x03BC;1)2 +-&#x22C5;&#x22C5;&#x22C5;+-pn(Xn---&#x03BC;1-)2
 &#x03C3;1 =                p1 + p2 + &#x22C5;&#x22C5;&#x22C5;+ pn
 " class="math-display" ></div>
-<!--l. 68--><p class="indent" >   We repeat this process for <span 
+<!--l. 78--><p class="indent" >   We repeat this process for <span 
 class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
 class="cmr-8">2</span></sub> and <span 
 class="cmmi-10x-x-109">&#x03C3;</span><sub><span 
@@ -190,12 +191,12 @@ class="cmr-8">2</span></sub><sup><span
 class="cmr-8">2</span></sup> and update our distributions. We iterate through the E-step
 and M-step until convergence, obtaining two clusters as shown in Figure <a 
 href="#x1-3012r2">2<!--tex4ht:ref: fig:clustering2 --></a>.
-<!--l. 73--><p class="indent" >   <hr class="figure"><div class="figure" 
+<!--l. 83--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
                                                                                       
                                                                                       
                                                                                       
-                                                                                      <!--l. 75--><p class="noindent" ><img 
+                                                                                      <!--l. 85--><p class="noindent" ><img 
 src="nocolor.png" alt="PIC"  
 width="284" height="284" > <a 
  id="x1-3011r1"></a>
@@ -204,13 +205,13 @@ width="284" height="284" > <a
 Figure&#x00A0;1: </span><span  
 class="content">Mixture of two Gaussian Distributions                                          </span></div><!--tex4ht:label?: x1-3011r1 -->
                                                                                       
-                                                                                      <!--l. 78--><p class="indent" ></div><hr class="endfigure">
-<!--l. 81--><p class="indent" >   <hr class="figure"><div class="figure" 
+                                                                                      <!--l. 88--><p class="indent" ></div><hr class="endfigure">
+<!--l. 91--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
                                                                                       
                                                                                       
                                                                                       
-                                                                                      <!--l. 83--><p class="noindent" ><img 
+                                                                                      <!--l. 93--><p class="noindent" ><img 
 src="clustering.png" alt="PIC"  
 width="284" height="284" > <a 
  id="x1-3012r2"></a>
@@ -219,28 +220,27 @@ width="284" height="284" > <a
 Figure&#x00A0;2: </span><span  
 class="content">Clusters Found by EM algorithm                                              </span></div><!--tex4ht:label?: x1-3012r2 -->
                                                                                       
-                                                                                      <!--l. 86--><p class="indent" ></div><hr class="endfigure">
+                                                                                      <!--l. 96--><p class="indent" ></div><hr class="endfigure">
    <h4 class="subsectionHead"><span class="titlemark">2.2   </span> <a 
  id="x1-40002.2"></a>Tensor</h4>
-<!--l. 91--><p class="noindent" >While the term &#8220;tensor&#8221; might sound unfamiliar to some, tensors are simply multi-way arrays. Data is
+<!--l. 101--><p class="noindent" >While the term &#8220;tensor&#8221; might sound unfamiliar to some, tensors are simply multi-way arrays. Data is
 often structured as matrices, and they are in fact second-order tensors. When we use the term
-&#8220;tensor,&#8221; we usually mean tensors of third-order and higher. You can think of a third-order tensor as
-a cube. There are then three dimensions from which to look at the tensor. These three dimensions are
-called &#8220;modes.&#8221; If you are interested in knowing more about tensors, a very popular and
-highly cited paper by <span 
-class="cmbx-10x-x-109">? </span>has lots of great details. So check it out! A figure from this paper is
-included in our Figure <a 
-href="#x1-4001r3">3<!--tex4ht:ref: fig:tensor --></a> to give you an idea of the different ways to look at a tensor. For
-this blogpost, we will focus on the method DEEM by <span 
-class="cmbx-10x-x-109">?</span>, so we will not delve into more
-details about tensors and will focus on how this method is an upgrade of the classical EM
-algorithm.
-<!--l. 93--><p class="indent" >   <hr class="figure"><div class="figure" 
+&#8220;tensor,&#8221; we usually mean tensors of third-order and higher. The &#8220;order&#8221; means the dimension of a
+tensor, and it is sometimes called &#8220;mode.&#8221; You can think of a third-order tensor as a cube. As shown
+in Figure <a 
+href="#x1-4001r3">3<!--tex4ht:ref: fig:tensor --></a>, a tensor can be manipulated similarly as a matrix. In a matrix, we can talk about rows
+and columns. In a third-order tensor, we can talk about <span 
+class="cmbx-10x-x-109">fibers </span>when you fix two modes and keep all
+values of one mode. The index is then the mode that has all the values. <span 
+class="cmbx-10x-x-109">Slices </span>are when you fix one
+mode and keep all values for the rest of the modes. The index is then the mode that is
+fixed.
+<!--l. 103--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
                                                                                       
                                                                                       
                                                                                       
-                                                                                      <!--l. 95--><p class="noindent" ><img 
+                                                                                      <!--l. 105--><p class="noindent" ><img 
 src="tensor.png" alt="PIC"  
 width="284" height="284" > <a 
  id="x1-4001r3"></a>
@@ -250,16 +250,836 @@ Figure&#x00A0;3: </span><span
 class="content">Dimensions and Terminology of a Tensor (from <span 
 class="cmbx-10x-x-109">?</span>)                               </span></div><!--tex4ht:label?: x1-4001r3 -->
                                                                                       
-                                                                                      <!--l. 98--><p class="indent" ></div><hr class="endfigure">
+                                                                                      <!--l. 108--><p class="indent" ></div><hr class="endfigure">
+<!--l. 110--><p class="indent" >   Before we continue onto the DEEM algorithm, some notations are necessary to understand
+derivations in the following section. Note that the following notations are taken from <span 
+class="cmbx-10x-x-109">?</span>. First of all, we
+should go over the concept of matricization. If we want to matricize a third-order tensor, we can think
+of cutting a cube into slices and put the slices side-by-side to make them into a matrix. This
+concept is intuitive but much more awkward when we want to define it formally. In <span 
+class="cmbx-10x-x-109">?</span>,
+the mode-<span 
+class="cmmi-10x-x-109">n </span>matricization of a tensor <span 
+class="cmsy-10x-x-109"><img 
+src="cmsy10-58.png" alt="X" class="10-109x-x-58" /> &#x2208;</span><span 
+class="msbm-10x-x-109">&#x211D;</span><sup><span 
+class="cmmi-8">I</span><sub><span 
+class="cmr-6">1</span></sub><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">I</span><sub><span 
+class="cmr-6">2</span></sub><span 
+class="cmsy-8">&#x00D7;</span><img 
+src="blog3x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">I</span><sub><span 
+class="cmmi-6">N</span></sub></sup> is denoted by <span 
+class="cmbx-10x-x-109">X</span><sub>
+<span 
+class="cmr-8">(</span><span 
+class="cmmi-8">n</span><span 
+class="cmr-8">)</span></sub>, which is a
+matrix of the dimension (<span 
+class="cmmi-10x-x-109">I</span><sub><span 
+class="cmmi-8">n</span></sub><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmex-10x-x-109">&#x220F;</span>
+  <sub><span 
+class="cmmi-8">p</span><span 
+class="cmmi-8">&#x2260;</span><span 
+class="cmmi-8">I</span><sub><span 
+class="cmmi-6">n</span></sub></sub><span 
+class="cmmi-10x-x-109">I</span><sub><span 
+class="cmmi-8">p</span></sub>). (The first dimension comes from the dimension of
+mode <span 
+class="cmmi-10x-x-109">n</span>, and the second dimension comes from the product of all the other dimensions.)
+The tensor element (<span 
+class="cmmi-10x-x-109">i</span><sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">,</span><img 
+src="blog4x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmmi-10x-x-109">,i</span><sub><span 
+class="cmmi-8">N</span></sub>) is mapped to the matrix element (<span 
+class="cmmi-10x-x-109">i</span><sub><span 
+class="cmmi-8">n</span></sub><span 
+class="cmmi-10x-x-109">,j</span>) in the following
+manner:
+   <div class="math-display" >
+<img 
+src="blog5x.png" alt="         &#x2211;N                        k&#x220F;-1
+j = 1 +       (ik - 1)Jk with Jk =         Im.
+       k=1,k&#x2044;=n                    m=1,m&#x2044;=n
+" class="math-display" ></div>
+<!--l. 114--><p class="indent" >   Next, the notation <span 
+class="stmary-10x-x-109">&#x27E6;</span><span 
+class="cmsy-10x-x-109">&#x22C5;</span><span 
+class="stmary-10x-x-109">&#x27E7; </span>is defined as:
+   <div class="math-display" >
+<img 
+src="blog6x.png" alt="     (1)   (2)       (N)           (1)     (2)         (N )
+&#x27E6;G;A   ,A   ,&#x22C5;&#x22C5;&#x22C5; ,A   &#x27E7; := G &#x00D7;1 A  &#x00D7;2 A   &#x22C5;&#x22C5;&#x22C5;&#x00D7;N  A
+" class="math-display" ></div>
+<!--l. 120--><p class="indent" >   where <span 
+class="cmbx-10x-x-109">A </span>are matrices and <span 
+class="cmsy-10x-x-109"><img 
+src="cmsy10-58.png" alt="X" class="10-109x-x-58" /> </span>and <span 
+class="cmsy-10x-x-109"><img 
+src="cmsy10-47.png" alt="G" class="10-109x-x-47" /> </span>are tensors. The symbol <span 
+class="cmsy-10x-x-109">&#x00D7;</span><sub><span 
+class="cmmi-8">n</span></sub> means <span 
+class="cmmi-10x-x-109">n</span>-mode (matrix) product
+of a tensor <span 
+class="cmsy-10x-x-109"><img 
+src="cmsy10-47.png" alt="G" class="10-109x-x-47" />&#x2208;</span><span 
+class="msbm-10x-x-109">&#x211D;</span><sup><span 
+class="cmmi-8">I</span><sub><span 
+class="cmr-6">1</span></sub><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">I</span><sub><span 
+class="cmr-6">2</span></sub><span 
+class="cmsy-8">&#x00D7;</span><img 
+src="blog7x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">I</span><sub><span 
+class="cmmi-6">N</span></sub></sup> and the matrices <span 
+class="cmbx-10x-x-109">A</span><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">n</span><span 
+class="cmr-8">)</span></sup> <span 
+class="cmsy-10x-x-109">&#x2208; </span><span 
+class="cmbx-10x-x-109">R</span><sup><span 
+class="cmmi-8">J</span><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">I</span><sub><span 
+class="cmmi-6">n</span></sub></sup>. <span 
+class="cmsy-10x-x-109"><img 
+src="cmsy10-47.png" alt="G" class="10-109x-x-47" />&#x00D7;</span><sub><span 
+class="cmmi-8">n</span></sub><span 
+class="cmbx-10x-x-109">A</span><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">n</span><span 
+class="cmr-8">)</span></sup> is then a tensor of the
+dimension <span 
+class="cmmi-10x-x-109">I</span><sub><span 
+class="cmr-8">1</span></sub> <span 
+class="cmsy-10x-x-109">&#x00D7;</span><img 
+src="blog8x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmsy-10x-x-109">&#x00D7;</span><span 
+class="cmmi-10x-x-109">I</span><sub><span 
+class="cmmi-8">n</span><span 
+class="cmsy-8">-</span><span 
+class="cmr-8">1</span></sub> <span 
+class="cmsy-10x-x-109">&#x00D7;</span><span 
+class="cmmi-10x-x-109">J </span><span 
+class="cmsy-10x-x-109">&#x00D7;</span><span 
+class="cmmi-10x-x-109">I</span><sub><span 
+class="cmmi-8">n</span><span 
+class="cmr-8">+1</span></sub> <span 
+class="cmsy-10x-x-109">&#x00D7;</span><img 
+src="blog9x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmsy-10x-x-109">&#x00D7;</span><span 
+class="cmmi-10x-x-109">I</span><sub><span 
+class="cmmi-8">N</span></sub>. We can write the elements of <span 
+class="cmsy-10x-x-109"><img 
+src="cmsy10-47.png" alt="G" class="10-109x-x-47" />&#x00D7;</span><sub><span 
+class="cmmi-8">n</span></sub><span 
+class="cmbx-10x-x-109">A</span><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">n</span><span 
+class="cmr-8">)</span></sup>
+as:
+                                                                                      
+                                                                                      
+   <div class="math-display" >
+<img 
+src="blog10x.png" alt="                             I&#x2211;n
+(G &#x00D7;n A(n))i1&#x22C5;&#x22C5;&#x22C5;in-1jin+1&#x22C5;&#x22C5;&#x22C5;iN =     gi1i2&#x22C5;&#x22C5;&#x22C5;iN &#x22C5;a(nj)in.
+                            in=1
+" class="math-display" ></div>
+<!--l. 124--><p class="indent" >   With that, we are ready to learn about the DEEM algorithm. If you are interested in knowing
+more about tensors, a very popular and highly cited paper by <span 
+class="cmbx-10x-x-109">? </span>has lots of great details. So be sure to
+check it out!
    <h4 class="subsectionHead"><span class="titlemark">2.3   </span> <a 
  id="x1-50002.3"></a>Doubly Enhanced EM Algorithm</h4>
-<!--l. 102--><p class="noindent" >
+<!--l. 127--><p class="noindent" >In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss its
+theoretical properties.
+<!--l. 129--><p class="indent" >   Let <span 
+class="cmmi-10x-x-109">Z </span>denote the random tensor in <span 
+class="msbm-10x-x-109">&#x211D;</span><span 
+class="cmmi-8">p</span><span 
+class="cmr-6">1</span><span 
+class="cmsy-8">&#x00D7;</span><img 
+src="blog11x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">p</span><span 
+class="cmmi-6">M</span>  such that every element in <span 
+class="cmmi-10x-x-109">Z </span>is distributed as
+<span 
+class="cmmi-10x-x-109">N</span>(0<span 
+class="cmmi-10x-x-109">,</span>1) and is independent of the other elements in <span 
+class="cmmi-10x-x-109">Z</span>. Then we say that a random tensor <span 
+class="cmmi-10x-x-109">X </span>has a
+tensor normal distribution, denoted by <span 
+class="cmmi-10x-x-109">X </span><span 
+class="cmsy-10x-x-109">~</span> TN(<span 
+class="cmmi-10x-x-109">&#x03BC;</span>;&#x03A3;<sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,</span>&#x03A3;<sub><span 
+class="cmmi-8">M</span></sub>), if <span 
+class="cmmi-10x-x-109">X </span>= <span 
+class="cmmi-10x-x-109">&#x03BC; </span>+ <span 
+class="stmary-10x-x-109">&#x27E6;</span><span 
+class="cmmi-10x-x-109">Z</span>;&#x03A3;<sub><span 
+class="cmr-8">1</span></sub><sup><span 
+class="cmr-8">1</span><span 
+class="cmmi-8">&#x2215;</span><span 
+class="cmr-8">2</span></sup><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,</span>&#x03A3;<sub><span 
+class="cmmi-8">M</span></sub><sup><span 
+class="cmr-8">1</span><span 
+class="cmmi-8">&#x2215;</span><span 
+class="cmr-8">2</span></sup><span 
+class="stmary-10x-x-109">&#x27E7;</span>, where
+<span 
+class="cmmi-10x-x-109">&#x03BC; </span><span 
+class="cmsy-10x-x-109">&#x2208;</span><span 
+class="msbm-10x-x-109">&#x211D;</span><span 
+class="cmmi-8">p</span><span 
+class="cmr-6">1</span><span 
+class="cmsy-8">&#x00D7;</span><img 
+src="blog12x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">p</span><span 
+class="cmmi-6">M</span>  is the total mean and each &#x03A3;<sub><span 
+class="cmmi-8">i</span></sub> <span 
+class="cmsy-10x-x-109">&#x2208;</span><span 
+class="msbm-10x-x-109">&#x211D;</span><sup><span 
+class="cmmi-8">p</span><sub><span 
+class="cmmi-6">i</span></sub><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">p</span><sub><span 
+class="cmmi-6">i</span></sub></sup> means the covariance matrix within <span 
+class="cmmi-10x-x-109">i</span>th class.
+We can find that the density of <span 
+class="cmmi-10x-x-109">X </span>has the form
+   <table 
+class="equation"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog13x.png" alt="                                                 (                                 )
+                     -----------1-------------       1&#x27E8;         - 1      -1       &#x27E9;
+p(X |&#x03BC;;&#x03A3;1, ...,&#x03A3;M ) = (2&#x03C0; )p&#x2215;2|&#x03A3;1|qi&#x2215;2&#x22C5;&#x22C5;&#x22C5;|&#x03A3;M  |qM &#x2215;2 exp  - 2 &#x27E6;X  - &#x03BC;;&#x03A3;1  ,...,&#x03A3; M &#x27E7;,X - &#x03BC;   ,
+" class="math-display" ><a 
+ id="x1-5001r1"></a></div>
+   </td><td class="equation-label">(1)</td></tr></table>
+<!--l. 134--><p class="nopar" >where <span 
+class="cmmi-10x-x-109">p </span>= <span 
+class="cmmi-10x-x-109">p</span><sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">p</span><sub><span 
+class="cmr-8">2</span></sub><img 
+src="blog14x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmmi-10x-x-109">p</span><sub><span 
+class="cmmi-8">M</span></sub> and <span 
+class="cmmi-10x-x-109">q</span><sub><span 
+class="cmmi-8">i</span></sub> = <span 
+class="cmmi-10x-x-109">p&#x2215;p</span><sub><span 
+class="cmmi-8">i</span></sub>.
+<!--l. 140--><p class="indent" >   We will consider independent tensor-variate observations in <span 
+class="msbm-10x-x-109">&#x211D;</span><sup><span 
+class="cmmi-8">p</span><sub><span 
+class="cmr-6">1</span></sub><span 
+class="cmmi-8">,</span><span 
+class="cmsy-8">&#x00D7;</span><img 
+src="blog15x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmsy-8">&#x00D7;</span><span 
+class="cmmi-8">p</span><sub><span 
+class="cmmi-6">M</span></sub></sup> drawn from <span 
+class="cmmi-10x-x-109">K </span>clusters
+with the same within-class covariance matrices; suppose that <span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">i</span></sub>&#8217;s are the mean tensor
+of the <span 
+class="cmmi-10x-x-109">k</span>th cluster. Let <span 
+class="cmmi-10x-x-109">&#x03C0;</span><sub><span 
+class="cmmi-8">k</span></sub> be the probability of an observation to be taken from the <span 
+class="cmmi-10x-x-109">k</span>th
+                                                                                      
+                                                                                      cluster.
+<!--l. 142--><p class="indent" >   Then the sample <span 
+class="cmsy-10x-x-109">{</span><span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub><span 
+class="cmsy-10x-x-109">}</span><sub><span 
+class="cmmi-8">i</span><span 
+class="cmr-8">=1</span></sub><sup><span 
+class="cmmi-8">n</span></sup> from a mixture of the tensor normal distributions can be written as the
+following:
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog16x.png" alt="      K&#x2211;
+Xi ~     &#x03C0;kTN (&#x03BC;k;&#x03A3;1,...,&#x03A3;M ),  i = 1,2,...,n,
+      k=1
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 145--><p class="nopar" >or equivalently,
+   <table 
+class="equation"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog17x.png" alt="P (Yi = k) = &#x03C0; Xi|Yi = k ~ TN (&#x03BC;  ;&#x03A3;1,...,&#x03A3;  ),  i = 1,2,...,n.
+             k                 k         M
+" class="math-display" ><a 
+ id="x1-5002r2"></a></div>
+   </td><td class="equation-label">(2)</td></tr></table>
+<!--l. 149--><p class="nopar" >Hence, <span 
+class="cmmi-10x-x-109">Y</span> <sub><span 
+class="cmmi-8">i</span></sub> indicates the number of the cluster from which <span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub> was taken, and if <span 
+class="cmmi-10x-x-109">Y</span> <sub><span 
+class="cmmi-8">i</span></sub> = <span 
+class="cmmi-10x-x-109">k </span>is given, <span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub> has
+the tensor normal distribution with the mean <span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">k</span></sub> of the cluster <span 
+class="cmmi-10x-x-109">k </span>and the within-class
+covariance matrices &#x03A3;<sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,</span>&#x03A3;<sub><span 
+class="cmmi-8">M</span></sub>. (Recall we assume that the clusters have the same within-class
+matrices.)
+<!--l. 155--><p class="indent" >   Suppose that <span 
+class="cmsy-10x-x-109">{</span><span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub><span 
+class="cmsy-10x-x-109">}</span><sub><span 
+class="cmmi-8">i</span><span 
+class="cmr-8">=1</span></sub><sup><span 
+class="cmmi-8">n</span></sup> is a sample from the model (<a 
+href="#x1-5002r2">2<!--tex4ht:ref: model --></a>). Let <span 
+class="cmmi-10x-x-109">&#x03B8; </span>= <span 
+class="cmsy-10x-x-109">{</span><span 
+class="cmmi-10x-x-109">&#x03C0;</span><sub><span 
+class="cmmi-8">i</span></sub><span 
+class="cmmi-10x-x-109">,&#x03BC;</span><sub><span 
+class="cmmi-8">i</span></sub><span 
+class="cmmi-10x-x-109">,</span>&#x03A3;<sub><span 
+class="cmmi-8">j</span></sub> : 1 <span 
+class="cmsy-10x-x-109">&#x2264;</span><span 
+class="cmmi-10x-x-109">i </span><span 
+class="cmsy-10x-x-109">&#x2264;</span><span 
+class="cmmi-10x-x-109">K,</span>1 <span 
+class="cmsy-10x-x-109">&#x2264;</span><span 
+class="cmmi-10x-x-109">j </span><span 
+class="cmsy-10x-x-109">&#x2264;</span><span 
+class="cmmi-10x-x-109">M</span><span 
+class="cmsy-10x-x-109">}</span>
+denote the set of all parameters in the model. If we can observe <span 
+class="cmmi-10x-x-109">Y</span> <sub><span 
+class="cmmi-8">i</span></sub>, then the complete log-likelihood
+can be obtained as follows:
+                                                                                      
+                                                                                      
+<table 
+class="align-star">
+                   <tr><td 
+class="align-odd"><span 
+class="cmmi-10x-x-109">&#x2113;</span><sub><span 
+class="cmmi-8">c</span></sub>(<span 
+class="cmmi-10x-x-109">&#x03B8;</span>;<span 
+class="cmmi-10x-x-109">X,Y </span>)</td>                   <td 
+class="align-even"> = log <span 
+class="cmex-10x-x-109">&#x220F;</span>
+    <sub><span 
+class="cmmi-8">i</span><span 
+class="cmr-8">=1</span></sub><sup><span 
+class="cmmi-8">n</span></sup><span 
+class="cmmi-10x-x-109">&#x03C0;</span><sub>
+<span 
+class="cmmi-8">Y</span> <sub><span 
+class="cmmi-6">i</span></sub></sub><span 
+class="cmmi-10x-x-109">p</span>(<span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub><span 
+class="cmsy-10x-x-109">|</span><span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">Y</span> <sub><span 
+class="cmmi-6">i</span></sub></sub>;&#x03A3;<sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span>&#x03A3;<sub><span 
+class="cmmi-8">M</span></sub>)</td>                           <td 
+class="align-label"></td>                   <td 
+class="align-label">
+                   </td></tr><tr><td 
+class="align-odd"></td>                            <td 
+class="align-even"> = <span 
+class="cmex-10x-x-109">&#x2211;</span>
+  <sub><span 
+class="cmmi-8">i</span><span 
+class="cmr-8">=1</span></sub><sup><span 
+class="cmmi-8">n</span></sup>[log <span 
+class="cmmi-10x-x-109">&#x03C0;</span><sub>
+<span 
+class="cmmi-8">Y</span> <sub><span 
+class="cmmi-6">i</span></sub></sub> + log <span 
+class="cmmi-10x-x-109">p</span>(<span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub><span 
+class="cmsy-10x-x-109">|</span><span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">Y</span> <sub><span 
+class="cmmi-6">i</span></sub></sub><span 
+class="cmmi-10x-x-109">,</span>&#x03A3;<sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,</span>&#x03A3;<sub><span 
+class="cmmi-8">M</span></sub>)]<span 
+class="cmmi-10x-x-109">.</span></td>                   <td 
+class="align-label"></td>                   <td 
+class="align-label"></td></tr></table>
+<!--l. 161--><p class="indent" >   But, in general, we cannot observe <span 
+class="cmmi-10x-x-109">Y</span> <sub><span 
+class="cmmi-8">i</span></sub>; hence, from an initial value <img 
+src="blog18x.png" alt="&#xFF5E;&#x03B8;"  class="widetilde" > <sup><span 
+class="cmr-8">(0)</span></sup>, we create a sequence <img 
+src="blog19x.png" alt="&#xFF5E;&#x03B8;"  class="widetilde" > <sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup>
+through the E-step to obtain the <span 
+class="cmmi-10x-x-109">Q </span>function
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog20x.png" alt="                                 n  K
+    &#xFF5E;(t)                         &#x2211;  &#x2211;   &#xFF5E;(t)
+Q(&#x03B8;;&#x03B8;  ) = EY |X,&#xFF5E;&#x03B8;(t)[&#x2113;c(&#x03B8;;X,Y )] =       &#x03BE;ik [log&#x03C0;k + logp(Xi|&#x03BC;k,&#x03A3;1,...&#x03A3;M  )]
+                                i=1k=1
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 164--><p class="nopar" >where
+   <table 
+class="equation"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog21x.png" alt="&#xFF5E;&#x03BE;(t)= P (Yi = k|X, &#xFF5E;&#x03B8;(t)) = &#x2211;--&#xFF5E;&#x03C0;(tk)p(Xi|&#xFF5E;&#x03BC;(tk), &#xFF5E;&#x03A3;(1t),..., &#xFF5E;&#x03A3;(Mt))-
+ ik                        Kj=1&#xFF5E;&#x03C0;j(t)p(Xi |&#xFF5E;&#x03BC; (tj) ,&#x03A3;&#xFF5E;(1t),...,&#x03A3; &#xFF5E;(Mt))
+" class="math-display" ><a 
+ id="x1-5003r3"></a></div>
+   </td><td class="equation-label">(3)</td></tr></table>
+<!--l. 168--><p class="nopar" >and the M-step to update the parameter
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog22x.png" alt="&#xFF5E;&#x03B8;(t+1) = argmax Q (&#x03B8;;&#xFF5E;&#x03B8;(t)).
+           &#x03B8;
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 172--><p class="nopar" >Then the EM sequence <img 
+src="blog23x.png" alt="&#xFF5E;&#x03B8;"  class="widetilde" > <sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup> converges to the MLE, but there are some issues in our situation: Getting
+the updates for <span 
+class="cmmi-10x-x-109">&#x03C0;</span><sub><span 
+class="cmmi-8">k</span></sub> and <span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">k</span></sub> is quite easy and straightforward, but it is challenging to obtain the
+updates for the covariance matrices &#x03A3;<sub><span 
+class="cmmi-8">i</span></sub>. When we compute <img 
+src="blog24x.png" alt="^&#x03BE;"  class="widehat" > <sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup> in (<a 
+href="#x1-5003r3">3<!--tex4ht:ref: Estep --></a>), all the elements in <span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub> are
+used, and the standard EM algorithm does not involve a process for variable selection. Thus, due to
+an excessive number of parameters in the model, it may lead to the accumulation of errors, which
+potentially resulting in inaccurate estimates.
+<!--l. 181--><p class="indent" >   To overcome these problems, we introduce the enhanced E-step, where we replace <img 
+src="blog25x.png" alt="&#xFF5E;&#x03BE;"  class="widetilde" > <sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup> with an
+estimator <img 
+src="blog26x.png" alt="^&#x03BE;"  class="widehat" > <sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup> that can be calculated relatively faster under the sparsity assumption. We want to find
+the objective function <span 
+class="cmmi-10x-x-109">Q</span><sup>DEEM</sup> that has a better property than the standard <span 
+class="cmmi-10x-x-109">Q </span>function above. First,
+it can be seen that
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog27x.png" alt="                      ------------------&#x03C0;1-------------------
+&#x03BE;i1 = P(Yi = 1|Xi,&#x03B8;) = &#x03C0; + &#x2211;K    &#x03C0; exp [&#x27E8;X  - (&#x03BC;  + &#x03BC; )&#x2215;2,B &#x27E9;]
+                       1     k=2  k       i    k    1     k
+" class="math-display" ></div>
+                                                                                      
+                                                                                      </td></tr></table>
+<!--l. 185--><p class="nopar" >and
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog28x.png" alt="&#x03BE;  = P (Y = k|X ,&#x03B8;) = -----&#x03C0;kexp-[&#x27E8;Xi---(&#x03BC;k-+-&#x03BC;1)&#x2215;2,Bk&#x27E9;]-----
+ ik       i      i     &#x03C0;1 + &#x2211;Kj=2&#x03C0;j exp [&#x27E8;Xi - (&#x03BC;j + &#x03BC;1)&#x2215;2,Bj&#x27E9;]
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 189--><p class="nopar" >for <span 
+class="cmmi-10x-x-109">k </span><span 
+class="cmsy-10x-x-109">&#x2265; </span>2, where
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog29x.png" alt="                -1      -1     p1&#x00D7;&#x22C5;&#x22C5;&#x22C5;&#x00D7;pM
+Bk = &#x27E6;&#x03BC;k - &#x03BC;1;&#x03A3; 1 ,...,&#x03A3; M &#x27E7; &#x2208; &#x211D;        .
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 193--><p class="nopar" >Then we assume the sparsity condition; for <span 
+class="cmmi-10x-x-109">B</span><sub><span 
+class="cmmi-8">k</span></sub> = [<span 
+class="cmmi-10x-x-109">b</span><sub><span 
+class="cmmi-8">k</span></sub><sup><span 
+class="cmmi-8">J</span></sup>]<sub><span 
+class="cmmi-8">J</span></sub>, where <span 
+class="cmmi-10x-x-109">J </span>= (<span 
+class="cmmi-10x-x-109">j</span><sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,j</span><sub><span 
+class="cmmi-8">M</span></sub>) denotes an index of the
+tensor, we impose the condition <span 
+class="cmmi-10x-x-109">b</span><sub><span 
+class="cmr-8">2</span></sub><sup><span 
+class="cmmi-8">J</span></sup> = <img 
+src="blog30x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" > = <span 
+class="cmmi-10x-x-109">b</span><sub><span 
+class="cmmi-8">K</span></sub><sup><span 
+class="cmmi-8">J</span></sup> = 0 for almost every <span 
+class="cmmi-10x-x-109">J</span>. In other words, if
+<span 
+class="cmmi-10x-x-109">D </span>= <span 
+class="cmsy-10x-x-109">{</span><span 
+class="cmmi-10x-x-109">J </span>: <span 
+class="cmmi-10x-x-109">b</span><sub><span 
+class="cmmi-8">k</span></sub><sup><span 
+class="cmmi-8">J</span></sup><span 
+class="cmmi-10x-x-109">&#x2260;</span>0 for some <span 
+class="cmmi-10x-x-109">k </span>= 2<span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,K</span><span 
+class="cmsy-10x-x-109">}</span>, then we assume that the number of elements in <span 
+class="cmmi-10x-x-109">D </span>is
+significantly smaller than <span 
+class="cmmi-10x-x-109">p </span>= <span 
+class="cmmi-10x-x-109">p</span><sub><span 
+class="cmr-8">1</span></sub><span 
+class="cmmi-10x-x-109">p</span><sub><span 
+class="cmr-8">2</span></sub><img 
+src="blog31x.png" alt="&#x22C5;&#x22C5;&#x22C5;"  class="@cdots" ><span 
+class="cmmi-10x-x-109">p</span><sub><span 
+class="cmmi-8">M</span></sub>. This assumption comes from the belief that, in the
+high-dimensional setting, most of variables are not significant in estimation. The above expressions for
+<span 
+class="cmmi-10x-x-109">&#x03BE;</span><sub><span 
+class="cmmi-8">ik</span></sub> show that this assumption reduces the computational cost and improves the estimation
+efficiency.
+<!--l. 202--><p class="indent" >   If we accept the fact that (<span 
+class="cmmi-10x-x-109">B</span><sub><span 
+class="cmr-8">2</span></sub><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,B</span><sub><span 
+class="cmmi-8">K</span></sub>) minimizes the quantity
+   <table 
+class="equation-star"><tr><td>
+                                                                                      
+                                                                                      
+   <div class="math-display" >
+<img 
+src="blog32x.png" alt="&#x2211;K
+    (&#x27E8;Bk, &#x27E6;Bk,&#x03A3;1,...,&#x03A3;M &#x27E7;&#x27E9;-  2&#x27E8;Bk, &#x03BC;k - &#x03BC;1&#x27E9;)
+k=2
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 205--><p class="nopar" >for <span 
+class="cmmi-10x-x-109">B</span><sub><span 
+class="cmmi-8">k</span></sub> = <span 
+class="stmary-10x-x-109">&#x27E6;</span><span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">k</span></sub> <span 
+class="cmsy-10x-x-109">-</span><span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmr-8">1</span></sub>;&#x03A3;<sub><span 
+class="cmr-8">1</span></sub><sup><span 
+class="cmsy-8">-</span><span 
+class="cmr-8">1</span></sup><span 
+class="cmmi-10x-x-109">,</span><span 
+class="cmmi-10x-x-109">&#x2026;</span><span 
+class="cmmi-10x-x-109">,</span>&#x03A3;<sub><span 
+class="cmmi-8">M</span></sub><sup><span 
+class="cmsy-8">-</span><span 
+class="cmr-8">1</span></sup><span 
+class="stmary-10x-x-109">&#x27E7;</span>, then it is reasonable to obtain the sequence of estimates <img 
+src="blog33x.png" alt=" ^
+B"  class="widehat" ><sub><span 
+class="cmmi-8">k</span></sub><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">+1)</span></sup>
+by solving the optimization problem
+   <table 
+class="equation"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog34x.png" alt="                                                                (        )
+       &#x2211;K  (          (t)      (t)           (t)   (t))         &#x2211;    K&#x2211;
+argmin      &#x27E8;Bk,&#x27E6;Bk,&#x03A3;^1 ,...,&#x03A3; ^M &#x27E7;&#x27E9;- 2&#x27E8;Bk,&#x03BC;^k - ^&#x03BC;1 &#x27E9; + &#x03BB;(t+1 )        (bJk)2  ,
+B2,...,BK k=2                                                    J   k=2
+" class="math-display" ><a 
+ id="x1-5004r4"></a></div>
+   </td><td class="equation-label">(4)</td></tr></table>
+<!--l. 209--><p class="nopar" >where we added the lasso penalty term to satisfy the sparsity assumption to some extent. Using these
+<img 
+src="blog35x.png" alt=" ^
+B"  class="widehat" ><sub><span 
+class="cmmi-8">k</span></sub><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">+1)</span></sup>, we can obtain the sequence <img 
+src="blog36x.png" alt="^
+&#x03BE;"  class="widehat" > <sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">+1)</span></sup> defined by
+   <table 
+class="equation"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog37x.png" alt="                              (t)
+^&#x03BE;(t+1)=  ------------------[--^&#x03C0;1----------------------]-
+ i1      ^&#x03C0;(t)+ &#x2211;K    ^&#x03C0;(t)exp  &#x27E8;Xi - (^&#x03BC;(t)+ ^&#x03BC; (t))&#x2215;2,B^(t+1)&#x27E9;
+         1      j=2  j              j     1      j
+" class="math-display" ><a 
+ id="x1-5005r5"></a></div>
+   </td><td class="equation-label">(5)</td></tr></table>
+                                                                                      
+                                                                                      <!--l. 214--><p class="nopar" >and
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog38x.png" alt="               (t)    [        (t)    (t)    ^(t+1) ]
+ ^(t+1)  ------^&#x03C0;k--exp--&#x27E8;Xi---(^&#x03BC;k-+-^&#x03BC;-1-)&#x2215;2,B-k---&#x27E9;-------
+&#x03BE;ik   =   (t)  &#x2211;K     (t)    [       (t)   (t)    ^ (t+1) ].
+        ^&#x03C0; 1 +   j=2 ^&#x03C0;j exp  &#x27E8;Xi - (^&#x03BC;j + ^&#x03BC;1 )&#x2215;2,B j   &#x27E9;
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 218--><p class="nopar" >
+<!--l. 224--><p class="indent" >   Then, the objective <span 
+class="cmmi-10x-x-109">Q</span><sup>DEEM</sup> is defined using <img 
+src="blog39x.png" alt="&#x03BE;^"  class="widehat" > <sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup> as follows:
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog40x.png" alt="                &#x2211;n  K&#x2211;   (t)
+QDEEM  (&#x03B8;;^&#x03B8;(t)) =       ^&#x03BE;ik [log&#x03C0;k + logp(Xi|&#x03BC;k,&#x03A3;1, ...,&#x03A3;M  )],
+                i=1 k=1
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 227--><p class="nopar" >or disregarding the constant term, we can get
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog41x.png" alt="                 n  K     &#x230A;                                               M          &#x230B;
+QDEEM (&#x03B8;;^&#x03B8;(t)) = &#x2211;  &#x2211;   ^&#x03BE;(t)&#x2308;log&#x03C0;  - 1-&#x27E8;&#x27E6;X  - &#x03BC; ;&#x03A3;- 1,...,&#x03A3; -1&#x27E7;,X - &#x03BC;  &#x27E9;- 1-&#x2211;  q  log |&#x03A3; |&#x2309; .
+                i=1k=1 ik      k   2    i    k  1        M    i    k   2 j=1 j      j
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 231--><p class="nopar" >
+<!--l. 233--><p class="indent" >   In light of the sparsity assumption, <img 
+src="blog42x.png" alt="^&#x03BE;"  class="widehat" > <sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup> can be computed based on the values of relatively smaller
+variables.
+<!--l. 238--><p class="indent" >   The parameters can be updated inductively from the proposed <span 
+class="cmmi-10x-x-109">Q</span><sup>DEEM</sup> function:
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog43x.png" alt="&#x03B8;^(t+1) = argmax QDEEM (&#x03B8;;^&#x03B8;(t)).
+           &#x03B8;
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 241--><p class="nopar" >The estimates for <span 
+class="cmmi-10x-x-109">&#x03C0;</span><sub><span 
+class="cmmi-8">k</span></sub> and <span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">k</span></sub> can be obtained by the formula
+   <table 
+class="equation"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog44x.png" alt="           n                      &#x2211;n    (t+1)
+ (t+1)   1-&#x2211;  ^(t+1 )        (t+1)   --i=1 ^&#x03BE;ik-Xi-
+^&#x03C0;k    = n    &#x03BE;ik    and   ^&#x03BC;k    =  &#x2211;n    ^&#x03BE;(t+1) ,  k = 1,2,...,K.
+          i=1                        i=1 ik
+" class="math-display" ><a 
+ id="x1-5006r6"></a></div>
+   </td><td class="equation-label">(6)</td></tr></table>
+<!--l. 245--><p class="nopar" >Then given <span 
+class="cmmi-10x-x-109">&#x03BE;</span><sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">+1)</span></sup>, we calculate the intermediate covariance matrices
+   <table 
+class="equation-star"><tr><td>
+                                                                                      
+                                                                                      
+   <div class="math-display" >
+<img 
+src="blog45x.png" alt="&#x2323; (t+1)    1  &#x2211;n &#x2211;K
+&#x03A3; j    = ----      &#x03BE;^(itk+1)(Xi - ^&#x03BC;Tk (t + 1))(j)(Xi - ^&#x03BC;Tk(t+ 1))T(j),
+         nqj i=1 k=1
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 249--><p class="nopar" >where <span 
+class="cmmi-10x-x-109">A</span><sub><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">j</span><span 
+class="cmr-8">)</span></sub> denotes the mode-<span 
+class="cmmi-10x-x-109">j </span>matricization of a tensor <span 
+class="cmmi-10x-x-109">A</span>, and the conditional variance of
+<span 
+class="cmmi-10x-x-109">X</span><sub><span 
+class="cmmi-8">i</span></sub><sup><span 
+class="cmr-8">1</span><span 
+class="cmmi-8">&#x2026;</span><span 
+class="cmr-8">1</span></sup>
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog46x.png" alt="            1&#x2211;n  &#x2211;K  (t+1)
+(^&#x03C3;111)(t+1) = --      ^&#x03BE;ik  (X1.i..1- (^&#x03BC;1.k..1)(t+1))2.
+            n i=1 k=1
+" class="math-display" ></div>
+   </td></tr></table>
+<!--l. 254--><p class="nopar" >The target covariance estimator is given by scaling the intermediate covariances with (<img 
+src="blog47x.png" alt="^&#x03C3;"  class="widehat" ><sub><span 
+class="cmr-8">1</span></sub><sup><span 
+class="cmr-8">11</span></sup>)<sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">+1)</span></sup> and
+(<img 
+src="blog48x.png" alt="&#x2323;
+&#x03C3;"  class="" ><sub><span 
+class="cmr-8">1</span></sub><sup><span 
+class="cmr-8">11</span></sup>)<sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">+1)</span></sup>:
+   <table 
+class="equation-star"><tr><td>
+   <div class="math-display" >
+<img 
+src="blog49x.png" alt="         (
+         || ----1----&#x2323; (t+1)
+         ||{  &#x2323;11 (t+1)&#x03A3; j     if j &#x2265; 2,
+&#x03A3;^(t+1) =   (&#x03C3;j )
+  j      ||| (^&#x03C3;111)(t+1)&#x2323; (t+1)
+         |(  &#x2323;11 (t+1)&#x03A3; 1     if j = 1.
+           (&#x03C3;1 )
+                                                                                      
+                                                                                      " class="math-display" ></div>
+   </td></tr></table>
+<!--l. 264--><p class="nopar" >
+<!--l. 266--><p class="indent" >   In sum, starting from the initial value of <span 
+class="cmmi-10x-x-109">&#x03B8;</span><sup><span 
+class="cmr-8">(0)</span></sup>, we first obtain <img 
+src="blog50x.png" alt="B^"  class="widehat" ><sub><span 
+class="cmmi-8">k</span></sub><sup><span 
+class="cmr-8">(1)</span></sup> by solving the optimization
+problem (<a 
+href="#x1-5004r4">4<!--tex4ht:ref: eq-B --></a>). Then we calculate <span 
+class="cmmi-10x-x-109">&#x03BE;</span><sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(1)</span></sup> using the formula (<a 
+href="#x1-5005r5">5<!--tex4ht:ref: eq-xi --></a>). Given <span 
+class="cmmi-10x-x-109">&#x03BE;</span><sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(1)</span></sup>, <span 
+class="cmmi-10x-x-109">&#x03C0;</span><sub><span 
+class="cmmi-8">k</span></sub> and <span 
+class="cmmi-10x-x-109">&#x03BC;</span><sub><span 
+class="cmmi-8">k</span></sub> can be simply
+updated as (<a 
+href="#x1-5006r6">6<!--tex4ht:ref: eq1 --></a>). Finally, combining the intermediate covariance matrices <img 
+src="blog51x.png" alt="&#x2323;
+&#x03A3;"  class="" ><sub><span 
+class="cmmi-8">ik</span></sub><sup><span 
+class="cmr-8">(1)</span></sup> and the conditional
+variance (<img 
+src="blog52x.png" alt="^&#x03C3;"  class="widehat" ><sub><span 
+class="cmr-8">1</span></sub><sup><span 
+class="cmr-8">11</span></sup>)<sup><span 
+class="cmr-8">(1)</span></sup>, we obtain the covariance matrix estimators <img 
+src="blog53x.png" alt="&#x03A3;^"  class="widehat" ><sub><span 
+class="cmmi-8">j</span></sub><sup><span 
+class="cmr-8">(1)</span></sup>. And we repeat this process to
+update the parameters and get a sequence of <img 
+src="blog54x.png" alt="^&#x03B8;"  class="widehat" > <sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup>.
+<!--l. 272--><p class="indent" >   Now, we turn to how this sequence of parameters <img 
+src="blog55x.png" alt="^&#x03B8;"  class="widehat" > <sup><span 
+class="cmr-8">(</span><span 
+class="cmmi-8">t</span><span 
+class="cmr-8">)</span></sup> behave.
+<!--l. 278--><p class="noindent" >
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
  id="x1-60003"></a>Simulation Study</h3>
-<!--l. 104--><p class="noindent" >
+<!--l. 280--><p class="noindent" >
    <h4 class="subsectionHead"><span class="titlemark">3.1   </span> <a 
  id="x1-70003.1"></a>Data Generation</h4>
-<!--l. 106--><p class="noindent" >For our simulation studies, we follow the framework used in <span 
+<!--l. 282--><p class="noindent" >For our simulation studies, we follow the framework used in <span 
 class="cmbx-10x-x-109">?</span>. For each setting, <span 
 class="cmmi-10x-x-109">K </span>denotes the
 number of mixture groups, and noise is generated as a <span 
@@ -269,13 +1089,13 @@ class="cmmi-8">th</span></sup>-order tensor:
 class="equation"><tr><td>
    <div class="math-display" >
 <img 
-src="blog3x.png" alt="     &#x2211;K
+src="blog56x.png" alt="     &#x2211;K
 Xi ~    &#x03C0; *kTN (&#x03C0; *k;&#x03A3; *1,&#x22C5;&#x22C5;&#x22C5; ,&#x03A3;*M ),i = 1,&#x22C5;&#x22C5;&#x22C5; ,n
      k=1
 " class="math-display" ><a 
- id="x1-7001r1"></a></div>
-   </td><td class="equation-label">(1)</td></tr></table>
-<!--l. 109--><p class="nopar" >For <span 
+ id="x1-7001r7"></a></div>
+   </td><td class="equation-label">(7)</td></tr></table>
+<!--l. 285--><p class="nopar" >For <span 
 class="cmmi-10x-x-109">K </span><span 
 class="cmsy-10x-x-109">- </span>1 mixture groups, the <span 
 class="cmbx-10x-x-109">X</span><sub><span 
@@ -287,21 +1107,22 @@ class="cmbx-10x-x-109">? </span>designate two types of <span
 class="cmbx-10x-x-109">&#x03A3;</span><sub><span 
 class="cmmi-8">k</span></sub><sup><span 
 class="cmsy-8">*</span></sup>:
+                                                                                      
+                                                                                      
    <div class="math-display" >
 <img 
-src="blog4x.png" alt="     ({                |i- j|
+src="blog57x.png" alt="     (
+     {                |i- j|
 &#x03A9;  =   AR (&#x03C1;) : &#x03C9;ij = &#x03C1;
-     ( CS (&#x03C1;) : &#x03C9;  = &#x03C1; + (1- &#x03C1;)1(i = j).
-                 ij
-                                                                                      
-                                                                                      " class="math-display" ></div>
-<!--l. 115--><p class="indent" >   For each setting, we generate 100 independent datasets, the same number of replicates as <span 
+     ( CS (&#x03C1;) : &#x03C9;ij = &#x03C1; + (1- &#x03C1;)1(i = j).
+" class="math-display" ></div>
+<!--l. 291--><p class="indent" >   For each setting, we generate 100 independent datasets, the same number of replicates as <span 
 class="cmbx-10x-x-109">? </span>use,
 and present the mean error rate and standard deviation.
-<!--l. 117--><p class="noindent" >
+<!--l. 293--><p class="noindent" >
    <h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
  id="x1-80003.2"></a>Settings</h4>
-<!--l. 119--><p class="noindent" >The settings are provided in Table <a 
+<!--l. 295--><p class="noindent" >The settings are provided in Table <a 
 href="#x1-8001r1">1<!--tex4ht:ref: tab:sim_setting --></a>. Note that, for <span 
 class="cmmi-10x-x-109">B</span><sub><span 
 class="cmmi-8">k</span></sub><sup><span 
@@ -316,7 +1137,7 @@ of accuracy, as shown in Table <a
 href="#x1-11001r2">2<!--tex4ht:ref: tab:err --></a>.
    <div class="table">
                                                                                       
-                                                                                      <!--l. 121--><p class="indent" ><hr class="float"><div class="float" 
+                                                                                      <!--l. 297--><p class="indent" ><hr class="float"><div class="float" 
 >
                                                                                       
                                                                                       
@@ -327,13 +1148,13 @@ id="TBL-2-1"></colgroup><colgroup id="TBL-2-2g"><col
 id="TBL-2-2"></colgroup><tr  
  style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-1-1"  
 class="td11"> Model  </td><td  style="white-space:normal; text-align:left;" id="TBL-2-1-2"  
-class="td11"> <!--l. 124--><p class="noindent" >Parameters                                                                  </td>
+class="td11"> <!--l. 300--><p class="noindent" >Parameters                                                                  </td>
 </tr><tr 
 class="hline"><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
 class="td11">   M1    
 </td><td  style="white-space:normal; text-align:left;" id="TBL-2-2-2"  
-class="td11"> <!--l. 126--><p class="noindent" ><span 
+class="td11"> <!--l. 302--><p class="noindent" ><span 
 class="cmmi-10x-x-109">K </span>= 2<span 
 class="cmmi-10x-x-109">,p </span>= 10<span 
 class="cmsy-10x-x-109">&#x00D7;</span>10<span 
@@ -373,7 +1194,7 @@ class="hline"><td><hr></td><td><hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-3-1"  
 class="td11">   M3    
 </td><td  style="white-space:normal; text-align:left;" id="TBL-2-3-2"  
-class="td11"> <!--l. 128--><p class="noindent" ><span 
+class="td11"> <!--l. 304--><p class="noindent" ><span 
 class="cmmi-10x-x-109">K </span>= 3<span 
 class="cmmi-10x-x-109">,p </span>= 10<span 
 class="cmsy-10x-x-109">&#x00D7;</span>10<span 
@@ -425,7 +1246,7 @@ class="hline"><td><hr></td><td><hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-4-1"  
 class="td11">   M4    
 </td><td  style="white-space:normal; text-align:left;" id="TBL-2-4-2"  
-class="td11"> <!--l. 130--><p class="noindent" ><span 
+class="td11"> <!--l. 306--><p class="noindent" ><span 
 class="cmmi-10x-x-109">K </span>= 4<span 
 class="cmmi-10x-x-109">,p </span>= 10 <span 
 class="cmsy-10x-x-109">&#x00D7; </span>10 <span 
@@ -477,7 +1298,7 @@ class="hline"><td><hr></td><td><hr></td></tr><tr
  style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:center;" id="TBL-2-5-1"  
 class="td11">   M5    
 </td><td  style="white-space:normal; text-align:left;" id="TBL-2-5-2"  
-class="td11"> <!--l. 132--><p class="noindent" ><span 
+class="td11"> <!--l. 308--><p class="noindent" ><span 
 class="cmmi-10x-x-109">K </span>= 6<span 
 class="cmmi-10x-x-109">,p </span>= 10<span 
 class="cmsy-10x-x-109">&#x00D7;</span>10<span 
@@ -569,7 +1390,7 @@ class="content">Simulation settings
    </div>
    <h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
  id="x1-90003.3"></a>Metrics</h4>
-<!--l. 140--><p class="noindent" >Note that it is as straightforward to calculate the mean error rate for a clustering problem than it is
+<!--l. 316--><p class="noindent" >Note that it is as straightforward to calculate the mean error rate for a clustering problem than it is
 for a classification problem. Both methods return labels for the groups; however, the group labels do
 not matter. For example, if there are five observations and if their true group labels are (1<span 
 class="cmmi-10x-x-109">,</span>1<span 
@@ -584,29 +1405,29 @@ class="cmmi-10x-x-109">,</span>1), the error rate should be 0. In the paper, the
 mean clustering error rate is calculated by:
    <div class="math-display" >
 <img 
-src="blog5x.png" alt="      &#x2211;n        &#x220F;                                   &#x220F;
+src="blog58x.png" alt="      &#x2211;n        &#x220F;                                   &#x220F;
 min 1-   1(Y&#x02C6;i &#x2044;=   (Yi)) over all possible permutations  : {1,&#x22C5;&#x22C5;&#x22C5; ,} &#x21A6;&#x2192; {1,&#x22C5;&#x22C5;&#x22C5; ,K }
  &#x220F;  n i=1
 " class="math-display" ></div>
-<!--l. 142--><p class="indent" >   We thus created a function to permute the true labels, compare the estimated labels and the true
+<!--l. 318--><p class="indent" >   We thus created a function to permute the true labels, compare the estimated labels and the true
 labels, and return the lowest error rate.
-<!--l. 144--><p class="indent" >   To compare the speed of the two methods, we also record the computation time. Table <a 
+<!--l. 320--><p class="indent" >   To compare the speed of the two methods, we also record the computation time. Table <a 
 href="#x1-11002r3">3<!--tex4ht:ref: tab:time --></a> provides
 the mean computation time and standard error (in parentheses) for each setting.
-<!--l. 146--><p class="noindent" >
+<!--l. 322--><p class="noindent" >
    <h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
  id="x1-100003.4"></a>External R Packages and Functions</h4>
-<!--l. 148--><p class="noindent" >For the DEEM algorithm, we use the function DEEM; for the standard EM algorithm, we use the
+<!--l. 324--><p class="noindent" >For the DEEM algorithm, we use the function DEEM; for the standard EM algorithm, we use the
 function TGMM. Both functions are from the R package TensorClustering. We use the Trnorm
 function from the R package Tlasso to generate tensor noise with designated covariance matrices. We
 use the permutations function in the gtools package to permute true labels. In short, be sure to install
 the three R packages: TensorClustering, Tlasso, and gtools if you would like to reproduce our
 simulation.
                                                                                       
-                                                                                      <!--l. 151--><p class="noindent" >
+                                                                                      <!--l. 327--><p class="noindent" >
    <h4 class="subsectionHead"><span class="titlemark">3.5   </span> <a 
  id="x1-110003.5"></a>Simulation result</h4>
-<!--l. 153--><p class="noindent" >The error rates and computation time are shown in Tables <a 
+<!--l. 329--><p class="noindent" >The error rates and computation time are shown in Tables <a 
 href="#x1-11001r2">2<!--tex4ht:ref: tab:err --></a> and <a 
 href="#x1-11002r3">3<!--tex4ht:ref: tab:time --></a>. It is clear that DEEM has lower
 mean error rates in all four settings. The computation time tells a different story, however. As seen in
@@ -617,7 +1438,7 @@ judging from the amount of time it took to run the setting M5, it is possible th
 maximum iterations.
    <div class="table">
                                                                                       
-                                                                                      <!--l. 155--><p class="indent" ><hr class="float"><div class="float" 
+                                                                                      <!--l. 331--><p class="indent" ><hr class="float"><div class="float" 
 >
                                                                                       
                                                                                       
@@ -667,7 +1488,7 @@ class="content">Error Rates from 100 Replicates
    </div>
    <div class="table">
                                                                                       
-                                                                                      <!--l. 169--><p class="indent" ><hr class="float"><div class="float" 
+                                                                                      <!--l. 345--><p class="indent" ><hr class="float"><div class="float" 
 >
                                                                                       
                                                                                       
@@ -715,7 +1536,7 @@ class="content">Computation Time (seconds) from 100 Replicates
                                                                                       
                                                                                       </div><hr class="endfloat" />
    </div>
-<!--l. 183--><p class="indent" >   Next we transform the values in the tables into figures, which sometimes tell clearer pictures. As
+<!--l. 359--><p class="indent" >   Next we transform the values in the tables into figures, which sometimes tell clearer pictures. As
 shown in Figure <a 
 href="#x1-11003r4">4<!--tex4ht:ref: fig:err --></a>, DEEM always has lower mean error rates. However, as the model becomes
 complicated, DEEM&#8217;s error rates become more varied, even though the mean rate is still lower.
@@ -728,12 +1549,12 @@ for DEEM is much more varied, and EM has overall shorter computation time. For M
 DEEM has very long computation time; in fact, the 100 replicates took almost 10 hours
 to run. It is unclear if the reduction in error rate is worht the much longer computation
 time.
-<!--l. 185--><p class="indent" >   <hr class="figure"><div class="figure" 
+<!--l. 361--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
                                                                                       
                                                                                       
                                                                                       
-                                                                                      <!--l. 187--><p class="noindent" ><img 
+                                                                                      <!--l. 363--><p class="noindent" ><img 
 src="sim_error.png" alt="PIC"  
 width="455" height="455" > <a 
  id="x1-11003r4"></a>
@@ -742,13 +1563,13 @@ width="455" height="455" > <a
 Figure&#x00A0;4: </span><span  
 class="content">Boxplots of Mean Error Rates from 100 Replicates                              </span></div><!--tex4ht:label?: x1-11003r4 -->
                                                                                       
-                                                                                      <!--l. 190--><p class="indent" ></div><hr class="endfigure">
-<!--l. 192--><p class="indent" >   <hr class="figure"><div class="figure" 
+                                                                                      <!--l. 366--><p class="indent" ></div><hr class="endfigure">
+<!--l. 368--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
                                                                                       
                                                                                       
                                                                                       
-                                                                                      <!--l. 194--><p class="noindent" ><img 
+                                                                                      <!--l. 370--><p class="noindent" ><img 
 src="sim_time.png" alt="PIC"  
 width="455" height="455" > <a 
  id="x1-11004r5"></a>
@@ -757,17 +1578,16 @@ width="455" height="455" > <a
 Figure&#x00A0;5: </span><span  
 class="content">Boxplots of Mean Computation Time (in seconds) from 100 Replicates            </span></div><!--tex4ht:label?: x1-11004r5 -->
                                                                                       
-                                                                                      <!--l. 197--><p class="indent" ></div><hr class="endfigure">
+                                                                                      <!--l. 373--><p class="indent" ></div><hr class="endfigure">
    <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-120004"></a>Discussion</h3>
-<!--l. 204--><p class="noindent" >In this blogpost, we review a new method proposed by <span 
+ id="x1-120004"></a>Summary</h3>
+<!--l. 380--><p class="noindent" >In this blogpost, we review a new method proposed by <span 
 class="cmbx-10x-x-109">?</span>, which is essentially an upgraded version of
-the classical EM algorithm. This new method, DEEM, tend to have lower error rates on tensor data.
-However, the running time could be prohibitive.
-<!--l. 206--><p class="noindent" >
-   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-130005"></a>Conclusion</h3>
-<!--l. 208--><p class="noindent" >[to be added]
+the classical EM algorithm. This new method, DEEM, tends to have lower error rates on tensor data.
+However, despite the paper&#8217;s claim that the enhanced M step in the DEEM algorithm facilitates fast
+covariance estimation, we have encountered situations where the running time could be prohibitive.
+While DEEM proves to be efficient and effective in handling tensor data, there remains potential for
+further enhancement.
     
 </body></html> 
 
