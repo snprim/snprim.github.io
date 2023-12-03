@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  3 DEC 2023 16:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  3 DEC 2023 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -840,10 +840,11 @@ l. 115 Writing blog.idv[7] (blog6x.png)
 l. 120 Writing blog.idv[8] (blog7x.png)
 l. 120 Writing blog.idv[9] (blog8x.png)
 l. 120 Writing blog.idv[10] (blog9x.png)
-l. 121 Writing blog.idv[11] (blog10x.png)
 [15
 
 ]
+l. 121 Writing blog.idv[11] (blog10x.png)
+
 
 Package natbib Warning: Citation `kolda2009review' on page 16 undefined on inpu
 t line 124.
@@ -851,9 +852,9 @@ t line 124.
 l. 129 Writing blog.idv[12] (blog11x.png)
 l. 130 Writing blog.idv[13] (blog12x.png)
 l. 132 Writing blog.idv[14] (blog13x.png)
+[16]
 l. 135 Writing blog.idv[15] (blog14x.png)
 l. 140 Writing blog.idv[16] (blog15x.png)
-[16]
 l. 143 Writing blog.idv[17] (blog16x.png)
 l. 147 Writing blog.idv[18] (blog17x.png)
  [17]
@@ -873,8 +874,8 @@ l. 187 Writing blog.idv[29] (blog28x.png)
 l. 191 Writing blog.idv[30] (blog29x.png)
 l. 194 Writing blog.idv[31] (blog30x.png)
 l. 195 Writing blog.idv[32] (blog31x.png)
-l. 203 Writing blog.idv[33] (blog32x.png)
  [20]
+l. 203 Writing blog.idv[33] (blog32x.png)
 l. 206 Writing blog.idv[34] (blog33x.png)
 l. 207 Writing blog.idv[35] (blog34x.png)
 l. 211 Writing blog.idv[36] (blog35x.png)
@@ -916,8 +917,9 @@ LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
 Package natbib Warning: Citation `mai2022DEEM' on page 25 undefined on input li
 ne 286.
 
-l. 287 Writing blog.idv[58] (blog57x.png)
 [25]
+l. 287 Writing blog.idv[58] (blog57x.png)
+
 
 Package natbib Warning: Citation `mai2022DEEM' on page 26 undefined on input li
 ne 291.
@@ -987,10 +989,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  11156 strings out of 474268
  159468 string characters out of 5751485
- 1933555 words of memory out of 5000000
+ 1935555 words of memory out of 5000000
  33101 multiletter control sequences out of 15000+600000
  570385 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  70i,15n,89p,1691b,510s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on blog.dvi (42 pages, 101240 bytes).
+Output written on blog.dvi (42 pages, 101472 bytes).
