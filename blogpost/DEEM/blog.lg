@@ -1,10 +1,12 @@
 htfcss: cmti  font-style: italic;
-htfcss: cmbsy font-weight: bold;
+htfcss: cmtt font-family: monospace,monospace;
 htfcss: cmmi font-style: italic;
 htfcss: cmmib font-style: italic; font-weight: bold;
+htfcss: cmbsy font-weight: bold;
+htfcss: cmbsy font-weight: bold;
+htfcss: cmbsy font-weight: bold;
 htfcss: cmbx  font-weight: bold;
 htfcss: cmbxsl  font-weight: bold; font-style: oblique;
-htfcss: cmtt font-family: monospace,monospace;
 File: blog.html
 File: blog.css
 File: blog.tmp
@@ -26,8 +28,7 @@ Font_Css("12"): .htf-calligraphy-bold {font-family:cursive ; font-weight: bold; 
 Css: center { margin-top:1em; margin-bottom:1em; }
 Css: td center { margin-top:0em; margin-bottom:0em; }
 Css: .Canvas { position:relative; }
-Css: img.math{vertical-align:middle;}
-Css: div.par-math-display, div.math-display{text-align:center;}
+Css: math { text-indent: 0em; }
 Css: body{ margin:1em auto; max-width:80ch; padding:0 .62em; }
 Css: h1,h2,h3,h4,h5 { line-height:1.2; }
 Css: @media print{ body{ max-width:none } }
@@ -101,22 +102,24 @@ Css: div.figure img {text-align:center;}
 Css: .marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
 Css: .marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}
 Css: .reversemarginpar{float:left;}
-Css: table.equation {width:100%;}
-Css: .equation td{text-align:center; }
-Css: td.equation { margin-top:1em; margin-bottom:1em; } 
-Css: td.equation-label { width:5%; text-align:center; }
-Css: td.eqnarray4 { width:5%; white-space: normal; }
-Css: td.eqnarray2 { width:5%; }
-Css: table.eqnarray-star, table.eqnarray {width:100%;}
-Css: div.eqnarray{text-align:center;}
-Css: div.array {text-align:center;}
-Css: div.pmatrix {text-align:center;}
-Css: table.pmatrix {width:100%;}
-Css: span.pmatrix img{vertical-align:middle;}
-Css: div.pmatrix {text-align:center;}
-Css: table.pmatrix {width:100%;}
-Css: span.bar-css {text-decoration:overline;}
-Css: img.cdots{vertical-align:middle;}
+Css: .equation td{text-align:center; vertical-align:middle; }
+Css: td.eq-no{ width:5%; }
+Css: table.equation { width:100%; } 
+Css: div.math-display, div.par-math-display{text-align:center;}
+Css: .array-hline,.array-cline{ border-top: 1px solid black; height:0px; }
+Css: .array-hline + .array-vspace:last-child{display:none;}
+Css: .hline-mtd, .array-hline td{ display:none }
+Css: .array-hline + .array-row:last-child{display:none;}
+Css: .array-hline:first-child{border-bottom:1px solid black;border-top:none;}
+Css: math .texttt { font-family: monospace; }
+Css: math .textit { font-style: italic; }
+Css: math .textsl { font-style: oblique; }
+Css: math .textsf { font-family: sans-serif; }
+Css: math .textbf { font-weight: bold; }
+Css: mo.MathClass-op + mi{margin-left:0.3em}
+Css: mi + mo.MathClass-op{margin-left:0.3em}
+Css:  math mstyle[mathvariant="bold"] { font-weight: bold; font-style: normal; } 
+Css:  math mstyle[mathvariant="normal"] { font-weight: normal; font-style: normal; } 
 Css: .partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
 Css: .index-item, .index-subitem, .index-subsubitem {display:block}
 Css: div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
@@ -148,19 +151,11 @@ Css: figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; te
 Css: figcaption.caption span.id{font-weight: bold; white-space: nowrap; }
 Css: p + figcaption, img + figcaption{margin-top: 1em;}
 Css: .abstract{margin:1em;}
-Css: .equation td{text-align:center; }
-Css: .equation-star td{text-align:center; }
-Css: table.equation-star { width:100%; }
-Css: table.equation { width:100%; }
-Css: table.align, table.alignat, table.xalignat, table.xxalignat, table.flalign {width:95%; margin-left:5%; white-space: nowrap;}
-Css: table.align-star, table.alignat-star, table.xalignat-star, table.flalign-star {margin-left:auto; margin-right:auto; white-space: nowrap;}
-Css: td.align-label { width:5%; text-align:center; }
-Css: td.align-odd { text-align:right; padding-right:0.3em;}
-Css: td.align-even { text-align:left; padding-right:0.6em;}
-Css: table.multline, table.multline-star {width:100%;}
-Css: td.gather {text-align:center; }
-Css: table.gather {width:100%;}
-Css: div.gather-star {text-align:center;}
+Css: .equation-star td{text-align:center; vertical-align:middle; }
+Css: table.equation-star { width:100%; } 
+Css: .boxed{border: 1px solid black; padding-left:2px; padding-right:2px;}
+Css: mtd.align-odd{margin-left:2em; text-align:right;}
+Css: mtd.align-even{margin-right:2em; text-align:left;}
 Css: .rotatebox{display: inline-block;}
 Css: div.subfigure {text-align:center;display:inline-block; max-width:45%;}
 Css: code.lstinline{font-family:monospace,monospace;}
@@ -169,103 +164,40 @@ Css: .lstlisting .label{margin-right:0.5em; }
 Css: pre.lstlisting{font-family: monospace,monospace; white-space: pre-wrap; margin-top:0.5em; margin-bottom:0.5em; }
 Css: pre.lstinputlisting{ font-family: monospace,monospace; white-space: pre-wrap; }
 Css: .lstinputlisting .label{margin-right:0.5em;}
---- needs --- blog.idv[2] ==> blog0x.png ---
---- needs --- blog.idv[4] ==> blog1x.png ---
---- needs --- blog.idv[5] ==> blog2x.png ---
 File: nocolor.png
 File: clustering.png
 File: tensor.png
---- needs --- blog.idv[7] ==> blog3x.png ---
---- needs --- blog.idv[8] ==> blog4x.png ---
---- needs --- blog.idv[9] ==> blog5x.png ---
---- needs --- blog.idv[10] ==> blog6x.png ---
---- needs --- blog.idv[12] ==> blog7x.png ---
---- needs --- blog.idv[13] ==> blog8x.png ---
---- needs --- blog.idv[14] ==> blog9x.png ---
---- needs --- blog.idv[15] ==> blog10x.png ---
---- needs --- blog.idv[16] ==> blog11x.png ---
---- needs --- blog.idv[17] ==> blog12x.png ---
---- needs --- blog.idv[19] ==> blog13x.png ---
---- needs --- blog.idv[21] ==> blog14x.png ---
---- needs --- blog.idv[22] ==> blog15x.png ---
---- needs --- blog.idv[23] ==> blog16x.png ---
---- needs --- blog.idv[25] ==> blog17x.png ---
---- needs --- blog.idv[27] ==> blog18x.png ---
---- needs --- blog.idv[28] ==> blog19x.png ---
---- needs --- blog.idv[30] ==> blog20x.png ---
---- needs --- blog.idv[31] ==> blog21x.png ---
---- needs --- blog.idv[33] ==> blog22x.png ---
---- needs --- blog.idv[34] ==> blog23x.png ---
---- needs --- blog.idv[35] ==> blog24x.png ---
---- needs --- blog.idv[37] ==> blog25x.png ---
---- needs --- blog.idv[38] ==> blog26x.png ---
---- needs --- blog.idv[39] ==> blog27x.png ---
---- needs --- blog.idv[40] ==> blog28x.png ---
---- needs --- blog.idv[42] ==> blog29x.png ---
---- needs --- blog.idv[43] ==> blog30x.png ---
---- needs --- blog.idv[44] ==> blog31x.png ---
---- needs --- blog.idv[45] ==> blog32x.png ---
---- needs --- blog.idv[46] ==> blog33x.png ---
---- needs --- blog.idv[48] ==> blog34x.png ---
---- needs --- blog.idv[50] ==> blog35x.png ---
---- needs --- blog.idv[51] ==> blog36x.png ---
---- needs --- blog.idv[52] ==> blog37x.png ---
---- needs --- blog.idv[54] ==> blog38x.png ---
---- needs --- blog.idv[56] ==> blog39x.png ---
---- needs --- blog.idv[57] ==> blog40x.png ---
---- needs --- blog.idv[58] ==> blog41x.png ---
---- needs --- blog.idv[59] ==> blog42x.png ---
---- needs --- blog.idv[61] ==> blog43x.png ---
---- needs --- blog.idv[62] ==> blog44x.png ---
---- needs --- blog.idv[64] ==> blog45x.png ---
---- needs --- blog.idv[66] ==> blog46x.png ---
---- needs --- blog.idv[67] ==> blog47x.png ---
---- needs --- blog.idv[68] ==> blog48x.png ---
---- needs --- blog.idv[69] ==> blog49x.png ---
---- needs --- blog.idv[70] ==> blog50x.png ---
---- needs --- blog.idv[71] ==> blog51x.png ---
---- needs --- blog.idv[72] ==> blog52x.png ---
---- needs --- blog.idv[73] ==> blog53x.png ---
---- needs --- blog.idv[74] ==> blog54x.png ---
---- needs --- blog.idv[76] ==> blog55x.png ---
---- needs --- blog.idv[77] ==> blog56x.png ---
---- needs --- blog.idv[78] ==> blog57x.png ---
---- needs --- blog.idv[79] ==> blog58x.png ---
---- needs --- blog.idv[80] ==> blog59x.png ---
---- needs --- blog.idv[81] ==> blog60x.png ---
---- needs --- blog.idv[82] ==> blog61x.png ---
---- needs --- blog.idv[84] ==> blog62x.png ---
---- needs --- blog.idv[85] ==> blog63x.png ---
---- needs --- blog.idv[86] ==> blog64x.png ---
---- needs --- blog.idv[87] ==> blog65x.png ---
---- needs --- blog.idv[88] ==> blog66x.png ---
---- needs --- blog.idv[90] ==> blog67x.png ---
---- needs --- blog.idv[92] ==> blog68x.png ---
-Css: #TBL-2-1{border-right:1px solid black;}
---- needs --- blog.idv[94] ==> blog69x.png ---
-Css: #TBL-3-1{border-right:1px solid black;}
-Css: #TBL-4-1{border-right:1px solid black;}
 File: sim_error.png
 File: sim_time.png
 --- characters ---
 Font("cmr","10","10","109")
-Font("cmr","17","17","100")
-Font("cmr","12","12","100")
-Font("cmr","8","8","100")
-Font("cmr","6","6","100")
-Font("cmmi","8","8","100")
-Font("cmmi","6","6","100")
-Font("cmsy","8","8","100")
-Font("cmsy","6","6","100")
-Font("cmex","8","8","100")
-Font("cmtt","10","10","109")
-Font("cmmi","10","10","109")
-Font("cmsy","10","10","109")
-Font("cmex","10","10","109")
-Font("msbm","10","10","109")
-Font("stmary","10","10","109")
 Font("cmbx","10","10","109")
 Font("cmmib","10","10","109")
 Font("cmmib","8","8","100")
+Font("cmbsy","10","10","109")
 Font("cmbsy","8","8","100")
+Font("cmbsy","6","6","100")
+Font("cmex","10","10","109")
+Font("cmex","8","8","100")
+Font("cmex","7","7","85")
+Font("msam","10","10","109")
+Font("msam","10","10","80")
+Font("msam","7","7","85")
+Font("msbm","10","10","109")
+Font("msbm","10","10","80")
+Font("msbm","7","7","85")
+Font("stmary","10","10","109")
+Font("stmary","8","8","100")
+Font("stmary","6","6","100")
+Font("cmr","8","8","100")
+Font("cmr","6","6","100")
+Font("cmmi","10","10","109")
+Font("cmmi","8","8","100")
+Font("cmmi","6","6","100")
+Font("cmsy","10","10","109")
+Font("cmsy","8","8","100")
+Font("cmsy","6","6","100")
+Font("cmr","17","17","100")
+Font("cmr","12","12","100")
+Font("cmtt","10","10","109")
 Font("cmti","10","10","109")

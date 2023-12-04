@@ -1,25 +1,41 @@
  
 /* start css.sty */
 .cmr-10x-x-109{}
-.cmr-17{font-size:154%;}
-.cmr-12{font-size:109%;}
-.cmr-8{font-size:72%;}
-.cmr-6{font-size:54%;}
-.cmmi-8{font-size:72%;font-style: italic;}
-.cmmi-6{font-size:54%;font-style: italic;}
-.cmsy-8{font-size:72%;}
-.cmsy-6{font-size:54%;}
-.cmex-8{font-size:72%;}
-.cmtt-10x-x-109{font-family: monospace,monospace;}
-.cmmi-10x-x-109{font-style: italic;}
-.cmsy-10x-x-109{}
-.cmex-10x-x-109{}
-.msbm-10x-x-109{}
-.stmary-10x-x-109{}
 .cmbx-10x-x-109{ font-weight: bold;}
 .cmmib-10x-x-109{font-style: italic; font-weight: bold;}
 .cmmib-8{font-size:72%;font-style: italic; font-weight: bold;}
+.cmbsy-10x-x-109{font-weight: bold;}
+.cmbsy-10x-x-109{font-weight: bold;}
+.cmbsy-10x-x-109{font-weight: bold;}
 .cmbsy-8{font-size:72%;font-weight: bold;}
+.cmbsy-8{font-weight: bold;}
+.cmbsy-8{font-weight: bold;}
+.cmbsy-6{font-size:54%;font-weight: bold;}
+.cmbsy-6{font-weight: bold;}
+.cmbsy-6{font-weight: bold;}
+.cmex-10x-x-109{}
+.cmex-8{font-size:72%;}
+.cmex-7x-x-85{font-size:54%;}
+.msam-10x-x-109{}
+.msam-10x-x-80{font-size:72%;}
+.msam-7x-x-85{font-size:54%;}
+.msbm-10x-x-109{}
+.msbm-10x-x-80{font-size:72%;}
+.msbm-7x-x-85{font-size:54%;}
+.stmary-10x-x-109{}
+.stmary-8{font-size:72%;}
+.stmary-6{font-size:54%;}
+.cmr-8{font-size:72%;}
+.cmr-6{font-size:54%;}
+.cmmi-10x-x-109{font-style: italic;}
+.cmmi-8{font-size:72%;font-style: italic;}
+.cmmi-6{font-size:54%;font-style: italic;}
+.cmsy-10x-x-109{}
+.cmsy-8{font-size:72%;}
+.cmsy-6{font-size:54%;}
+.cmr-17{font-size:154%;}
+.cmr-12{font-size:109%;}
+.cmtt-10x-x-109{font-family: monospace,monospace;}
 .cmti-10x-x-109{ font-style: italic;}
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
@@ -33,8 +49,7 @@ a img { border-top: 0; border-left: 0; border-right: 0; }
 center { margin-top:1em; margin-bottom:1em; }
 td center { margin-top:0em; margin-bottom:0em; }
 .Canvas { position:relative; }
-img.math{vertical-align:middle;}
-div.par-math-display, div.math-display{text-align:center;}
+math { text-indent: 0em; }
 body{ margin:1em auto; max-width:80ch; padding:0 .62em; }
 h1,h2,h3,h4,h5 { line-height:1.2; }
 @media print{ body{ max-width:none } }
@@ -108,22 +123,24 @@ div.figure img {text-align:center;}
 .marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
 .marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}
 .reversemarginpar{float:left;}
-table.equation {width:100%;}
-.equation td{text-align:center; }
-td.equation { margin-top:1em; margin-bottom:1em; } 
-td.equation-label { width:5%; text-align:center; }
-td.eqnarray4 { width:5%; white-space: normal; }
-td.eqnarray2 { width:5%; }
-table.eqnarray-star, table.eqnarray {width:100%;}
-div.eqnarray{text-align:center;}
-div.array {text-align:center;}
-div.pmatrix {text-align:center;}
-table.pmatrix {width:100%;}
-span.pmatrix img{vertical-align:middle;}
-div.pmatrix {text-align:center;}
-table.pmatrix {width:100%;}
-span.bar-css {text-decoration:overline;}
-img.cdots{vertical-align:middle;}
+.equation td{text-align:center; vertical-align:middle; }
+td.eq-no{ width:5%; }
+table.equation { width:100%; } 
+div.math-display, div.par-math-display{text-align:center;}
+.array-hline,.array-cline{ border-top: 1px solid black; height:0px; }
+.array-hline + .array-vspace:last-child{display:none;}
+.hline-mtd, .array-hline td{ display:none }
+.array-hline + .array-row:last-child{display:none;}
+.array-hline:first-child{border-bottom:1px solid black;border-top:none;}
+math .texttt { font-family: monospace; }
+math .textit { font-style: italic; }
+math .textsl { font-style: oblique; }
+math .textsf { font-family: sans-serif; }
+math .textbf { font-weight: bold; }
+mo.MathClass-op + mi{margin-left:0.3em}
+mi + mo.MathClass-op{margin-left:0.3em}
+ math mstyle[mathvariant="bold"] { font-weight: bold; font-style: normal; } 
+ math mstyle[mathvariant="normal"] { font-weight: normal; font-style: normal; } 
 .partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
 .index-item, .index-subitem, .index-subsubitem {display:block}
 div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
@@ -154,19 +171,11 @@ figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-al
 figcaption.caption span.id{font-weight: bold; white-space: nowrap; }
 p + figcaption, img + figcaption{margin-top: 1em;}
 .abstract{margin:1em;}
-.equation td{text-align:center; }
-.equation-star td{text-align:center; }
-table.equation-star { width:100%; }
-table.equation { width:100%; }
-table.align, table.alignat, table.xalignat, table.xxalignat, table.flalign {width:95%; margin-left:5%; white-space: nowrap;}
-table.align-star, table.alignat-star, table.xalignat-star, table.flalign-star {margin-left:auto; margin-right:auto; white-space: nowrap;}
-td.align-label { width:5%; text-align:center; }
-td.align-odd { text-align:right; padding-right:0.3em;}
-td.align-even { text-align:left; padding-right:0.6em;}
-table.multline, table.multline-star {width:100%;}
-td.gather {text-align:center; }
-table.gather {width:100%;}
-div.gather-star {text-align:center;}
+.equation-star td{text-align:center; vertical-align:middle; }
+table.equation-star { width:100%; } 
+.boxed{border: 1px solid black; padding-left:2px; padding-right:2px;}
+mtd.align-odd{margin-left:2em; text-align:right;}
+mtd.align-even{margin-right:2em; text-align:left;}
 .rotatebox{display: inline-block;}
 div.subfigure {text-align:center;display:inline-block; max-width:45%;}
 code.lstinline{font-family:monospace,monospace;}
@@ -175,8 +184,5 @@ pre.listings{font-family: monospace,monospace; white-space: pre-wrap; margin-top
 pre.lstlisting{font-family: monospace,monospace; white-space: pre-wrap; margin-top:0.5em; margin-bottom:0.5em; }
 pre.lstinputlisting{ font-family: monospace,monospace; white-space: pre-wrap; }
 .lstinputlisting .label{margin-right:0.5em;}
-#TBL-2-1{border-right:1px solid black;}
-#TBL-3-1{border-right:1px solid black;}
-#TBL-4-1{border-right:1px solid black;}
 /* end css.sty */
 
