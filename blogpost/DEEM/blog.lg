@@ -1,3 +1,4 @@
+htfcss: cmti  font-style: italic;
 htfcss: cmbsy font-weight: bold;
 htfcss: cmmi font-style: italic;
 htfcss: cmmib font-style: italic; font-weight: bold;
@@ -7,7 +8,6 @@ htfcss: cmtt font-family: monospace,monospace;
 File: blog.html
 File: blog.css
 File: blog.tmp
-Font_Class(1,"1"): <img  src="" alt="" class="%s-%dx-x-%x" />
 Css: p{margin-top:0;margin-bottom:0}
 Css: p.indent{text-indent:0;}
 Css: p + p{margin-top:1em;}
@@ -28,6 +28,15 @@ Css: td center { margin-top:0em; margin-bottom:0em; }
 Css: .Canvas { position:relative; }
 Css: img.math{vertical-align:middle;}
 Css: div.par-math-display, div.math-display{text-align:center;}
+Css: body{ margin:1em auto; max-width:80ch; padding:0 .62em; }
+Css: h1,h2,h3,h4,h5 { line-height:1.2; }
+Css: @media print{ body{ max-width:none } }
+Css: .partHead, .likepartHead { font-size: 2em; }
+Css: .chapterHead, .likechapterHead { font-size: 1.7411em; }
+Css: .sectionHead, .likesectionHead { font-size: 1.5157em; }
+Css: .subsectionHead, .likesubsectionHead { font-size: 1.3195em; }
+Css: .subsubsectionHead, .likesubsubsectionHead { font-size: 1.1487em; }
+Css:  @media (prefers-color-scheme: dark) { img[src^="blog"]{filter: invert(1); } } 
 Css: li p.indent { text-indent: 0em }
 Css: li p:first-child{ margin-top:0em; }
 Css: li p:last-child, li div:last-child { margin-bottom:0.5em; }
@@ -133,6 +142,12 @@ Css: .subsectionToc, .likesubsectionToc {margin-left:1em;}
 Css: .subsubsectionToc, .likesubsubsectionToc {margin-left:2em;}
 Css: .paragraphToc, .likeparagraphToc {margin-left:3em;}
 Css: .subparagraphToc, .likesubparagraphToc {margin-left:4em;}
+Css: figure.float, div.figure {margin-left: auto; margin-right: auto;}
+Css: figure.figure {text-align:center;}
+Css: figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}
+Css: figcaption.caption span.id{font-weight: bold; white-space: nowrap; }
+Css: p + figcaption, img + figcaption{margin-top: 1em;}
+Css: .abstract{margin:1em;}
 Css: .equation td{text-align:center; }
 Css: .equation-star td{text-align:center; }
 Css: table.equation-star { width:100%; }
@@ -156,67 +171,78 @@ Css: pre.lstinputlisting{ font-family: monospace,monospace; white-space: pre-wra
 Css: .lstinputlisting .label{margin-right:0.5em;}
 --- needs --- blog.idv[2] ==> blog0x.png ---
 --- needs --- blog.idv[4] ==> blog1x.png ---
---- needs --- blog.idv[6] ==> blog2x.png ---
+--- needs --- blog.idv[5] ==> blog2x.png ---
 File: nocolor.png
 File: clustering.png
 File: tensor.png
---- needs --- blog.idv[8] ==> blog3x.png ---
---- needs --- blog.idv[9] ==> blog4x.png ---
---- needs --- blog.idv[10] ==> blog5x.png ---
---- needs --- blog.idv[11] ==> blog6x.png ---
+--- needs --- blog.idv[7] ==> blog3x.png ---
+--- needs --- blog.idv[8] ==> blog4x.png ---
+--- needs --- blog.idv[9] ==> blog5x.png ---
+--- needs --- blog.idv[10] ==> blog6x.png ---
 --- needs --- blog.idv[12] ==> blog7x.png ---
---- needs --- blog.idv[14] ==> blog8x.png ---
---- needs --- blog.idv[15] ==> blog9x.png ---
---- needs --- blog.idv[16] ==> blog10x.png ---
---- needs --- blog.idv[17] ==> blog11x.png ---
---- needs --- blog.idv[18] ==> blog12x.png ---
+--- needs --- blog.idv[13] ==> blog8x.png ---
+--- needs --- blog.idv[14] ==> blog9x.png ---
+--- needs --- blog.idv[15] ==> blog10x.png ---
+--- needs --- blog.idv[16] ==> blog11x.png ---
+--- needs --- blog.idv[17] ==> blog12x.png ---
 --- needs --- blog.idv[19] ==> blog13x.png ---
 --- needs --- blog.idv[21] ==> blog14x.png ---
 --- needs --- blog.idv[22] ==> blog15x.png ---
 --- needs --- blog.idv[23] ==> blog16x.png ---
---- needs --- blog.idv[24] ==> blog17x.png ---
---- needs --- blog.idv[26] ==> blog18x.png ---
---- needs --- blog.idv[27] ==> blog19x.png ---
---- needs --- blog.idv[28] ==> blog20x.png ---
---- needs --- blog.idv[30] ==> blog21x.png ---
---- needs --- blog.idv[32] ==> blog22x.png ---
---- needs --- blog.idv[33] ==> blog23x.png ---
---- needs --- blog.idv[34] ==> blog24x.png ---
---- needs --- blog.idv[35] ==> blog25x.png ---
---- needs --- blog.idv[36] ==> blog26x.png ---
---- needs --- blog.idv[38] ==> blog27x.png ---
---- needs --- blog.idv[39] ==> blog28x.png ---
---- needs --- blog.idv[40] ==> blog29x.png ---
---- needs --- blog.idv[41] ==> blog30x.png ---
---- needs --- blog.idv[42] ==> blog31x.png ---
---- needs --- blog.idv[44] ==> blog32x.png ---
---- needs --- blog.idv[45] ==> blog33x.png ---
---- needs --- blog.idv[46] ==> blog34x.png ---
---- needs --- blog.idv[48] ==> blog35x.png ---
---- needs --- blog.idv[49] ==> blog36x.png ---
---- needs --- blog.idv[51] ==> blog37x.png ---
---- needs --- blog.idv[53] ==> blog38x.png ---
---- needs --- blog.idv[54] ==> blog39x.png ---
---- needs --- blog.idv[55] ==> blog40x.png ---
---- needs --- blog.idv[57] ==> blog41x.png ---
---- needs --- blog.idv[58] ==> blog42x.png ---
---- needs --- blog.idv[59] ==> blog43x.png ---
---- needs --- blog.idv[60] ==> blog44x.png ---
---- needs --- blog.idv[62] ==> blog45x.png ---
---- needs --- blog.idv[63] ==> blog46x.png ---
---- needs --- blog.idv[64] ==> blog47x.png ---
---- needs --- blog.idv[65] ==> blog48x.png ---
---- needs --- blog.idv[67] ==> blog49x.png ---
---- needs --- blog.idv[68] ==> blog50x.png ---
---- needs --- blog.idv[69] ==> blog51x.png ---
---- needs --- blog.idv[70] ==> blog52x.png ---
---- needs --- blog.idv[71] ==> blog53x.png ---
---- needs --- blog.idv[72] ==> blog54x.png ---
---- needs --- blog.idv[73] ==> blog55x.png ---
---- needs --- blog.idv[74] ==> blog56x.png ---
---- needs --- blog.idv[76] ==> blog57x.png ---
+--- needs --- blog.idv[25] ==> blog17x.png ---
+--- needs --- blog.idv[27] ==> blog18x.png ---
+--- needs --- blog.idv[28] ==> blog19x.png ---
+--- needs --- blog.idv[30] ==> blog20x.png ---
+--- needs --- blog.idv[31] ==> blog21x.png ---
+--- needs --- blog.idv[33] ==> blog22x.png ---
+--- needs --- blog.idv[34] ==> blog23x.png ---
+--- needs --- blog.idv[35] ==> blog24x.png ---
+--- needs --- blog.idv[37] ==> blog25x.png ---
+--- needs --- blog.idv[38] ==> blog26x.png ---
+--- needs --- blog.idv[39] ==> blog27x.png ---
+--- needs --- blog.idv[40] ==> blog28x.png ---
+--- needs --- blog.idv[42] ==> blog29x.png ---
+--- needs --- blog.idv[43] ==> blog30x.png ---
+--- needs --- blog.idv[44] ==> blog31x.png ---
+--- needs --- blog.idv[45] ==> blog32x.png ---
+--- needs --- blog.idv[46] ==> blog33x.png ---
+--- needs --- blog.idv[48] ==> blog34x.png ---
+--- needs --- blog.idv[50] ==> blog35x.png ---
+--- needs --- blog.idv[51] ==> blog36x.png ---
+--- needs --- blog.idv[52] ==> blog37x.png ---
+--- needs --- blog.idv[54] ==> blog38x.png ---
+--- needs --- blog.idv[56] ==> blog39x.png ---
+--- needs --- blog.idv[57] ==> blog40x.png ---
+--- needs --- blog.idv[58] ==> blog41x.png ---
+--- needs --- blog.idv[59] ==> blog42x.png ---
+--- needs --- blog.idv[61] ==> blog43x.png ---
+--- needs --- blog.idv[62] ==> blog44x.png ---
+--- needs --- blog.idv[64] ==> blog45x.png ---
+--- needs --- blog.idv[66] ==> blog46x.png ---
+--- needs --- blog.idv[67] ==> blog47x.png ---
+--- needs --- blog.idv[68] ==> blog48x.png ---
+--- needs --- blog.idv[69] ==> blog49x.png ---
+--- needs --- blog.idv[70] ==> blog50x.png ---
+--- needs --- blog.idv[71] ==> blog51x.png ---
+--- needs --- blog.idv[72] ==> blog52x.png ---
+--- needs --- blog.idv[73] ==> blog53x.png ---
+--- needs --- blog.idv[74] ==> blog54x.png ---
+--- needs --- blog.idv[76] ==> blog55x.png ---
+--- needs --- blog.idv[77] ==> blog56x.png ---
+--- needs --- blog.idv[78] ==> blog57x.png ---
+--- needs --- blog.idv[79] ==> blog58x.png ---
+--- needs --- blog.idv[80] ==> blog59x.png ---
+--- needs --- blog.idv[81] ==> blog60x.png ---
+--- needs --- blog.idv[82] ==> blog61x.png ---
+--- needs --- blog.idv[84] ==> blog62x.png ---
+--- needs --- blog.idv[85] ==> blog63x.png ---
+--- needs --- blog.idv[86] ==> blog64x.png ---
+--- needs --- blog.idv[87] ==> blog65x.png ---
+--- needs --- blog.idv[88] ==> blog66x.png ---
+--- needs --- blog.idv[90] ==> blog67x.png ---
+--- needs --- blog.idv[92] ==> blog68x.png ---
 Css: #TBL-2-1{border-right:1px solid black;}
---- needs --- blog.idv[78] ==> blog58x.png ---
+--- needs --- blog.idv[94] ==> blog69x.png ---
 Css: #TBL-3-1{border-right:1px solid black;}
 Css: #TBL-4-1{border-right:1px solid black;}
 File: sim_error.png
@@ -233,14 +259,13 @@ Font("cmsy","8","8","100")
 Font("cmsy","6","6","100")
 Font("cmex","8","8","100")
 Font("cmtt","10","10","109")
-Font("cmbx","10","10","109")
 Font("cmmi","10","10","109")
 Font("cmsy","10","10","109")
---- needs --- blog.idv[80] ==> cmsy10-58.png ---
---- needs --- blog.idv[81] ==> cmsy10-47.png ---
 Font("cmex","10","10","109")
 Font("msbm","10","10","109")
 Font("stmary","10","10","109")
+Font("cmbx","10","10","109")
 Font("cmmib","10","10","109")
 Font("cmmib","8","8","100")
 Font("cmbsy","8","8","100")
+Font("cmti","10","10","109")

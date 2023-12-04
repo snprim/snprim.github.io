@@ -269,10 +269,34 @@ And we repeat this process to update the parameters and get a sequence of $\wh \
 
 
 
-Now, we turn to how this sequence of parameters $\wh\theta^{(t)}$ behave.
+Then, now we are interested in how this sequence of parameters $\wh\theta^{(t)}$ behave.
+In fact, under some initialization condition, it can be seen that there are some constant $C$ and $0<\kappa<1/2$ such that, with a probability $\ge 1- O(\prod_{i=1}^M p_i^{-1})$,
+$$
+\|\wh B^{(t)} - B\| \le C \kappa^t d_0 + C\sqrt{\frac{s \Sigma_{i=1}^M \log p_i}{n}},
+$$
+where $s=o(\sqrt{n/\sum_i \log p_i})$ and $d_0$ is a measure of the difference between the initial value $\wh \theta^{(0)}$ and the true parameter $\theta$.
+If  $t$ is large, it follows that
+$$
+\|\wh B^{(t)} - B\| \le C\sqrt{\frac{s \Sigma_{i=1}^M \log p_i}{n}}.
+$$
+This result implies that if the number of iterations $t$ is large, the DEEM estimator $\wh B^{(t)}$ converges to the true parameter $B$.
+Here, the condition $s=o(\sqrt{n/\sum_i \log p_i})$ means the sparsity assumption.
 
-
-
+We consider the error rate of DEEM and the optimal clustering rule:
+$$
+R(DEEM)= \min_{\Pi} P(\Pi(\wh Y_i^{DEEM} \neq Y_i))
+$$
+and
+$$
+R(Opt)= P(\wh Y_i^{opt} \neq Y_i),
+$$
+where $\Pi$ denotes the permutation operator and $\wh Y_i^{DEEM}= \amax_k \wh\xi_{ik}$.
+Here, the optimal clustering rule is optimal in the sense that it minimizes the clustering error.
+From the result above, we can show that if $t$ is large, then with probability $\ge 1- O(\prod_{i=1}^M p_i^{-1})$
+$$
+R(DEEM) - R(Opt) \le C \frac{s\sum_{i=1}^M \log p_i}{n}.
+$$
+Consequently, this result shows that the error rate of DEEM converges to the error rate of the optimal clustering rule if $t$ is large.
 
 
 \section{Simulation Study}
@@ -314,7 +338,7 @@ The settings are provided in Table \ref{tab:sim_setting}. Note that, for ${B}^*_
 \subsection{Metrics}
 
 Note that it is as straightforward to calculate the mean error rate for a clustering problem than it is for a classification problem. Both methods return labels for the groups; however, the group labels do not matter. For example, if there are five observations and if their true group labels are $(1,1,2,2,2)$ and the methods return $(2,2,1,1,1)$, the error rate should be $0$. In the paper, the authors explain that mean clustering error rate is calculated by: 
-\[ \min_\prod \frac{1}{n} \sum_{i=1}^n 1 (\hat{Y}_i \ne \prod (Y_i)) \text{ over all possible permutations } \prod: \{1, \cdots,  \} \mapsto \{1, \cdots, K\} \]
+\[ \min_\Pi \frac{1}{n} \sum_{i=1}^n 1 (\hat{Y}_i \ne \Pi (Y_i)) \text{ over all possible permutations } \Pi: \{1, \cdots,  \} \mapsto \{1, \cdots, K\} \]
 We thus created a function to permute the true labels, compare the estimated labels and the true labels, and return the lowest error rate. 
 
 To compare the speed of the two methods, we also record the computation time. Table \ref{tab:time} provides the mean computation time and standard error (in parentheses) for each setting. 

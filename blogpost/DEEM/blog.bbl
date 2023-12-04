@@ -1,0 +1,24 @@
+\begin{thebibliography}{3}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL}\fi
+
+\bibitem[{Dempster et~al.(1977)Dempster, Laird and Rubin}]{dempster1977EM}
+Dempster, A., Laird, N. and Rubin, D. (1977) Maximum likelihood from incomplete
+  data via the em algorithm.
+\newblock \textit{Journal of the Royal Statistical Society}, \textbf{39},
+  1--22.
+
+\bibitem[{Kolda and Bader(2009)}]{kolda2009review}
+Kolda, T.~G. and Bader, B.~W. (2009) Tensor decompositions and applications.
+\newblock \textit{SIAM Review}, \textbf{51}, 455--500.
+\newblock \urlprefix\url{https://doi.org/10.1137/07070111X}.
+
+\bibitem[{Qing~Mai and Deng(2022)}]{mai2022DEEM}
+Qing~Mai, Xin~Zhang, Y.~P. and Deng, K. (2022) A doubly enhanced em algorithm
+  for model-based tensor clustering.
+\newblock \textit{Journal of the American Statistical Association},
+  \textbf{117}, 2120--2134.
+
+\end{thebibliography}
