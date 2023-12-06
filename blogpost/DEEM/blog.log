@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  4 DEC 2023 12:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  6 DEC 2023 15:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -7,8 +7,8 @@ e##1{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.{\A
 ddToHook{class/before}{\RequirePackage[#1,html]{tex4ht}}\let\HCode\documentstyl
 e\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname tex4ht\endc
 sname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{\HCode}{\doc
-umentstyle[tex4ht]}}}\makeatother\HCode xhtml,mathml, mathjax,charset=utf-8,htm
-l5.a.b.c.\input \detokenize{blog.tex} > nul 2>&1
+umentstyle[tex4ht]}}}\makeatother\HCode xhtml,mathml,charset=utf-8,html5.a.b.c.
+\input \detokenize{blog.tex} > nul 2>&1
 (./blog.tex (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/tex4ht.sty
 version 2023-10-04-13:17
 Package: tex4ht 
@@ -132,11 +132,36 @@ Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 \symstmry=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+) (c:/texlive/2023/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+(c:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks25
+\c@algorithm=\count273
+) (c:/texlive/2023/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+(c:/texlive/2023/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count274
+\c@ALG@rem=\count275
+\c@ALG@nested=\count276
+\ALG@tlm=\skip53
+\ALG@thistlm=\skip54
+\c@ALG@Lnr=\count277
+\c@ALG@blocknr=\count278
+\c@ALG@storecount=\count279
+\c@ALG@tmpcounter=\count280
+\ALG@tmplength=\skip55
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 (c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks25
+\KV@toks@=\toks26
 ) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/graphics-hooks.4ht
 version 2022-08-17-14:25
 ) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
@@ -155,8 +180,8 @@ Package: psfrag 1998/04/11 v3.04 PSfrag (MCG)
 (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/graphics-hooks.4ht
 version 2022-08-17-14:25
 )
-\pfg@pcount=\count273
-\pfg@scount=\count274
+\pfg@pcount=\count281
+\pfg@scount=\count282
 \pfg@temp=\write3
 ) (c:/texlive/2023/texmf-dist/tex/generic/epsf/epsf.sty
 This is `epsf.tex' v2.7.4 <14 February 2011>
@@ -171,13 +196,13 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 \pspoints=\dimen159
 ) (c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip53
-\bibsep=\skip54
+\bibhang=\skip56
+\bibsep=\skip57
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count275
+\c@NAT@ctr=\count283
 ) (c:/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
 Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip55
+\FP@margin=\skip58
 ) (c:/texlive/2023/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (c:/texlive/2023/texmf-dist/tex/latex/caption/subcaption.sty
@@ -198,35 +223,35 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen167
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count276
-\c@continuedfloat=\count277
+\c@caption@flags=\count284
+\c@continuedfloat=\count285
 Package caption Info: float package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count278
+\c@subfigure=\count286
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count279
+\c@subtable=\count287
 ) (c:/texlive/2023/texmf-dist/tex/latex/changepage/changepage.sty
 Package: changepage 2009/10/20 v1.0c check page and change page layout
-\c@cp@cntr=\count280
-\cp@tempcnt=\count281
+\c@cp@cntr=\count288
+\cp@tempcnt=\count289
 ) (c:/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count282
+\lst@mode=\count290
 \lst@gtempboxa=\box55
-\lst@token=\toks26
-\lst@length=\count283
+\lst@token=\toks27
+\lst@length=\count291
 \lst@currlwidth=\dimen168
-\lst@column=\count284
-\lst@pos=\count285
+\lst@column=\count292
+\lst@pos=\count293
 \lst@lostspace=\dimen169
 \lst@width=\dimen170
-\lst@newlines=\count286
-\lst@lineno=\count287
+\lst@newlines=\count294
+\lst@lineno=\count295
 \lst@maxwidth=\dimen171
 (c:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count288
-\lst@skipnumbers=\count289
+\c@lstnumber=\count296
+\lst@skipnumbers=\count297
 \lst@framebox=\box56
 ) (c:/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2023/02/27 1.9 listings configuration
@@ -247,11 +272,11 @@ version 2022-07-05-14:37
 version 2023-10-04-13:17
 l.870 --- TeX4ht warning --- nonprimitive \everypar ---
 --- needs --- tex4ht blog ---
-\tmp:cnt=\count290
+\tmp:cnt=\count298
 \openout15 = `blog.tmp'.
 
 (./blog.tmp)
-\tmp:dim=\skip56
+\tmp:dim=\skip59
 (./blog.xref)
 \:refout=\write5
 \openout5 = `blog.xref'.
@@ -318,7 +343,7 @@ option `frames-fn'
 --------------------------------------
 --- Note --- for file extension name xht, use the command line option `xht'
 --------------------------------------
-TeX4ht package options: xhtml,mathml,mathjax,charset=utf-8,html5,html
+TeX4ht package options: xhtml,mathml,charset=utf-8,html5,html
 --------------------------------------
 --- Note --- To print a timestamp, use the command line option timestamp
 --------------------------------------
@@ -352,8 +377,8 @@ version 2023-10-09-13:31
 o use custom a CSS design
 --------------------------------------
 )
-\:tokwrite=\toks27
-\:tokpage=\toks28
+\:tokwrite=\toks28
+\:tokpage=\toks29
 --------------------------------------
 --- Note --- for back links to toc, use the command line option `sections+'
 --------------------------------------
@@ -644,6 +669,42 @@ version 2023-11-21-13:46
 version 2022-10-31-13:02
 ) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html5.4ht
 version 2023-10-09-13:31
+)) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/algorithm.4ht
+version 2009-05-21-09:32
+(c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2023-11-10-14:22
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/unicode.4ht
+version 2023-04-02-08:01
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/mathml.4ht
+version 2023-11-21-13:46
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html-mml.4ht
+version 2022-10-31-13:02
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html5.4ht
+version 2023-10-09-13:31
+)) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/ifthen.4ht
+version 2022-06-08-14:13
+(c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2023-11-10-14:22
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/unicode.4ht
+version 2023-04-02-08:01
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/mathml.4ht
+version 2023-11-21-13:46
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html-mml.4ht
+version 2022-10-31-13:02
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html5.4ht
+version 2023-10-09-13:31
+)) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/algorithmicx.4ht
+version 2009-05-21-09:32
+(c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2023-11-10-14:22
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/unicode.4ht
+version 2023-04-02-08:01
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/mathml.4ht
+version 2023-11-21-13:46
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html-mml.4ht
+version 2022-10-31-13:02
+) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html5.4ht
+version 2023-10-09-13:31
 )) (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/graphicx.4ht
 version 2022-01-12-13:53
 (c:/texlive/2023/texmf-dist/tex/generic/tex4ht/html4.4ht
@@ -785,44 +846,44 @@ version 2023-10-09-13:31
 )) (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2023-11-09 L3 backend support: dvips
 \l__pdf_internal_box=\box58
-\g__pdf_backend_object_int=\count291
+\g__pdf_backend_object_int=\count299
 \l__pdf_backend_content_box=\box59
 \l__pdf_backend_model_box=\box60
-\g__pdf_backend_annotation_int=\count292
-\g__pdf_backend_link_int=\count293
-\g__pdf_backend_link_sf_int=\count294
+\g__pdf_backend_annotation_int=\count300
+\g__pdf_backend_link_int=\count301
+\g__pdf_backend_link_sf_int=\count302
 ) (./blog.aux)
 \openout1 = `blog.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 LaTeX Warning: First page is already shipped out, ignoring
-               \AtBeginDvi on input line 33.
+               \AtBeginDvi on input line 36.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count295
+\c@lstlisting=\count303
 --- file blog.css ---
 [1] [2] [3] Excluding 'comment' comment. [4] [5] [6] [7
 
 ]
-l.85 --- TeX4ht warning --- File `"nocolor.xbb"' not found ---
-l.85 --- TeX4ht warning --- Cannot determine size of graphic in "nocolor.xbb" (
+l.88 --- TeX4ht warning --- File `"nocolor.xbb"' not found ---
+l.88 --- TeX4ht warning --- Cannot determine size of graphic in "nocolor.xbb" (
 no BoundingBox) ---
-l. 85 --- needs --- nocolor.png ---
+l. 88 --- needs --- nocolor.png ---
 [8
 
 ] [9
@@ -830,10 +891,10 @@ l. 85 --- needs --- nocolor.png ---
 ] [10
 
 ]
-l.93 --- TeX4ht warning --- File `"clustering.xbb"' not found ---
-l.93 --- TeX4ht warning --- Cannot determine size of graphic in "clustering.xbb
+l.96 --- TeX4ht warning --- File `"clustering.xbb"' not found ---
+l.96 --- TeX4ht warning --- Cannot determine size of graphic in "clustering.xbb
 " (no BoundingBox) ---
-l. 93 --- needs --- clustering.png ---
+l. 96 --- needs --- clustering.png ---
 [11
 
 ] [12
@@ -841,25 +902,22 @@ l. 93 --- needs --- clustering.png ---
 ] [13
 
 ]
-l.105 --- TeX4ht warning --- File `"tensor.xbb"' not found ---
-l.105 --- TeX4ht warning --- Cannot determine size of graphic in "tensor.xbb" (
+l.108 --- TeX4ht warning --- File `"tensor.xbb"' not found ---
+l.108 --- TeX4ht warning --- Cannot determine size of graphic in "tensor.xbb" (
 no BoundingBox) ---
-l. 105 --- needs --- tensor.png ---
+l. 108 --- needs --- tensor.png ---
 [14
 
 ] [15
 
-] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30
+] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [3
+1] [32
 
-] [31
+] [33
 
-] [32
+] [34
 
-] [33] [34
-
-] [35
-
-] [36
+] [35] [36
 
 ] [37
 
@@ -869,25 +927,453 @@ l. 105 --- needs --- tensor.png ---
 
 ] [40
 
-]
-l.387 --- TeX4ht warning --- File `"sim_error.xbb"' not found ---
-l.387 --- TeX4ht warning --- Cannot determine size of graphic in "sim_error.xbb
-" (no BoundingBox) ---
-l. 387 --- needs --- sim_error.png ---
-[41
+] [41
 
 ] [42
 
-] [43
+]
+l.419 --- TeX4ht warning --- File `"sim_error.xbb"' not found ---
+l.419 --- TeX4ht warning --- Cannot determine size of graphic in "sim_error.xbb
+" (no BoundingBox) ---
+l. 419 --- needs --- sim_error.png ---
+[43
+
+] [44
+
+] [45
 
 ]
-l.394 --- TeX4ht warning --- File `"sim_time.xbb"' not found ---
-l.394 --- TeX4ht warning --- Cannot determine size of graphic in "sim_time.xbb"
+l.426 --- TeX4ht warning --- File `"sim_time.xbb"' not found ---
+l.426 --- TeX4ht warning --- Cannot determine size of graphic in "sim_time.xbb"
  (no BoundingBox) ---
-l. 394 --- needs --- sim_time.png ---
-[44
+l. 426 --- needs --- sim_time.png ---
+[46
 
-] Excluding 'comment' comment. (./blog.bbl) [45
+] [47
+
+] [48
+
+] [49
+
+] [50
+
+] [51
+
+] [52
+
+] (./blog.bbl) [53
+
+] [54
+
+]
+! You can't use `\prevdepth' in horizontal mode.
+\nointerlineskip ->\prevdepth 
+                              -\@m \p@ 
+l.479        \EndInitialize
+                           
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.479        \EndInitialize
+                           
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \hskip 
+l.479        \EndInitialize
+                           
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \hskip 
+l.479        \EndInitialize
+                           
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+! LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.480        \For
+                  {$t=0,1,\dots,$} \Comment{\textit{repeat the following ste...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.480        \For
+                  {$t=0,1,\dots,$} \Comment{\textit{repeat the following ste...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.480        \For
+                  {$t=0,1,\dots,$} \Comment{\textit{repeat the following ste...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no è in font cmex10!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.481        \begin{enumerate}
+                              
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.481        \begin{enumerate}
+                              
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.481        \begin{enumerate}
+                              
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.481        \begin{enumerate}
+                              
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[55
+
+] [56]
+
+! LaTeX Error: \begin{list} on input line 477 ended by \end{enumerate}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.504        \end{enumerate}
+                            
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@1 
+l.505         \EndFor
+                     
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makenobeginrepeat ...LG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.505         \EndFor
+                     
+I'm ignoring this, since I wasn't doing a \csname.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.505         \EndFor
+                     
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \ALG@b@2@EndFor@0 
+l.505         \EndFor
+                     
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \ALG@currentblock@1 
+l.506         \State
+                     Output \(\wh\xi_{ik}, \wh\pi_k, \wh\Sigma_m\) at conver...
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Extra \endcsname.
+\ALG@makebeginrepeat ...\ALG@thisblock \endcsname 
+                                                  \relax \def \ALG@thisblock...
+l.506         \State
+                     Output \(\wh\xi_{ik}, \wh\pi_k, \wh\Sigma_m\) at conver...
+I'm ignoring this, since I wasn't doing a \csname.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.506         \State
+                     Output \(\wh\xi_{ik}, \wh\pi_k, \wh\Sigma_m\) at conver...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \ALG@currentblock@1 
+l.507     \end{algorithmic}
+                           
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Missing = inserted for \ifnum.
+<to be read again> 
+                   \ALG@currentblock@1 
+l.507     \end{algorithmic}
+                           
+I was expecting to see `<', `=', or `>'. Didn't.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \ALG@currentblock@1 
+l.507     \end{algorithmic}
+                           
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+
+! LaTeX Error: \begin{algorithmic} on input line 477 ended by \end{list}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.507     \end{algorithmic}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{algorithm} on input line 475 ended by \end{algorithmic}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.507     \end{algorithmic}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra }, or forgotten \endgroup.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.508 \end{algorithm}
+                     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Too many }'s.
+\color@endbox ->\color@endgroup \egroup 
+                                        
+l.508 \end{algorithm}
+                     
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+! Undefined control sequence.
+\endalgorithm ...oatbox \global \setbox \@currbox 
+                                                  \float@makebox \columnwidt...
+l.508 \end{algorithm}
+                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \vbox 
+l.508 \end{algorithm}
+                     
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+\caption@ORI@float@makebox ...boxrestore \@fs@pre 
+                                                  \@fs@iftopcapt \ifvoid \@f...
+l.508 \end{algorithm}
+                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\caption@ORI@float@makebox ...@pre \@fs@iftopcapt 
+                                                  \ifvoid \@floatcapt \else ...
+l.508 \end{algorithm}
+                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\caption@ORI@float@makebox ...i \unvbox \@currbox 
+                                                  \else \unvbox \@currbox \i...
+l.508 \end{algorithm}
+                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Extra \else.
+\caption@ORI@float@makebox ...box \@currbox \else 
+                                                  \unvbox \@currbox \ifvoid ...
+l.508 \end{algorithm}
+                     
+I'm ignoring this; it doesn't match any \if.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \unvbox 
+l.508 \end{algorithm}
+                     
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+\caption@ORI@float@makebox ...e \unvbox \@currbox 
+                                                  \ifvoid \@floatcapt \else ...
+l.508 \end{algorithm}
+                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Extra \fi.
+\caption@ORI@float@makebox ...\@floatcapt \fi \fi 
+                                                  \par \@fs@post \vskip \z@ }
+l.508 \end{algorithm}
+                     
+I'm ignoring this; it doesn't match any \if.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \scan_stop: 
+l.508 \end{algorithm}
+                     
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Undefined control sequence.
+\caption@ORI@float@makebox ... \fi \par \@fs@post 
+                                                  \vskip \z@ }
+l.508 \end{algorithm}
+                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Extra \endgroup.
+\end@float ->\endgroup 
+                       \:clearpage \af:float 
+l.508 \end{algorithm}
+                     
+Things are pretty mixed up, but I think the worst is over.
+
+[57]
+
+! LaTeX Error: \begin{document} ended by \end{algorithm}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.508 \end{algorithm}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.508 \end{algorithm}
+                     
+Things are pretty mixed up, but I think the worst is over.
+
+l.508 --- TeX4ht warning --- \SaveEverypar's: 1 at \begin{algorithm} and 2 \end
+{algorithm} ---
+[58
 
 ] (./blog.aux)
  ***********
@@ -899,12 +1385,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 12041 strings out of 474268
- 176691 string characters out of 5751485
- 1944555 words of memory out of 5000000
- 33826 multiletter control sequences out of 15000+600000
- 569573 words of font info for 79 fonts, out of 8000000 for 9000
+ 12865 strings out of 474268
+ 190678 string characters out of 5751485
+ 1948555 words of memory out of 5000000
+ 34599 multiletter control sequences out of 15000+600000
+ 569872 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,17n,89p,1739b,515s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,17n,89p,1730b,1012s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on blog.dvi (302 pages, 309484 bytes).
+Output written on blog.dvi (315 pages, 385696 bytes).

@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,color,float}
+\usepackage{stmaryrd}
+\usepackage{graphicx,psfrag,epsf}
+\usepackage[authoryear]{natbib}
+\usepackage{fullpage,setspace}
+\usepackage{subcaption}
+\usepackage{changepage}
+\usepackage{listings}
+\usepackage{comment}
+
+
+
+\newcommand{\rp}{\mathbb{R}^{p_1\times \cdots \times p_M}}
+\newcommand{\br}[1]{\llbracket #1 \rrbracket}
+\newcommand{\amin}{\operatorname*{argmin}}
+\newcommand{\amax}{\operatorname*{argmax}}
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde} 
+
+
+\setlength{\oddsidemargin}{.15in} 
+\setlength{\textwidth}{6.25in}
+\setlength{\topmargin}{-0.25in}
+\setlength{\headheight}{-0.15in}
+\setlength{\textheight}{8.9in} 
+
+\linespread{1.25}
+
+\title{Peer Review for ``Smaller p-Values via Indirect Information' by Peter Hoff"}
+\author{Ayumi Mutoh, Jisu Oh, Shih-Ni Prim}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{itemize}
+    \item Blogpost Authors: Rishav Chakrabarti and Liz Davis (group 01)
+    \item Peer Reviewers: Ayumi Mutoh, Jisu Oh, Shih-Ni Prim (group 08)
+\end{itemize}
+
+\section{Summary}
+
+This blog explains the paper by Peter Hoff on how to incorporate prior knowledge (``indirect information") in statistical inference. The blog authors start with examples of indirect information, which effectively show that this type of information can be reasonably expected. In the theoretical background section, the authors start with a simple case and show how to set up a level-$\alpha$ FAB test. They then explicitly show how to incorporate indirect information and point out the challenges when the indirect information is not independent data. The simulation studies then take us step by step through different scenarios, going from replicating the simulation from the original article to changing parameters to see how models perform. Overall it is easy to understand this blog, and the authors seem enthusiastic about introducing Hoff's 2022 article.
+
+\section{Three things we appreciated}
+
+\begin{itemize}
+    \item The blog is written in clear language. The authors take us through things step by step and indicate what they will do in the section. It is easy to follow the logic of the article.
+    \item They explained the theoretical background of Hoff's FAB p-values using real-world examples. Also, they gave a mathematical formula for Hoff's FAB p-values and a detailed explanation of the implication of that formula.
+    It was also great that they firstly considered the simplest normal case to help the reader's understanding and then generalized it to the symmetric density case.
+    \item In the conclusion, the authors point out that it is an open question how this method can work with different data integration methodologies. This is a great point. We appreciate the critical evaluation of the article. We think that, even if this part does not receive any discussion from the original article, it would be interesting to talk a little more about this aspect and even refer to other articles about data integration.
+\end{itemize}
+
+\section{Three things for improvement}
+\begin{itemize}
+    \item In the third sentence of their conclusion, the authors mention ``a set of p $\theta$’s". I did not follow what p $\theta$ represents. It might be a typo?
+    
+    \item What do the blue sections at the top of the histograms represent in Figure 1 for FAB p-values vs. Wald FAB p-values?
+
+    
+    \item In the theoretical background part, I am not sure why the following quantities are equal:
+    $$
+    \int E[f(Y)|\theta] \pi(\theta) d\theta = \iint f(y,\theta)\pi(\theta)dyd\theta= \int f(y) p_\pi(y) dy .
+    $$
+    It would be great if you could give the clear definitions of $f(y,\theta)$ and $p_\pi(y)$. I think $f$ is a critical function in testing, not a density function, so maybe the density of $Y$ is missing?
+\end{itemize}
+
+\end{document}
