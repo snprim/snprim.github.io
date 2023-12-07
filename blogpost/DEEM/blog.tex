@@ -61,7 +61,7 @@ The EM algorithm is an iterative approach that cycles between two steps for maxi
 \end{itemize}
 \end{comment}
 
-The EM algorithm is well-known for its use in unsupervised learning problems such as clustering with a mixture model. The process goes as follows:
+The EM algorithm is well-known for its use in unsupervised learning problems such as clustering with a mixture model. The process from \cite{emclustering} goes as follows:
 \begin{enumerate}
     \item Identify the number of clusters. 
     \item Define each cluster by generating a Gaussian model. 
@@ -110,7 +110,7 @@ While the term ``tensor" might sound unfamiliar to some, tensors are simply mult
     \label{fig:tensor}
 \end{figure}
 
-Before we continue onto the DEEM algorithm, some concepts and notations are necessary to understand derivations in the following section. Note that the following notations are taken from \cite{kolda2009review}. First of all, we should go over the concept of matricization. If we want to matricize a third-order tensor, we can think of cutting a cube into slices and put the slices side-by-side to make them into a matrix. We now borrow an example (Example 2.1) given in \cite{kolda2009review} to demonstrate how to matricize a third-order tensor $X \in \mathbb{R}^{3\times 4 \times 2}$: 
+Before we continue onto the DEEM algorithm, some concepts and notations are necessary to understand derivations in the following section. Note that the following notations are taken from \cite{kolda2009review}. First of all, we should go over the concept of matricization. If we want to matricize a third-order tensor, we can think of cutting a cube into slices and putting the slices side-by-side to make them into a matrix. We now borrow an example (Example 2.1) given in \cite{kolda2009review} to demonstrate how to matricize a third-order tensor $X \in \mathbb{R}^{3\times 4 \times 2}$: 
 \begin{equation*}
     X_1 = \begin{bmatrix}
         1 & 4 & 7 & 10 \\ 2 & 5 & 8 & 11 \\ 3 & 6 & 9 & 12 
@@ -156,7 +156,7 @@ Also, for any two tensors $A$ and $B$ in $\mathbb{R}^{I_1 \times I_2 \times \cdo
 With that, we are ready to learn about the DEEM algorithm. If you are interested in knowing more about tensors, \cite{kolda2009review} has lots of great details. So be sure to check it out! 
 
 \subsection{Doubly Enhanced EM Algorithm}
-In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss its theoretical properties. Algorithm 1 from \cite{mai2022DEEM} is provided in Appendix as our Figure \ref{fig:deem}.
+In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss its theoretical properties. Algorithm 1 from \cite{mai2022DEEM} is provided in the Appendix as our Figure \ref{fig:deem}.
 
 Let $Z$ denote the random tensor in $\rp$ such that every element in $Z$ is distributed as iid $N(0,1)$.
 Then we say that a random tensor $X$ has a tensor normal distribution, denoted by $X\sim \textup{TN}(\mu; \Sigma_1 , \dots, \Sigma_M)$, if $X= \mu+ \br{Z;\Sigma_1^{1/2},\dots, \Sigma_M^{1/2}}$, where $\mu\in \rp$ is the total mean and each $\Sigma_i \in \mathbb{R}^{p_i\times p_i}$ means the covariance matrix within $i$th class. In other words, a tensor normal regression is multivariate normal distribution generalized to a high dimension. An $M^{th}$ order random tensor $X$ has a total of $\sum_{i=1}^M p_i$ means and $M$ covariate matrices each of the dimension $p_i \times p_i$ for $i = 1, \cdots, M$. We can find that the density of $X$ has the form
@@ -200,7 +200,7 @@ and the M-step to update the parameter
 Then the EM sequence $\wt\theta^{(t)}$ converges to the MLE, but there are some issues in our situation:
 Getting the updates for $\pi_k$ and $\mu_k$ is quite easy and straightforward, but it is challenging to obtain the updates for the covariance matrices $\Sigma_i$.
 When we compute $\wh\xi^{(t)}_{ik}$ in \eqref{Estep}, all the elements in $X_i$ are used, and the standard EM algorithm does not involve a process for variable selection.
-Thus, due to an excessive number of parameters in the model, it may lead to the accumulation of errors, which potentially resulting in inaccurate estimates.
+Thus, due to an excessive number of parameters in the model, it may lead to the accumulation of errors, which potentially results in inaccurate estimates.
 
 
 
@@ -223,8 +223,8 @@ It can be shown that the covariance matrices $\Sigma_i$ are nuisance parameters 
 the values of $\Sigma_i$ are not used in the optimal clustering rule if we already know $B_k$'s.
 To cover more general cases, we do not impose conditions on $\Sigma_i$.
 Instead, we assume the sparsity condition on $B$; for $B_k=[b^J_k]_{J}$, where $J=(j_1,\dots, j_M)$ denotes an index of the tensor, we impose the condition $b_2^J=\cdots = b_K^J=0 $ for almost every $J$. In other words, if 
-$D= \{J : b_k^J \neq 0 \text{ for some $k=2,\dots, K$} \}$, then we assume that the number of elements in $D$ is significantly smaller than $p=p_1p_2 \cdots p_M$. This assumption comes from the belief that, in the high-dimensional setting, most of variables are not significant in estimation.
-The above expressions for $\xi_{ik}$ show that this assumption reduces the computational cost and improves the  estimation efficiency.
+$D= \{J : b_k^J \neq 0 \text{ for some $k=2,\dots, K$} \}$, then we assume that the number of elements in $D$ is significantly smaller than $p=p_1p_2 \cdots p_M$. This assumption comes from the belief that, in the high-dimensional setting, most of the variables are not significant in estimation.
+The above expressions for $\xi_{ik}$ show that this assumption reduces the computational cost and improves the estimation efficiency.
 
 
 
@@ -271,7 +271,7 @@ The target covariance estimator is given by scaling the intermediate covariances
   \end{aligned}
   \right.
 \end{equation*}
-The general process is summarized in Algorithm 1 in Appendix as our Figure \ref{fig:deem}.
+The general process is summarized in Algorithm 1 in the Appendix as our Figure \ref{fig:deem}.
 
 Now we are interested in how this sequence of parameters $\wh\theta^{(t)}$ behave.
 In fact, under some initialization condition, it can be seen that there are some constant $C$ and $0<\kappa<1/2$ such that for large $t$, with a probability $\ge 1- O(\prod_{i=1}^M p_i^{-1})$,
@@ -312,7 +312,7 @@ The covariance matrices are not sparse if they are set using the two formats abo
 
 \subsection{Settings}
 
-The settings are provided in Table \ref{tab:sim_setting}. Note that, for ${B}^*_{k}$, the indices not included in the subscript is $0$. In other words, ${B}^*_k$ is a sparse tensor. Both the DEEM and EM algorithms require $K$ to be given. $\lambda$ is a tuning parameter for regularization; however, due to the long computation time, we experiment with several different values of $\lambda$ and set it at $0.05$ instead of tuning it for each setting. We encourage the interested readers to try out two functions--\textbf{tune\_K} and \textbf{tune\_lambda}--in the R package \textbf{TensorClustering}. 
+The settings are provided in Table \ref{tab:sim_setting}. Note that, for ${B}^*_{k}$, the indices not included in the subscript is $0$. In other words, ${B}^*_k$ is a sparse tensor. Both the DEEM and EM algorithms require $K$ to be given. $\lambda$ is a tuning parameter for regularization; however, due to the long computation time, we experiment with several different values of $\lambda$ and set it at $0.05$ instead of tuning it for each setting. We encourage interested readers to try out two functions--\textbf{tune\_K} and \textbf{tune\_lambda}--in the R package \textbf{TensorClustering}. 
 
 We choose four settings from the seven settings, because these settings are increasingly more computationally expensive, and we believe that they demonstrate the advantage of the DEEM algorithm compared to the classical EM algorithm in terms of accuracy, as shown in Table \ref{tab:err}. We also run three extra settings, which we call M8, M9, M10 to avoid confusion with the seven settings in the paper. The results for these extra settings are shown in Tables \ref{tab:err2} and \ref{tab:time2}.
 
@@ -320,7 +320,7 @@ We choose four settings from the seven settings, because these settings are incr
     \centering
     \begin{tabular}{|c|p{4in}|}
     \hline
-      Model & Parameters \\
+      Setting & Parameters \\
     \hline
     M1  & $K=2, p = 10\times 10 \times 4, \boldsymbol{\Sigma}^*_1 = CS(0.3), \boldsymbol{\Sigma}^*_2 = AR(0.8), \boldsymbol{\Sigma}^*_3 = CS(0.3), \mathbf{B}^*_{2,[1:6,1,1]} = 0.5$  \\
     \hline
@@ -330,11 +330,11 @@ We choose four settings from the seven settings, because these settings are incr
     \hline
     M5 &  $K=6, p = 10\times 10 \times 4, \boldsymbol{\Sigma}^*_1 = AR(0.9), \boldsymbol{\Sigma}^*_2 = CS(0.6), \boldsymbol{\Sigma}^*_3 = AR(0.9), \mathbf{B}^*_{2,[1:6,1,1]} = 0.6, \mathbf{B}^*_{3,[1:6,1,1]} = 1.2, \mathbf{B}^*_{4,[1:6,1,1]} = 1.8, \mathbf{B}^*_{5,[1:6,1,1]} = 2.4, \mathbf{B}^*_{6,[1:6,1,1]} = 3$ \\
     \hline
-    M8 & $K=2, p = 10 \times 10 \times 10, \boldsymbol{\Sigma}^*_1 = AR(0.5), \boldsymbol{\Sigma}^*_2 = CS(0.5), \boldsymbol{\Sigma}^*_3 = AR(0.5), \mathbf{B}^*_{2,[1:3,1,1]} = 5$\\
+    M8 & $K=2, p = 10 \times 10 \times 10, \boldsymbol{\Sigma}^*_1 = AR(0.5), \boldsymbol{\Sigma}^*_2 = CS(0.5), \boldsymbol{\Sigma}^*_3 = AR(0.5), \mathbf{B}^*_{2,[1:6,1,1]} = 1.5$\\
     \hline
-    M9 & $K=2, p = 10 \times 10 \times 10, \boldsymbol{\Sigma}^*_1 = \mathbf{I}_{10}, \boldsymbol{\Sigma}^*_2 = \mathbf{I}_{10}, \boldsymbol{\Sigma}^*_3 = \mathbf{I}_{10}, \mathbf{B}^*_{2,[1:3,1,1]} = 3$ \\ 
+    M9 & $K=2, p = 10 \times 10 \times 10, \boldsymbol{\Sigma}^*_1 = \mathbf{I}_{10}, \boldsymbol{\Sigma}^*_2 = \mathbf{I}_{10}, \boldsymbol{\Sigma}^*_3 = \mathbf{I}_{10}, \mathbf{B}^*_{2,[1:6,1,1]} = 1.5$ \\ 
     \hline
-    M10 & $K=2, p = 10 \times 10 \times 4 \times 4 \times 4, \boldsymbol{\Sigma}^*_1 = AR(0.5), \boldsymbol{\Sigma}^*_2 = CS(0.5), \boldsymbol{\Sigma}^*_3 = AR(0.5), \boldsymbol{\Sigma}^*_4 = \mathbf{I}_4, \boldsymbol{\Sigma}^*_5 = \mathbf{I}_4, \mathbf{B}^*_{2,[1:3,1,1]} = 5$ \\
+    M10 & $K=2, p = 10 \times 10 \times 4 \times 4 \times 4, \boldsymbol{\Sigma}^*_1 = AR(0.5), \boldsymbol{\Sigma}^*_2 = CS(0.5), \boldsymbol{\Sigma}^*_3 = AR(0.5), \boldsymbol{\Sigma}^*_4 = \mathbf{I}_4, \boldsymbol{\Sigma}^*_5 = \mathbf{I}_4, \mathbf{B}^*_{2,[1:6,1,1,1,1]} = 5$ \\
     \hline
     \end{tabular}
     \caption{Simulation settings}
@@ -343,9 +343,9 @@ We choose four settings from the seven settings, because these settings are incr
 
 \subsection{Metrics}
 
-Note that it is as straightforward to calculate the mean error rate for a clustering problem than it is for a classification problem. Both methods return labels for the groups; however, the group labels do not matter. For example, if there are five observations and if their true group labels are $(1,1,2,2,2)$ and the methods return $(2,2,1,1,1)$, the error rate should be $0$. In the paper, the authors explain that mean clustering error rate is calculated by: 
+Note that it is as straightforward to calculate the mean error rate for a clustering problem as it is for a classification problem. Both methods return labels for the groups; however, the group labels do not matter. For example, if there are five observations and their true group labels are $(1,1,2,2,2)$ and the methods return $(2,2,1,1,1)$, the error rate should be $0$. In the paper, the authors explain that the mean clustering error rate is calculated by: 
 \[ \min_\Pi \frac{1}{n} \sum_{i=1}^n 1 (\hat{Y}_i \ne \Pi (Y_i)) \text{ over all possible permutations } \Pi: \{1, \cdots,  \} \mapsto \{1, \cdots, K\} \]
-We create a function to permute the true labels, compare the estimated labels and the true labels, and return the lowest error rate. To compare the speed of the two methods, we also record the computation time. Table \ref{tab:time} provides the mean computation time and standard error (in parentheses) for each setting. 
+We create a function to permute the true labels, compare the estimated labels and the true labels, and return the lowest error rate. To compare the speed of the two methods, we also record the computation time. Tables \ref{tab:time} and \ref{tab:time2} provides the mean computation time and standard error (in parentheses) for each setting. 
 
 \subsection{External R Packages and Functions}
 
@@ -362,7 +362,7 @@ The computation time tells a different story, however. As seen in Table \ref{tab
     \centering
     \begin{tabular}{|c|cc|}
     \hline
-       Model  &  DEEM & EM \\
+       Setting  &  DEEM & EM \\
        \hline
          M1 & 0.41 (0.05) & 0.45 (0.03) \\
          M3 &  0.46 (0.09) & 0.56 (0.05) \\
@@ -378,7 +378,7 @@ The computation time tells a different story, however. As seen in Table \ref{tab
     \centering
     \begin{tabular}{|c|cc|}
     \hline
-       Model  &  DEEM & EM \\
+       Setting  &  DEEM & EM \\
        \hline
          M1 & 0.72 (0.45) & 0.93 (0.39) \\
          M3 &  13.95 (7.78) & 7.74 (3.99) \\
@@ -390,7 +390,7 @@ The computation time tells a different story, however. As seen in Table \ref{tab
     \label{tab:time}
 \end{table}
 
-Next we transform the values in the tables into figures. As shown in Figure \ref{fig:err}, DEEM always has lower mean error rates. However, as the model becomes complicated, DEEM's error rates become more varied, even though the mean rate is still lower. In Figure \ref{fig:time}, the story seems more complicated. (Note that we cannot use the same y-axis for all four plots, because the computation time for DEEM for M5 is so long, which would make some of the boxes very small and not informative.) For the two settings M1 and M4, DEEM has lower computation time. For M3, the computation time for DEEM is much more varied, and EM has overall shorter computation time. For M5, DEEM has very long computation time; in fact, the 100 replicates took almost 10 hours. It is unclear if the reduced error rate is worth the computational cost.
+Next, we transform the values in the tables into figures. As shown in Figure \ref{fig:err}, DEEM always has lower mean error rates. However, as the model becomes complicated, DEEM's error rates become more varied, even though the mean rate is still lower. In Figure \ref{fig:time}, the story seems more complicated. (Note that we cannot use the same y-axis for all four plots, because the computation time for DEEM for M5 is so long, which would make some of the boxes very small and not informative.) For the two settings M1 and M4, DEEM has a lower computation time. For M3, the computation time for DEEM is much more varied, and EM has an overall shorter computation time. For M5, DEEM has a very long computation time; in fact, the 100 replicates took almost 10 hours. It is unclear if the reduced error rate is worth the computational cost.
 
 \begin{figure}[H]
     \centering
@@ -406,17 +406,19 @@ Next we transform the values in the tables into figures. As shown in Figure \ref
     \label{fig:time}
 \end{figure}
 
-In terms of the extra settings, we noticed that the error for DEEM is much lower than EM for M8, for which we set $2$ clusters with the covariance matrices to have moderate correlation. This setting allows DEEM to really outperform EM, perhaps because it is just complicated enough to mess up the performance of the EM algorithm. For M9, we let the setting to be an easy case, since the covariance matrices are all identity matrices. As expected, the error rates are quite similar. For M10, we use a fifth-order tensor. [add here]
+In terms of the extra settings, we noticed that the error for DEEM is much lower than EM for M8, for which we set two clusters with the covariance matrices to have a moderate correlation. For M9, we let the setting be an easy case, since the covariance matrices are all identity matrices, and DEEM still has a much lower mean error rate than EM. For M10, we use a fifth-order tensor and make the estimating task an easy one. As seen in Table \ref{tab:err2}, DEEM has a much lower mean error rate than EM, although its computation time is again quite long. 
+
+One recurrent problem from the simulation is that DEEM has a much longer running time than EM. We leave this question about DEEM's computation time to interested readers.
 
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|cc|}
     \hline
-       Model  &  DEEM & EM \\
+       Setting  &  DEEM & EM \\
        \hline
-         M8 & 0.02 (0.10) & 0.33 (0.19) \\
-         M9 &  0.03 (0.01) & 0.06 (0.03) \\
-         M10 &  0.xx (xxx) & 0.xx (xxx) \\ 
+         M8 & 0.28 (0.11) & 0.45 (0.03) \\
+         M9 &  0.18 (0.05) & 0.34 (0.10) \\
+         M10 &  0.0003 (0.002) & 0.31 (0.13) \\ 
     \hline
     \end{tabular}
     \caption{Error Rates from 100 Replicates}
@@ -427,11 +429,11 @@ In terms of the extra settings, we noticed that the error for DEEM is much lower
     \centering
     \begin{tabular}{|c|cc|}
     \hline
-       Model  &  DEEM & EM \\
+       Setting  &  DEEM & EM \\
        \hline
-         M8 & 3.25 (7.62) & 0.44 (0.37) \\
-         M9 &  4.41 (0.88) & 0.14 (0.02) \\
-         M10 &  xx.xx (xxx) & xx.xx (xxx) \\ 
+         M8 & 23.7 (4,3) & 0.17 (0.07) \\
+         M9 &  7.99 (1.88) & 0.32 (0.09) \\
+         M10 &  72.8 (211.41) & 1.51 (0.08) \\ 
     \hline
     \end{tabular}
     \caption{Computation Time (seconds) from 100 Replicates}
