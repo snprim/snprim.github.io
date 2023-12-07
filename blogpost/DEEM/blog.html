@@ -23,13 +23,13 @@ for Model-Based Tensor Clustering” by Mai et al</h2>
    <h3 class='sectionHead' id='introduction'><span class='titlemark'>1   </span> <a id='x1-10001'></a>Introduction</h3>
 <!-- l. 42 --><p class='noindent'>In recent decades, while tensor data have gained popularity in modern science, their high-dimensional
 structures often pose challenges for statistical analysis, specifically in model-based clustering.
-Model-based clustering is a statistical approach to data clustering, where observed data is
-considered to have been created from a finite combination of component models, such as the
-Gaussian mixture model (GMM). Since the formalization of the expected-maximization
-(EM) algorithm by <span class='cmbx-10x-x-109'>?</span>, the EM algorithm has been widely employed in the majority of
-model-based clustering applications. While the GMMs can be readily extended to higher-order
-tensors using the standard EM algorithm, their performance can be further enhanced by
-integrating the Doubly Enhanced EM algorithm (DEEM), as proposed by <span class='cmbx-10x-x-109'>?</span>. Mai et al.
+Model-based clustering is a statistical approach to data clustering, where observed data is considered
+to have been created from a finite combination of component models, such as the Gaussian mixture
+model (GMM). Since the formalization of the expected-maximization (EM) algorithm by <span class='cite'><a href='#Xdempster1977EM'>Dempster
+et al.</a></span> (<span class='cite'><a href='#Xdempster1977EM'>1977</a></span>), the EM algorithm has been widely employed in the majority of model-based clustering
+applications. While the GMMs can be readily extended to higher-order tensors using the
+standard EM algorithm, their performance can be further enhanced by integrating the Doubly
+Enhanced EM algorithm (DEEM), as proposed by <span class='cite'><a href='#Xmai2022DEEM'>Qing Mai and Deng</a></span> (<span class='cite'><a href='#Xmai2022DEEM'>2022</a></span>). Mai et al.
 consider a tensor normal mixture model (TNMM) that incorporates tensor correlation
 structure and variable selection for clustering and parameter estimation. They developed the
 DEEM algorithm which enables DEEM to excel in high-dimensional tensor data analysis.
@@ -66,7 +66,7 @@ with respect to <!-- l. 56 --><math display='inline' xmlns='http://www.w3.org/19
 with <!-- l. 56 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow><mi>𝜃</mi></mrow><mrow><mo class='MathClass-open' stretchy='false'>(</mo><mi>ν</mi><mo class='MathClass-close' stretchy='false'>)</mo></mrow></msup></math>
 fixed. We repeat the E step and M step until convergence.
 </p><!-- l. 64 --><p class='indent'>   The EM algorithm is well-known for its use in unsupervised learning problems such as clustering
-with a mixture model. The process from <span class='cmbx-10x-x-109'>? </span>goes as follows:
+with a mixture model. The process from <span class='cite'><a href='#Xemclustering'>Yang et al.</a></span> (<span class='cite'><a href='#Xemclustering'>2012</a></span>) goes as follows:
      </p><ol class='enumerate1'>
 <li class='enumerate' id='x1-3002x1'>Identify the number of clusters.
      </li>
@@ -155,15 +155,16 @@ fixed.
                                                                                       
                                                                                       <!-- l. 108 --><p class='noindent' id='-dimensions-and-terminology-of-a-tensor-taken-from-koldareview'><img alt='PIC' height='284' src='tensor.png' width='284' /> <a id='x1-4001r3'></a>
 </p>
-<figcaption class='caption'><span class='id'>Figure 3: </span><span class='content'>Dimensions and Terminology of a Tensor, taken from <span class='cmbx-10x-x-109'>?</span>                          </span></figcaption><!-- tex4ht:label?: x1-4001r3  -->
+<figcaption class='caption'><span class='id'>Figure 3: </span><span class='content'>Dimensions and Terminology of a Tensor, taken from <span class='cite'><a href='#Xkolda2009review'>Kolda and Bader</a></span> (<span class='cite'><a href='#Xkolda2009review'>2009</a></span>)     </span></figcaption><!-- tex4ht:label?: x1-4001r3  -->
                                                                                       
                                                                                       </figure>
 <!-- l. 113 --><p class='indent'>   Before we continue onto the DEEM algorithm, some concepts and notations are necessary to
-understand derivations in the following section. Note that the following notations are taken from <span class='cmbx-10x-x-109'>?</span>. First
-of all, we should go over the concept of matricization. If we want to matricize a third-order tensor, we
-can think of cutting a cube into slices and putting the slices side-by-side to make them into a matrix.
-We now borrow an example (Example 2.1) given in <span class='cmbx-10x-x-109'>? </span>to demonstrate how to matricize a third-order
-tensor <!-- l. 113 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>X</mi> <mo class='MathClass-rel' stretchy='false'>∈</mo> <msup><mrow><mi>ℝ</mi></mrow><mrow><mn>3</mn><mo class='MathClass-bin' stretchy='false'>×</mo><mn>4</mn><mo class='MathClass-bin' stretchy='false'>×</mo><mn>2</mn></mrow></msup></mrow></math>:
+understand derivations in the following section. Note that the following notations are taken from
+<span class='cite'><a href='#Xkolda2009review'>Kolda and Bader</a></span> (<span class='cite'><a href='#Xkolda2009review'>2009</a></span>). First of all, we should go over the concept of matricization. If we want to
+matricize a third-order tensor, we can think of cutting a cube into slices and putting the
+slices side-by-side to make them into a matrix. We now borrow an example (Example 2.1)
+given in <span class='cite'><a href='#Xkolda2009review'>Kolda and Bader</a></span> (<span class='cite'><a href='#Xkolda2009review'>2009</a></span>) to demonstrate how to matricize a third-order tensor
+<!-- l. 113 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>X</mi> <mo class='MathClass-rel' stretchy='false'>∈</mo> <msup><mrow><mi>ℝ</mi></mrow><mrow><mn>3</mn><mo class='MathClass-bin' stretchy='false'>×</mo><mn>4</mn><mo class='MathClass-bin' stretchy='false'>×</mo><mn>2</mn></mrow></msup></mrow></math>:
 </p><table class='equation-star'><tr><td>
 <!-- l. 114 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><msub><mrow>
 <mi>X</mi></mrow><mrow><mn>1</mn></mrow></msub> <mo class='MathClass-rel' stretchy='false'>=</mo>  <mrow><mo fence='true' form='prefix'> [</mo><mrow><mtable align='axis' class='array' columnlines='none none none none none none none none none' displaystyle='true' equalcolumns='false' equalrows='false' style=''> <mtr class='array-row'><mtd class='array-td' columnalign='center'> <mn>1</mn> </mtd><mtd class='array-td' columnalign='center'> <mn>4</mn> </mtd><mtd class='array-td' columnalign='center'> <mn>7</mn> </mtd><mtd class='array-td' columnalign='center'> <mn>10</mn> </mtd></mtr> <mtr class='array-row'><mtd class='array-td' columnalign='center'> <mn>2</mn> </mtd> <mtd class='array-td' columnalign='center'> <mn>5</mn> </mtd> <mtd class='array-td' columnalign='center'> <mn>8</mn> </mtd> <mtd class='array-td' columnalign='center'> <mn>11</mn></mtd>
@@ -192,8 +193,8 @@ unfolding is to put <!-- l. 136 --><math display='inline' xmlns='http://www.w3.o
 and <!-- l. 136 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>X</mi></mrow><mrow><mn>2</mn></mrow></msub></math> side-by-side
 and mode-<!-- l. 136 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mn>2</mn></math>
 unfolding is to stack on top of each other.
-</p><!-- l. 138 --><p class='indent'>   This concept is intuitive but much more awkward when we want to define it formally. In <span class='cmbx-10x-x-109'>?</span>, the
-mode-<!-- l. 138 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>n</mi></math> matricization
+</p><!-- l. 138 --><p class='indent'>   This concept is intuitive but much more awkward when we want to define it formally. In <span class='cite'><a href='#Xkolda2009review'>Kolda and Bader</a></span> (<span class='cite'><a href='#Xkolda2009review'>2009</a></span>),
+the mode-<!-- l. 138 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>n</mi></math> matricization
 of a tensor <!-- l. 138 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>X</mi> <mo class='MathClass-rel' stretchy='false'>∈</mo> <msup><mrow><mi>ℝ</mi></mrow><mrow><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>2</mn></mrow></msub><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>I</mi></mrow><mrow><mi>M</mi></mrow></msub></mrow></msup></mrow></math> is denoted
 by <!-- l. 138 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>X</mi></mrow><mrow><mo class='MathClass-open' stretchy='false'>(</mo><mi>n</mi><mo class='MathClass-close' stretchy='false'>)</mo></mrow></msub></math>, which is a matrix
 of the dimension <!-- l. 138 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mo class='MathClass-open' stretchy='false'>(</mo><msub><mrow><mi>I</mi></mrow><mrow><mi>n</mi></mrow></msub><mo class='MathClass-punc' stretchy='false'>,</mo><msub><mrow><mi class='MathClass-op'>∏</mi><mo> ⁡<!-- FUNCTION APPLICATION --></mo>
@@ -249,23 +250,24 @@ define their inner product by </p><table class='equation-star'><tr><td>
    </mrow><mrow><mi>J</mi><mo class='MathClass-rel' stretchy='false'>∈</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>1</mn></mrow></msub><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>I</mi></mrow><mrow><mn>2</mn></mrow></msub><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>I</mi></mrow><mrow><mi>N</mi></mrow></msub></mrow></munder><msub><mrow><mi>a</mi></mrow><mrow><mi>J</mi></mrow></msub><msub><mrow><mi>b</mi></mrow><mrow><mi>J</mi></mrow></msub><mo class='MathClass-punc' stretchy='false'>.</mo>
 </mrow></math></td></tr></table>
 <!-- l. 156 --><p class='indent'>   With that, we are ready to learn about the DEEM algorithm. If you are interested in knowing
-more about tensors, <span class='cmbx-10x-x-109'>? </span>has lots of great details. So be sure to check it out!
+more about tensors, <span class='cite'><a href='#Xkolda2009review'>Kolda and Bader</a></span> (<span class='cite'><a href='#Xkolda2009review'>2009</a></span>) has lots of great details. So be sure to check it
+out!
 </p>
    <h4 class='subsectionHead' id='doubly-enhanced-em-algorithm'><span class='titlemark'>2.3   </span> <a id='x1-50002.3'></a>Doubly Enhanced EM Algorithm</h4>
-<!-- l. 159 --><p class='noindent'>In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss
-its theoretical properties. Algorithm 1 from <span class='cmbx-10x-x-109'>? </span>is provided in the Appendix as our Figure
-<a href='#-deem-algorithm'>6<!-- tex4ht:ref: fig:deem  --></a>.
+<!-- l. 159 --><p class='noindent'>In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss its
+theoretical properties. Algorithm 1 from <span class='cite'><a href='#Xmai2022DEEM'>Qing Mai and Deng</a></span> (<span class='cite'><a href='#Xmai2022DEEM'>2022</a></span>) is provided in the Appendix as
+our Figure <a href='#-deem-algorithm'>6<!-- tex4ht:ref: fig:deem  --></a>.
 </p><!-- l. 161 --><p class='indent'>   Let <!-- l. 161 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>Z</mi></math> denote the random
-tensor in <!-- l. 161 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi mathvariant='italic'>ℝp</mi><mn>1</mn><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><mi mathvariant='italic'>pM</mi> </mrow></math> such that every
+tensor in <!-- l. 161 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow><mi>ℝ</mi></mrow><mrow><msub><mrow><mi>p</mi></mrow><mrow><mn>1</mn></mrow></msub><mo class='MathClass-punc' stretchy='false'>,</mo><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>p</mi></mrow><mrow><mi>M</mi></mrow></msub></mrow></msup></math> such that every
 element in <!-- l. 161 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>Z</mi></math> is distributed as iid
 <!-- l. 161 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>N</mi><mo class='MathClass-open' stretchy='false'>(</mo><mn>0</mn><mo class='MathClass-punc' stretchy='false'>,</mo><mn>1</mn><mo class='MathClass-close' stretchy='false'>)</mo></mrow></math>. Then we say that a random
 tensor <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>X</mi></math> has a tensor normal
 distribution, denoted by <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>X</mi> <mo class='MathClass-rel' stretchy='false'>∼</mo><mstyle class='text'><mtext class='textup' mathvariant='normal'>TN</mtext></mstyle><mo class='MathClass-open' stretchy='false'>(</mo><mi>μ</mi><mo class='MathClass-punc' stretchy='false'>;</mo><msub><mrow><mi mathvariant='normal'>Σ</mi></mrow><mrow><mn>1</mn></mrow></msub><mo class='MathClass-punc' stretchy='false'>,</mo><mi>…</mi><mo class='MathClass-punc' stretchy='false'>,</mo><msub><mrow><mi mathvariant='normal'>Σ</mi></mrow><mrow><mi>M</mi></mrow></msub><mo class='MathClass-close' stretchy='false'>)</mo></mrow></math>,
 if <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>X</mi> <mo class='MathClass-rel' stretchy='false'>=</mo> <mi>μ</mi> <mo class='MathClass-bin' stretchy='false'>+</mo> <mi mathvariant='italic'>⟦Z</mi><mo class='MathClass-punc' stretchy='false'>;</mo><msubsup><mrow><mi mathvariant='normal'>Σ</mi></mrow><mrow><mn>1</mn></mrow><mrow><mn>1</mn><mo class='MathClass-bin' stretchy='false'>∕</mo><mn>2</mn></mrow></msubsup><mo class='MathClass-punc' stretchy='false'>,</mo><mi>…</mi><mo class='MathClass-punc' stretchy='false'>,</mo><msubsup><mrow><mi mathvariant='normal'>Σ</mi></mrow><mrow><mi>M</mi></mrow><mrow><mn>1</mn><mo class='MathClass-bin' stretchy='false'>∕</mo><mn>2</mn></mrow></msubsup><mi>⟧</mi></mrow></math>, where
-<!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>μ</mi> <mo class='MathClass-rel' stretchy='false'>∈</mo> <mi mathvariant='italic'>ℝp</mi><mn>1</mn><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><mi mathvariant='italic'>pM</mi> </mrow></math> is the total mean and
-each <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><msub><mrow><mi mathvariant='normal'>Σ</mi></mrow><mrow><mi>i</mi></mrow></msub> <mo class='MathClass-rel' stretchy='false'>∈</mo> <msup><mrow><mi>ℝ</mi></mrow><mrow><msub><mrow><mi>p</mi></mrow><mrow><mi>i</mi></mrow></msub><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>p</mi></mrow><mrow><mi>i</mi></mrow></msub></mrow></msup></mrow></math> means the covariance
+<!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><mi>μ</mi> <mo class='MathClass-rel' stretchy='false'>∈</mo> <msup><mrow><mi>ℝ</mi></mrow><mrow><msub><mrow><mi>p</mi></mrow><mrow><mn>1</mn></mrow></msub><mo class='MathClass-punc' stretchy='false'>,</mo><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>p</mi></mrow><mrow><mi>M</mi></mrow></msub></mrow></msup></mrow></math> is the total mean and
                                                                                       
-                                                                                      matrix within <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>i</mi></math>th
+                                                                                      each <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mrow><msub><mrow><mi mathvariant='normal'>Σ</mi> </mrow><mrow><mi>i</mi> </mrow> </msub> <mo class='MathClass-rel' stretchy='false'>∈</mo> <msup><mrow><mi>ℝ</mi></mrow><mrow><msub><mrow><mi>p</mi></mrow><mrow><mi>i</mi> </mrow> </msub> <mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>p</mi></mrow><mrow><mi>i</mi> </mrow> </msub> </mrow> </msup> </mrow></math> means the covariance
+matrix within <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>i</mi></math>th
 class. In other words, a tensor normal regression is multivariate normal distribution generalized to a high dimension.
 An <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow><mi>M</mi></mrow><mrow><mi mathvariant='italic'>th</mi></mrow></msup></math> order random
 tensor <!-- l. 162 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>X</mi></math> has a total
@@ -395,8 +397,8 @@ function above. First, it can be seen that </p><table class='equation'><tr><td>
 where </p><table class='equation-star'><tr><td>
 <!-- l. 218 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
                        <msub><mrow><mi>B</mi></mrow><mrow><mi>k</mi></mrow></msub> <mo class='MathClass-rel' stretchy='false'>=</mo> <mi>⟦</mi><msub><mrow><mi>μ</mi></mrow><mrow><mi>k</mi></mrow></msub> <mo class='MathClass-bin' stretchy='false'>−</mo> <msub><mrow><mi>μ</mi></mrow><mrow><mn>1</mn></mrow></msub><mo class='MathClass-punc' stretchy='false'>;</mo><msubsup><mrow><mi mathvariant='normal'>Σ</mi></mrow><mrow><mn>1</mn></mrow><mrow><mo class='MathClass-bin' stretchy='false'>−</mo><mn>1</mn></mrow></msubsup><mo class='MathClass-punc' stretchy='false'>,</mo><mi>…</mi><mo class='MathClass-punc' stretchy='false'>,</mo><msubsup><mrow><mi mathvariant='normal'>Σ</mi></mrow><mrow>
-<mi>M</mi></mrow><mrow><mo class='MathClass-bin' stretchy='false'>−</mo><mn>1</mn></mrow></msubsup><mi>⟧</mi><mo class='MathClass-rel' stretchy='false'>∈</mo> <mi mathvariant='italic'>ℝp</mi><mn>1</mn><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><mi mathvariant='italic'>pM</mi>
-             <mo class='MathClass-punc' stretchy='false'>.</mo>
+<mi>M</mi></mrow><mrow><mo class='MathClass-bin' stretchy='false'>−</mo><mn>1</mn></mrow></msubsup><mi>⟧</mi><mo class='MathClass-rel' stretchy='false'>∈</mo> <msup><mrow><mi>ℝ</mi></mrow><mrow><msub><mrow><mi>p</mi></mrow><mrow><mn>1</mn></mrow></msub><mo class='MathClass-punc' stretchy='false'>,</mo><mo class='MathClass-bin' stretchy='false'>×</mo><mo class='MathClass-rel' stretchy='false'>⋯</mo><mo class='MathClass-bin' stretchy='false'>×</mo><msub><mrow><mi>p</mi></mrow><mrow><mi>M</mi></mrow></msub>
+              </mrow></msup><mo class='MathClass-punc' stretchy='false'>.</mo>
 </mrow></math></td></tr></table>
 <!-- l. 221 --><p class='indent'>   Note that we are considering the clustering problem, that is, we are interested in recovering
 <!-- l. 221 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mi>Y</mi> </mrow><mrow><mi>i</mi></mrow></msub></math>’s and
@@ -564,7 +566,7 @@ is large.
 <!-- l. 300 --><p class='noindent'>
 </p>
    <h4 class='subsectionHead' id='data-generation'><span class='titlemark'>3.1   </span> <a id='x1-70003.1'></a>Data Generation</h4>
-<!-- l. 302 --><p class='noindent'>For our simulation studies, we follow the framework used in <span class='cmbx-10x-x-109'>?</span>. For each setting,
+<!-- l. 302 --><p class='noindent'>For our simulation studies, we follow the framework used in <span class='cite'><a href='#Xmai2022DEEM'>Qing Mai and Deng</a></span> (<span class='cite'><a href='#Xmai2022DEEM'>2022</a></span>). For each setting,
 <!-- l. 302 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mi>K</mi></math>
 denotes the number of mixture groups, and noise is generated as a
 <!-- l. 302 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msup><mrow><mi>M</mi></mrow><mrow><mi mathvariant='italic'>th</mi></mrow></msup></math>-order
@@ -584,7 +586,7 @@ tensor: </p><table class='equation'><tr><td>
 groups, the <!-- l. 306 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mstyle mathvariant='bold'><mi>X</mi></mstyle></mrow><mrow><mi>i</mi></mrow></msub></math> is given
 as a given <!-- l. 306 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msub><mrow><mstyle mathvariant='bold'><mi>B</mi></mstyle></mrow><mrow><mi>k</mi></mrow></msub></math> plus the
 noise above. For <!-- l. 306 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><mn>1</mn></math>
-mixture group, the values are simply the noise. <span class='cmbx-10x-x-109'>? </span>designate two types of
+mixture group, the values are simply the noise. <span class='cite'><a href='#Xmai2022DEEM'>Qing Mai and Deng</a></span> designate two types of
 <!-- l. 306 --><math display='inline' xmlns='http://www.w3.org/1998/Math/MathML'><msubsup><mrow><mstyle mathvariant='bold-italic'><mi mathvariant='bold-italic'>Σ</mi></mstyle></mrow><mrow><mi>k</mi></mrow><mrow><mo class='MathClass-bin' stretchy='false'>∗</mo></mrow></msubsup></math>:
 </p><table class='equation-star'><tr><td>
 <!-- l. 307 --><math class='equation' display='block' xmlns='http://www.w3.org/1998/Math/MathML'><mrow>
@@ -789,23 +791,48 @@ readers.
                                                                                       </figure>
    </div>
    <h3 class='sectionHead' id='summary'><span class='titlemark'>4   </span> <a id='x1-120004'></a>Summary</h3>
-<!-- l. 445 --><p class='noindent'>In this blogpost, we review a new method proposed by <span class='cmbx-10x-x-109'>?</span>, which is essentially an upgraded version of
-the classical EM algorithm. This new method, DEEM, tends to have lower error rates on tensor data.
-However, despite the paper’s claim that the enhanced M step in the DEEM algorithm facilitates fast
-covariance estimation, we have encountered situations where the running time could be prohibitive.
-While DEEM proves to be efficient and effective in handling tensor data, there remains potential for
-further enhancement.
-</p><!-- l. 453 --><p class='noindent'>
+<!-- l. 445 --><p class='noindent'>In this blogpost, we review a new method proposed by <span class='cite'><a href='#Xmai2022DEEM'>Qing Mai and Deng</a></span> (<span class='cite'><a href='#Xmai2022DEEM'>2022</a></span>), which is
+essentially an upgraded version of the classical EM algorithm. This new method, DEEM,
+tends to have lower error rates on tensor data. However, despite the paper’s claim that the
+enhanced M step in the DEEM algorithm facilitates fast covariance estimation, we have
+encountered situations where the running time could be prohibitive. While DEEM proves
+to be efficient and effective in handling tensor data, there remains potential for further
+enhancement.
+</p><!-- l. 1 --><p class='noindent'>
 </p>
-   <h3 class='likesectionHead' id='appendix'><a id='x1-13000'></a>Appendix</h3>
+   <h3 class='likesectionHead' id='references'><a id='x1-13000'></a>References</h3>
+<!-- l. 1 --><p class='noindent'>
+  </p><div class='thebibliography'>
+  <p class='bibitem'><span class='biblabel'>
+<a id='Xdempster1977EM'></a><span class='bibsp'>   </span></span>Dempster, A., Laird, N. and Rubin, D. (1977) Maximum likelihood from incomplete data
+  via the em algorithm. <span class='cmti-10x-x-109'>Journal of the Royal Statistical Society</span>, <span class='cmbx-10x-x-109'>39</span>, 1–22.
+  </p>
+  <p class='bibitem'><span class='biblabel'>
+<a id='Xkolda2009review'></a><span class='bibsp'>   </span></span>Kolda, T. G. and Bader, B. W. (2009) Tensor decompositions and applications.  <span class='cmti-10x-x-109'>SIAM
+  Review</span>, <span class='cmbx-10x-x-109'>51</span>, 455–500. URL<span class='cmtt-10x-x-109'>https://doi.org/10.1137/07070111X</span>.
+  </p>
+  <p class='bibitem'><span class='biblabel'>
+<a id='Xmai2022DEEM'></a><span class='bibsp'>   </span></span>Qing Mai,  Xin Zhang,  Y. P.  and  Deng,  K.  (2022)  A  doubly  enhanced  em  algorithm
+  for model-based tensor clustering.   <span class='cmti-10x-x-109'>Journal of the American Statistical Association</span>, <span class='cmbx-10x-x-109'>117</span>,
+  2120–2134.
+  </p>
+  <p class='bibitem'><span class='biblabel'>
+<a id='Xemclustering'></a><span class='bibsp'>   </span></span>Yang, M.-S., Lai, C.-Y. and Lin, C.-Y. (2012) A robust em clustering algorithm for gaussian
+  mixture models. <span class='cmti-10x-x-109'>Pattern Recognition</span>, <span class='cmbx-10x-x-109'>45</span>, 3950–3961.
+</p>
+  </div>
+                                                                                      
+                                                                                      <!-- l. 453 --><p class='noindent'>
+</p>
+   <h3 class='likesectionHead' id='appendix'><a id='x1-14000'></a>Appendix</h3>
    <figure class='figure'> 
 
                                                                                       
                                                                                       
                                                                                       
-                                                                                      <!-- l. 456 --><p class='noindent' id='-deem-algorithm'><img alt='PIC' height='455' src='deem.png' width='455' /> <a id='x1-13001r6'></a>
+                                                                                      <!-- l. 456 --><p class='noindent' id='-deem-algorithm'><img alt='PIC' height='455' src='deem.png' width='455' /> <a id='x1-14001r6'></a>
 </p>
-<figcaption class='caption'><span class='id'>Figure 6: </span><span class='content'>DEEM algorithm                                                             </span></figcaption><!-- tex4ht:label?: x1-13001r6  -->
+<figcaption class='caption'><span class='id'>Figure 6: </span><span class='content'>DEEM algorithm                                                             </span></figcaption><!-- tex4ht:label?: x1-14001r6  -->
                                                                                       
                                                                                       </figure>
     

@@ -158,8 +158,8 @@ With that, we are ready to learn about the DEEM algorithm. If you are interested
 \subsection{Doubly Enhanced EM Algorithm}
 In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss its theoretical properties. Algorithm 1 from \cite{mai2022DEEM} is provided in the Appendix as our Figure \ref{fig:deem}.
 
-Let $Z$ denote the random tensor in $\rp$ such that every element in $Z$ is distributed as iid $N(0,1)$.
-Then we say that a random tensor $X$ has a tensor normal distribution, denoted by $X\sim \textup{TN}(\mu; \Sigma_1 , \dots, \Sigma_M)$, if $X= \mu+ \br{Z;\Sigma_1^{1/2},\dots, \Sigma_M^{1/2}}$, where $\mu\in \rp$ is the total mean and each $\Sigma_i \in \mathbb{R}^{p_i\times p_i}$ means the covariance matrix within $i$th class. In other words, a tensor normal regression is multivariate normal distribution generalized to a high dimension. An $M^{th}$ order random tensor $X$ has a total of $\sum_{i=1}^M p_i$ means and $M$ covariate matrices each of the dimension $p_i \times p_i$ for $i = 1, \cdots, M$. We can find that the density of $X$ has the form
+Let $Z$ denote the random tensor in $\mathbb{R}^{p_1,\times \cdots \times p_M}$ such that every element in $Z$ is distributed as iid $N(0,1)$.
+Then we say that a random tensor $X$ has a tensor normal distribution, denoted by $X\sim \textup{TN}(\mu; \Sigma_1 , \dots, \Sigma_M)$, if $X= \mu+ \br{Z;\Sigma_1^{1/2},\dots, \Sigma_M^{1/2}}$, where $\mu\in\mathbb{R}^{p_1,\times \cdots \times p_M}$ is the total mean and each $\Sigma_i \in \mathbb{R}^{p_i\times p_i}$ means the covariance matrix within $i$th class. In other words, a tensor normal regression is multivariate normal distribution generalized to a high dimension. An $M^{th}$ order random tensor $X$ has a total of $\sum_{i=1}^M p_i$ means and $M$ covariate matrices each of the dimension $p_i \times p_i$ for $i = 1, \cdots, M$. We can find that the density of $X$ has the form
 \begin{equation}\label{density}
   p(X|\mu; \Sigma_1 , \dots, \Sigma_M) = \frac{1}{(2\pi)^{p/2} |\Sigma_1|^{q_i/2}\cdots |\Sigma_M|^{q_M/2}} \exp\left( -\frac{1}{2} \left\langle \br{X-\mu; \Sigma_1^{-1}, \dots, \Sigma_M^{-1}}, X-\mu \right\rangle  \right),
 \end{equation}
@@ -216,7 +216,7 @@ and
 \end{equation}
 for $k\ge2$, where
 \begin{equation*}
-  B_k = \br{\mu_k - \mu_1 ; \Sigma_1^{-1} , \dots , \Sigma_M^{-1}}\in  \rp.
+  B_k = \br{\mu_k - \mu_1 ; \Sigma_1^{-1} , \dots , \Sigma_M^{-1}}\in  \mathbb{R}^{p_1,\times \cdots \times p_M}.
 \end{equation*}
 Note that we are considering the clustering problem, that is, we are interested in recovering $Y_i$'s and finding a method that minimizes the clustering error.
 It can be shown that the covariance matrices $\Sigma_i$ are nuisance parameters in the optimal clustering rule, i.e., 

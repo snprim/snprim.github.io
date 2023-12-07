@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  7 DEC 2023 14:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.12.2)  7 DEC 2023 14:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,21 +877,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count303
 --- file blog.css ---
-[1] [2]
-
-Package natbib Warning: Citation `dempster1977EM' on page 3 undefined on input 
-line 42.
-
-
-Package natbib Warning: Citation `mai2022DEEM' on page 3 undefined on input lin
-e 42.
-
-[3] Excluding 'comment' comment.
-
-Package natbib Warning: Citation `emclustering' on page 4 undefined on input li
-ne 64.
-
-[4] [5] [6] [7
+[1] [2] [3] Excluding 'comment' comment. [4] [5] [6] [7
 
 ]
 l.88 --- TeX4ht warning --- File `"nocolor.xbb"' not found ---
@@ -920,52 +906,12 @@ l.108 --- TeX4ht warning --- File `"tensor.xbb"' not found ---
 l.108 --- TeX4ht warning --- Cannot determine size of graphic in "tensor.xbb" (
 no BoundingBox) ---
 l. 108 --- needs --- tensor.png ---
-
-Package natbib Warning: Citation `kolda2009review' on page 14 undefined on inpu
-t line 109.
-
-
-Package natbib Warning: Citation `kolda2009review' on page 14 undefined on inpu
-t line 109.
-
 [14
 
-]
+] [15
 
-Package natbib Warning: Citation `kolda2009review' on page 15 undefined on inpu
-t line 113.
-
-
-Package natbib Warning: Citation `kolda2009review' on page 15 undefined on inpu
-t line 113.
-
-[15
-
-]
-
-Package natbib Warning: Citation `kolda2009review' on page 16 undefined on inpu
-t line 138.
-
-[16] [17]
-
-Package natbib Warning: Citation `kolda2009review' on page 18 undefined on inpu
-t line 156.
-
-
-Package natbib Warning: Citation `mai2022DEEM' on page 18 undefined on input li
-ne 159.
-
-[18] [19] [20] [21] [22] [23] [24] [25] [26] [27]
-
-Package natbib Warning: Citation `mai2022DEEM' on page 28 undefined on input li
-ne 302.
-
-[28]
-
-Package natbib Warning: Citation `mai2022DEEM' on page 29 undefined on input li
-ne 306.
-
-[29] [30] [31
+] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [3
+1
 
 ] [32
 
@@ -1015,28 +961,18 @@ l. 404 --- needs --- sim_time.png ---
 
 ] [51
 
-]
+] (./blog.bbl) [52
 
-Package natbib Warning: Citation `mai2022DEEM' on page 52 undefined on input li
-ne 445.
-
-No file blog.bbl.
-[52
-
-] [53
+] [53] [54
 
 ]
 l.456 --- TeX4ht warning --- File `"deem.xbb"' not found ---
 l.456 --- TeX4ht warning --- Cannot determine size of graphic in "deem.xbb" (no
  BoundingBox) ---
 l. 456 --- needs --- deem.png ---
-[54
-
-] Excluding 'comment' comment.
-
-Package natbib Warning: There were undefined citations.
-
 [55
+
+] Excluding 'comment' comment. [56
 
 ] (./blog.aux)
  ***********
@@ -1048,12 +984,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 12764 strings out of 474268
- 189139 string characters out of 5751485
+ 12792 strings out of 474268
+ 189607 string characters out of 5751485
  1949555 words of memory out of 5000000
- 34502 multiletter control sequences out of 15000+600000
- 569227 words of font info for 78 fonts, out of 8000000 for 9000
+ 34526 multiletter control sequences out of 15000+600000
+ 569573 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,17n,89p,1746b,515s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,17n,89p,1739b,515s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on blog.dvi (312 pages, 326324 bytes).
+Output written on blog.dvi (313 pages, 332476 bytes).
