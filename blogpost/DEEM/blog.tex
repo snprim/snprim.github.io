@@ -304,10 +304,15 @@ For our simulation studies, we follow the framework used in \cite{mai2022DEEM}. 
     \mathbf{X}_i \sim \sum_{k=1}^K \pi^*_k \mbox{TN} (\boldsymbol{\pi}^*_k; \boldsymbol{\Sigma}^*_1, \cdots, \boldsymbol{\Sigma^*_M}), i = 1, \cdots, n
 \end{equation}
 For $K-1$ mixture groups, the $\mathbf{X}_i$ is given as a given $\mathbf{B}_k$ plus the noise above. For $1$ mixture group, the values are simply the noise. \citeauthor{mai2022DEEM} designate two types of $\boldsymbol{\Sigma}^*_k$: 
-\[  \boldsymbol{\Omega} =   \begin{cases}
+\begin{equation*}
+    \boldsymbol{\Omega} =  
+    \left\{
+    \begin{aligned}
      AR(\rho): & \omega_{ij} = \rho^{|i-j|} \\
-    CS(\rho): & \omega_{ij} = \rho + (1-\rho) 1(i=j).
-\end{cases}\]
+    CS(\rho): & \omega_{ij} = \rho + (1-\rho) 1(i=j).   
+    \end{aligned}
+    \right.
+\end{equation*}
 The covariance matrices are not sparse if they are set using the two formats above. For each setting, we generate $100$ independent datasets, the same number of replicates as used by the authors, and present the mean error rate and standard deviation. 
 
 \subsection{Settings}
