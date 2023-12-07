@@ -49,7 +49,7 @@ steps for the theoretical explanation. The objective is to break down the steps,
 \subsection{EM Algorithm}
 Before delving into DEEM, we would like to review the EM algorithm and its functioning in clustering.
 
-As we have learned in class, the EM algorithm is an iterative approach that cycles between two steps for maximum likelihood estimation in the presence of latent variables. The observed data Y is incomplete and data Z is missing. The first step is to write down the joint likelihood, $L_c(
+The EM algorithm is an iterative approach that cycles between two steps for maximum likelihood estimation in the presence of latent variables. The observed data Y is incomplete and data Z is missing. The first step is to write down the joint likelihood, $L_c(
 \theta|Y,Z)$, of the ``complete" data $(Y,Z)$. The ``E" step of the EM algorithm is to compute the conditional expectation of log-likelihood, $\text{log}L_c(
 \theta|Y,Z)$, given Y, assuming the true parameter value is $\theta^{(\nu)}$
 \[Q(\theta,\theta^{(\nu)},Y)=E_{\theta^{(\nu)}}(\text{log}L_c(
@@ -61,18 +61,18 @@ As we have learned in class, the EM algorithm is an iterative approach that cycl
 \end{itemize}
 \end{comment}
 
-The EM algorithm is well-known for use in unsupervised learning problems such as clustering with a mixture model. The process goes as follows:
+The EM algorithm is well-known for its use in unsupervised learning problems such as clustering with a mixture model. The process goes as follows:
 \begin{enumerate}
     \item Identify the number of clusters. 
     \item Define each cluster by generating a Gaussian model. 
     \item For every observation, calculate the probability that it belongs to each cluster (Ex. observation 12 has 40\% probability of belonging to Cluster A and 60\% probability of belonging to Cluster B.)
-    \item Using the above probabilities, recalculate the Gaussian models. 
+    \item Use the above probabilities to recalculate the Gaussian models. 
     \item Repeat until observations ``converge" on their assignments. 
 \end{enumerate}
 
 Let's consider a simple example. Suppose we have data $X_i$ as shown in Figure \ref{fig:clustering1}, which comes from two distinct classes. We use this data to build a Gaussian model for each class. Since we don't know which class each observation belongs to, there is no straightforward way to construct two Gaussian models to partition the data. Therefore, we begin with a random guess of our Gaussian model parameters: $\mu_1,\sigma^2_1, \mu_2,\sigma^2_2$. 
 
-We have `missing' data points $X_i$ that we believe belong to either of the two distributions. After initializing two random Gaussian models, we compute the likelihood of each observation, $X_i$, being expressed in both of the Gaussian models. The next is the E-step, where we compute the probability that each $X_i$ can belong to any of two distributions. Now we have a probability of belonging to either distribution for each point. 
+We have `missing' data points $X_i$ that we believe belong to either of the two distributions. After initializing two random Gaussian models, we compute the likelihood of each observation, $X_i$, being expressed in both of the Gaussian models. The next is the E-step, where we compute the probability that each $X_i$ can belong to any of two distributions. Now we have each point's probability of belonging to either distribution. 
 
 In the M-step, we update the parameters, $\mu_1,\sigma^2_1, \mu_2,\sigma^2_2$, of the model to their most likely values. For the new $\mu_1$, we take a weighted average of all the points, weighted by the probability that they belong to the first distribution. Denoting $p_i$ is the probability that $X_i$ belongs to the first distribution. 
 \[\mu_1=\frac{p_1X_1+p_2X_2+\dots+p_nX_n}{p_1+p_2+\dots+p_n}\]
@@ -101,61 +101,65 @@ We repeat this process for $\mu_2$ and $\sigma^2_2$ and update our distributions
 
 \subsection{Tensor}
 
-While the term ``tensor" might sound unfamiliar to some, tensors are simply multi-way arrays. Data is often structured as matrices, and they are in fact second-order tensors. When we use the term ``tensor," we usually mean tensors of third-order and higher. The ``order" means the dimension of a tensor, and it is sometimes called ``mode." You can think of a third-order tensor as a cube. As shown in Figure \ref{fig:tensor}, a tensor can be manipulated similarly as a matrix. In a matrix, we can talk about rows and columns. In a third-order tensor, we can talk about \textbf{fibers} when you fix two modes and keep all values of one mode. The index is then the mode that has all the values. \textbf{Slices} are when you fix one mode and keep all values for the rest of the modes. The index is then the mode that is fixed.
+While the term ``tensor" might sound unfamiliar to some, tensors are simply multi-way arrays. Data is often structured as matrices, and they are in fact second-order tensors. When we use the term ``tensor," we usually mean tensors of third- and higher-order. The ``order" means the dimension of a tensor, and it is sometimes called the ``mode." You can think of a third-order tensor as a cube. As shown in Figure \ref{fig:tensor}, a tensor can be manipulated similarly as a matrix. In a matrix, we can talk about rows and columns. In a third-order tensor, we can talk about \textbf{fibers} when you fix two modes and keep all values of one mode. The index is then the mode that has all the values. \textbf{Slices} are when you fix one mode and keep all values for the rest of the modes. The index is then the mode that is fixed.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 10 cm]{tensor.png}
-    \caption{Dimensions and Terminology of a Tensor (from \cite{kolda2009review})}
+    \caption{Dimensions and Terminology of a Tensor, taken from \cite{kolda2009review}}
     \label{fig:tensor}
 \end{figure}
 
-Before we continue onto the DEEM algorithm, some notations are necessary to understand derivations in the following section. Note that the following notations are taken from \cite{kolda2009review}. First of all, we should go over the concept of matricization, an important tensor operation we will need later. If we want to matricize a third-order tensor, we can think of cutting a cube into slices and put the slices side-by-side to make them into a matrix. We now borrow an example (Example 2.1) given in \cite{kolda2009review} to demonstrate how to matricize a third-order tensor $\mathcal{X} \in \mathbb{R}^{3\times 4 \times 2}$: 
+Before we continue onto the DEEM algorithm, some concepts and notations are necessary to understand derivations in the following section. Note that the following notations are taken from \cite{kolda2009review}. First of all, we should go over the concept of matricization. If we want to matricize a third-order tensor, we can think of cutting a cube into slices and put the slices side-by-side to make them into a matrix. We now borrow an example (Example 2.1) given in \cite{kolda2009review} to demonstrate how to matricize a third-order tensor $X \in \mathbb{R}^{3\times 4 \times 2}$: 
 \begin{equation*}
-    \mathbf{X}_1 = \begin{bmatrix}
+    X_1 = \begin{bmatrix}
         1 & 4 & 7 & 10 \\ 2 & 5 & 8 & 11 \\ 3 & 6 & 9 & 12 
     \end{bmatrix}, 
-    \mathbf{X}_2 = \begin{bmatrix} 13 & 16 & 19 & 22 \\ 14 & 17 & 20 & 23 \\ 15 & 18 & 21 & 24  \end{bmatrix}.    
+    X_2 = \begin{bmatrix} 13 & 16 & 19 & 22 \\ 14 & 17 & 20 & 23 \\ 15 & 18 & 21 & 24  \end{bmatrix}.    
 \end{equation*}
 The three mode-$n$ unfoldings/matricizations are then
 \begin{equation*}
-    \mathbf{X}_1 = \begin{bmatrix}
+    X_1 = \begin{bmatrix}
         1 & 4 & 7 & 10 & 13 & 16 & 19 & 22 \\ 2 & 5 & 8 & 11 & 14 & 17 & 20 & 23 \\ 3 & 6 & 9 & 12 & 15 & 18 & 21 & 24
     \end{bmatrix},
 \end{equation*}
 \begin{equation*}
-    \mathbf{X}_2 = \begin{bmatrix}
+    X_2 = \begin{bmatrix}
         1 & 2 & 3 & 13 & 14 & 15 \\ 4 & 5 & 6 & 16 & 17 & 18 \\ 7 & 8 & 9 & 19 & 20 & 21 \\ 10 & 11 & 12 & 22 & 23  & 24
     \end{bmatrix},
 \end{equation*}
 \begin{equation*}
-    \mathbf{X}_3 = \begin{bmatrix}
+    X_3 = \begin{bmatrix}
         1 & 2 & 3 & 4 & 5 & \cdots & 9 & 10 & 11 & 12 \\ 13 & 14 & 15 & 16 & 17 & \cdots & 21 & 22 & 23 & 24 
     \end{bmatrix}.
 \end{equation*}
-The example above shows that mode-$1$ unfolding is to put $\mathbf{X}_1$ and $\mathbf{X}_2$ side-by-side and mode-$2$ unfolding is to stack on top of each other. 
+The example above shows that mode-$1$ unfolding is to put $X_1$ and $X_2$ side-by-side and mode-$2$ unfolding is to stack on top of each other. 
 
-This concept is intuitive but much more awkward when we want to define it formally. In \cite{kolda2009review}, the mode-$n$ matricization of a tensor $\mathcal{X} \in \mathbb{R}^{I_1 \times I_2 \times \cdots \times I_N}$ is denoted by $\mathbf{X}_{(n)}$, which is a matrix of the dimension $(I_n, \prod_{p \ne I_n} I_p)$. (The first dimension comes from the dimension of mode $n$, and the second dimension comes from the product of all the other dimensions.) The tensor element $(i_1, \cdots, i_N)$ is mapped to the matrix element $(i_n, j)$ in the following manner: 
+This concept is intuitive but much more awkward when we want to define it formally. In \cite{kolda2009review}, the mode-$n$ matricization of a tensor $X \in \mathbb{R}^{I_1 \times I_2 \times \cdots \times I_M}$ is denoted by $X_{(n)}$, which is a matrix of the dimension $(I_n, \prod_{p \ne I_n} I_p)$. (The first dimension comes from the dimension of mode $n$, and the second dimension comes from the product of all the other dimensions.) The tensor element $(i_1, \cdots, i_M)$ is mapped to the matrix element $(i_n, j)$ in the following manner: 
 \begin{equation*}
-    j = 1 + \sum_{k=1,k\ne n}^N (i_k - 1) J_k \text{ with } J_k = \prod_{m=1,m \ne n}^{k-1} I_m.
+    j = 1 + \sum_{k=1,k\ne n}^M (i_k - 1) J_k \quad \text{with} \quad J_k = \prod_{m=1,m \ne n}^{k-1} I_m.
 \end{equation*}
 Next, the notation $\llbracket \cdot \rrbracket$ is defined as: 
 \begin{equation*}
-    \llbracket \mathcal{G}; \mathbf{A}^{(1)}, \mathbf{A}^{(2)}, \cdots, \mathbf{A}^{(N)} \rrbracket := \mathcal{G} \times_1 \mathbf{A}^{(1)} \times_2 \mathbf{A}^{(2)} 
+    \llbracket G; A^{(1)}, A^{(2)}, \cdots, A^{(M)} \rrbracket := G \times_1 A^{(1)} \times_2 A^{(2)} 
     \cdots 
-    \times_N \mathbf{A}^{(N)}
+    \times_M A^{(M)},
 \end{equation*}
-where $\mathbf{A}$ are matrices and $\mathcal{X}$ and $\mathcal{G}$ are tensors. The symbol $\times_n$ means $n$-mode (matrix) product of a tensor $\mathcal{G} \in \mathbb{R}^{I_1 \times I_2 \times \cdots \times I_N}$ and the matrices $\mathbf{A}^{(n)} \in \mathbf{R}^{J \times I_n}$. $\mathcal{G} \times_n \mathbf{A}^{(n)}$ is then a tensor of the dimension $I_1 \times \cdots \times I_{n-1} \times J \times I_{n+1} \times \cdots \times I_N$. We can write the elements of $\mathcal{G} \times_n \mathbf{A}^{(n)}$ as:
+where $A$ are matrices and $X$ and $G$ are tensors. The symbol $\times_n$ means $n$-mode (matrix) product of a tensor $G \in \mathbb{R}^{I_1 \times I_2 \times \cdots \times I_M}$ and the matrices $A^{(n)} \in \mathbb{R}^{J \times I_n}$. $G \times_n A^{(n)}$ is then a tensor of the dimension $I_1 \times \cdots \times I_{n-1} \times J \times I_{n+1} \times \cdots \times I_M$. We can write the elements of $G \times_n A^{(n)}$ as:
 \begin{equation*}
-    (\mathcal{G} \times_n \mathbf{A}^{(n)})_{i_1 \, \cdots \, i_{n-1} \, j  \, i_{n+1} \, \cdots \, i_N} = \sum_{i_n = 1}^{I_n} g_{i_1 \, i_2 \, \cdots \, i_N} \cdot a^{(n)}_{j\, i_n}.  
+    (G \times_n A^{(n)})_{i_1 \, \cdots \, i_{n-1} \, j  \, i_{n+1} \, \cdots \, i_N} = \sum_{i_n = 1}^{I_n} g_{i_1 \, i_2 \, \cdots \, i_N} \cdot a^{(n)}_{j\, i_n}.  
 \end{equation*}
-With that, we are ready to learn about the DEEM algorithm. If you are interested in knowing more about tensors, a very popular and highly cited paper by \cite{kolda2009review} has lots of great details. So be sure to check it out! 
+Also, for any two tensors $A$ and $B$ in $\mathbb{R}^{I_1 \times I_2 \times \cdots \times I_M}$, we define their inner product by
+\begin{equation*}
+    \langle A , B \rangle = \sum_{J\in I_1\times I_2 \times \cdots \times I_N} a_J b_J.
+\end{equation*}
+With that, we are ready to learn about the DEEM algorithm. If you are interested in knowing more about tensors, \cite{kolda2009review} has lots of great details. So be sure to check it out! 
 
 \subsection{Doubly Enhanced EM Algorithm}
-In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss its theoretical properties. Algorithm 1 from \cite{mai2022DEEM} is provided in Appendix as our Algorithm \ref{alg:DEEM}.
+In this subsection, we introduce the doubly enhanced EM (DEEM) algorithm and discuss its theoretical properties. Algorithm 1 from \cite{mai2022DEEM} is provided in Appendix as our Figure \ref{fig:deem}.
 
-Let $Z$ denote the random tensor in $\rp$ such that every element in $Z$ is distributed as $N(0,1)$ and is independent of the other elements in $Z$.
-Then we say that a random tensor $X$ has a tensor normal distribution, denoted by $X\sim \textup{TN}(\mu; \Sigma_1 , \dots, \Sigma_M)$, if $X= \mu+ \br{Z;\Sigma_1^{1/2},\dots, \Sigma_M^{1/2}}$, where $\mu\in \rp$ is the total mean and each $\Sigma_i \in \mathbb{R}^{p_i\times p_i}$ means the covariance matrix within $i$th class. In other words, a tensor normal regression is multivariate normal distribution generalized to a high dimension. An $M^{th}$ order random 3tensor $X$ has a total of $\sum_{i=1}^M p_i$ means and $M$ covariate matrices each of the dimension $p_m \times p_m$ for $m = 1, \cdots, M$. We can find that the density of $X$ has the form
+Let $Z$ denote the random tensor in $\rp$ such that every element in $Z$ is distributed as iid $N(0,1)$.
+Then we say that a random tensor $X$ has a tensor normal distribution, denoted by $X\sim \textup{TN}(\mu; \Sigma_1 , \dots, \Sigma_M)$, if $X= \mu+ \br{Z;\Sigma_1^{1/2},\dots, \Sigma_M^{1/2}}$, where $\mu\in \rp$ is the total mean and each $\Sigma_i \in \mathbb{R}^{p_i\times p_i}$ means the covariance matrix within $i$th class. In other words, a tensor normal regression is multivariate normal distribution generalized to a high dimension. An $M^{th}$ order random tensor $X$ has a total of $\sum_{i=1}^M p_i$ means and $M$ covariate matrices each of the dimension $p_i \times p_i$ for $i = 1, \cdots, M$. We can find that the density of $X$ has the form
 \begin{equation}\label{density}
   p(X|\mu; \Sigma_1 , \dots, \Sigma_M) = \frac{1}{(2\pi)^{p/2} |\Sigma_1|^{q_i/2}\cdots |\Sigma_M|^{q_M/2}} \exp\left( -\frac{1}{2} \left\langle \br{X-\mu; \Sigma_1^{-1}, \dots, \Sigma_M^{-1}}, X-\mu \right\rangle  \right),
 \end{equation}
@@ -179,8 +183,7 @@ Hence, $Y_i$ indicates the number of the cluster from which $X_i$ was taken, and
 Suppose that $\{X_i\}_{i=1}^n$ is a sample from the model \eqref{model}. Let $\theta=\{\pi_i, \mu_i, \Sigma_j: 1\le i \le K, 1\le j \le M\}$ denote the set of all parameters in the model.
 If we can observe $Y_i$, then the complete log-likelihood can be obtained as follows:
 \begin{align*}
-  \ell_c (\theta;X,Y) & = \log \prod_{i=1}^n \pi_{Y_i} p(X_i|\mu_{Y_i};\Sigma_1,\dots \Sigma_M) \\
-  	&= \sum_{i=1}^n [\log\pi_{Y_i}+ \log p(X_i| \mu_{Y_i}, \Sigma_1,\dots , \Sigma_M)].
+  \ell_c (\theta;X,Y) = \log \prod_{i=1}^n \pi_{Y_i} p(X_i|\mu_{Y_i};\Sigma_1,\dots \Sigma_M)=  \sum_{i=1}^n [\log\pi_{Y_i}+ \log p(X_i| \mu_{Y_i}, \Sigma_1,\dots , \Sigma_M)].
 \end{align*}
 But, in general, we cannot observe $Y_i$; hence, from an initial value $\wt\theta^{(0)}$, we create a sequence $\wt\theta^{(t)}$ through the E-step to obtain the $Q$ function
 \begin{equation*}
@@ -204,18 +207,22 @@ Thus, due to an excessive number of parameters in the model, it may lead to the 
 
 To overcome these problems, we introduce the enhanced E-step, where we replace $\wt\xi^{(t)}_{ik}$ with an estimator $\wh\xi^{(t)}$ that can be calculated relatively faster under the sparsity assumption. 
 We want to find the objective function $Q^{\textup{DEEM}}$ that has a better property than the standard $Q$ function above. First, it can be seen that
-\begin{equation*}
+\begin{equation}\label{xi1}
   \xi_{i1}=P(Y_i=1|X_i, \theta) = \frac{\pi_1}{\pi_1 + \sum_{k=2}^K \pi_k \exp\left[ \langle X_i - (\mu_k+\mu_1)/2 , B_k \rangle \right]}
-\end{equation*}
+\end{equation}
 and
-\begin{equation*}
+\begin{equation}\label{xi2}
   \xi_{ik}=P(Y_i=k|X_i, \theta) = \frac{\pi_k \exp \left[ \langle X_i - (\mu_k+\mu_1)/2 , B_k \rangle \right]}{\pi_1 + \sum_{j=2}^K \pi_j \exp\left[ \langle X_i - (\mu_j+\mu_1)/2 , B_j \rangle \right]}
-\end{equation*}
+\end{equation}
 for $k\ge2$, where
 \begin{equation*}
   B_k = \br{\mu_k - \mu_1 ; \Sigma_1^{-1} , \dots , \Sigma_M^{-1}}\in  \rp.
 \end{equation*}
-Then we assume the sparsity condition; for $B_k=[b^J_k]_{J}$, where $J=(j_1,\dots, j_M)$ denotes an index of the tensor, we impose the condition $b_2^J=\cdots = b_K^J=0 $ for almost every $J$. In other words, if 
+Note that we are considering the clustering problem, that is, we are interested in recovering $Y_i$'s and finding a method that minimizes the clustering error.
+It can be shown that the covariance matrices $\Sigma_i$ are nuisance parameters in the optimal clustering rule, i.e., 
+the values of $\Sigma_i$ are not used in the optimal clustering rule if we already know $B_k$'s.
+To cover more general cases, we do not impose conditions on $\Sigma_i$.
+Instead, we assume the sparsity condition on $B$; for $B_k=[b^J_k]_{J}$, where $J=(j_1,\dots, j_M)$ denotes an index of the tensor, we impose the condition $b_2^J=\cdots = b_K^J=0 $ for almost every $J$. In other words, if 
 $D= \{J : b_k^J \neq 0 \text{ for some $k=2,\dots, K$} \}$, then we assume that the number of elements in $D$ is significantly smaller than $p=p_1p_2 \cdots p_M$. This assumption comes from the belief that, in the high-dimensional setting, most of variables are not significant in estimation.
 The above expressions for $\xi_{ik}$ show that this assumption reduces the computational cost and improves the  estimation efficiency.
 
@@ -225,53 +232,31 @@ The above expressions for $\xi_{ik}$ show that this assumption reduces the compu
 
 If we accept the fact that $(B_2,\dots, B_K)$ minimizes the quantity
 \begin{equation*}
-  \sum_{k=2}^K  \left( \langle B_k , \br{B_k, \Sigma_1 , \dots , \Sigma_M} \rangle - 2 \langle B_k , \mu_k - \mu_1 \rangle \right)
+  \sum_{k=2}^K  \left( \langle B_k , \br{B_k, \Sigma_1 , \dots , \Sigma_M} \rangle - 2 \langle B_k , \mu_k - \mu_1 \rangle \right),
 \end{equation*}
-for $B_k= \br{\mu_k - \mu_1 ; \Sigma_1^{-1} , \dots , \Sigma_M^{-1}}$, then it is reasonable to obtain the sequence of estimates $\wh B_k^{(t+1)}$ by solving the optimization problem
-\begin{equation}\label{eq-B}
-  \amin_{B_2,\dots, B_K}\sum_{k=2}^K  \left( \langle B_k , \br{B_k, \wh\Sigma_1^{(t)} , \dots , \wh \Sigma_M^{(t)}} \rangle - 2 \langle B_k , \wh \mu_k ^{(t)}- \wh \mu_1^{(t)} \rangle \right) + \lambda^{(t+1)}\sum_J \left( \sum_{k=2}^K (b_k^J)^2 \right),
-\end{equation}
-where we added the lasso penalty term to satisfy the sparsity assumption to some extent.
-Using these $\wh B_k^{(t+1)}$, we can obtain the sequence $\wh\xi^{(t+1)}_{ik}$ defined by
-\begin{equation}\label{eq-xi}
-  \wh\xi_{i1}^{(t+1)} = \frac{\wh\pi_1^{(t)}}{\wh\pi_1^{(t)} + \sum_{j=2}^K \wh \pi_j ^{(t)}  \exp\left[ \langle X_i - (\wh \mu_j^{(t)} +\wh \mu_1^{(t)} )/2 , \wh B_j^{(t+1)}  \rangle \right]}
-\end{equation}
-and
+then it is reasonable to obtain the sequence of estimates $\wh B_k^{(t+1)}$ by solving the optimization problem
 \begin{equation*}
-   \wh\xi_{ik}^{(t+1)} = \frac{\wh\pi_k^{(t)}\exp\left[ \langle X_i - (\wh \mu_k^{(t)} +\wh \mu_1^{(t)} )/2 , \wh B_k^{(t+1)}  \rangle \right]}{\wh\pi_1^{(t)} + \sum_{j=2}^K \wh \pi_j ^{(t)}  \exp\left[ \langle X_i - (\wh \mu_j^{(t)} +\wh \mu_1^{(t)} )/2 , \wh B_j^{(t+1)}  \rangle \right]}.
+  \amin_{B_2,\dots, B_K}\sum_{k=2}^K  \left( \langle B_k , \br{B_k, \wh\Sigma_1^{(t)} , \dots , \wh \Sigma_M^{(t)}} \rangle - 2 \langle B_k , \wh \mu_k ^{(t)}- \wh \mu_1^{(t)} \rangle \right) + \lambda^{(t+1)}\sum_J \left( \sum_{k=2}^K (b_k^J)^2 \right),
 \end{equation*}
-
-
-
-
-
+where we added the lasso penalty term to satisfy the sparsity assumption to some extent.
+Using these $\wh B_k^{(t+1)}$, we can obtain the sequence $\wh\xi^{(t+1)}_{ik}$ by replacing the parameters in \eqref{xi1} and \eqref{xi2} with their estimates.
 Then, the objective $Q^{\textup{DEEM}}$ is defined using $\wh\xi^{(t)}$ as follows:
 \begin{equation*}
-  Q^{\textup{DEEM}}(\theta; \wh\theta^{(t)}) = \sum_{i=1}^n \sum_{k=1}^K \wh \xi^{(t)}_{ik}[\log \pi_k +\log p(X_i| \mu_k , \Sigma_1, \dots , \Sigma_M)],
+  Q^{\textup{DEEM}}(\theta; \wh\theta^{(t)}) = \sum_{i=1}^n \sum_{k=1}^K \wh \xi^{(t)}_{ik}[\log \pi_k +\log p(X_i| \mu_k , \Sigma_1, \dots , \Sigma_M)].
   \end{equation*}
-or disregarding the constant term, we can get
-\begin{equation*}
-  	Q^{\textup{DEEM}}(\theta; \wh\theta^{(t)}) = \sum_{i=1}^n \sum_{k=1}^K \wh \xi^{(t)}_{ik}\left[\log \pi_k -\frac{1}{2} \left\langle \br{X_i-\mu_k; \Sigma_1^{-1}, \dots, \Sigma_M^{-1}}, X_i-\mu_k \right\rangle - \frac{1}{2}\sum_{j=1}^M q_j\log|\Sigma_j| \right].
-\end{equation*}
 
 In light of the sparsity assumption, $\wh\xi^{(t)}_{ik}$ can be computed based on the values of relatively smaller variables.
 
 
-
-
-The parameters can be updated inductively from the proposed $Q^{\textup{DEEM}}$ function:
-\begin{equation*}
-  \wh\theta^{(t+1)} = \amax_\theta Q^{\textup{DEEM}}(\theta; \wh\theta^{(t)}).
-\end{equation*}
+In M-step, the parameters can be updated inductively from the proposed $Q^{\textup{DEEM}}$ function:
 The estimates for $\pi_k$ and $\mu_k$ can be obtained by the formula
-\begin{equation}\label{eq1}
+\begin{equation*}
   \wh\pi_k^{(t+1)} = \frac{1}{n}\sum_{i=1}^n \wh\xi_{ik}^{(t+1)} \quad\text{and}\quad \wh\mu_k^{(t+1)} = \frac{\sum_{i=1}^n \wh\xi_{ik}^{(t+1)}X_i}{\sum_{i=1}^n \wh\xi_{ik}^{(t+1)}} ,\quad k=1,2,\dots, K.
-\end{equation}
+\end{equation*}
 Then given $\xi_{ik}^{(t+1)}$, we calculate the intermediate covariance matrices
 \begin{equation*}
   \overset  \smile \Sigma^{(t+1)}_j = \frac{1}{nq_j} \sum_{i=1}^n \sum_{k=1}^K \wh\xi^{(t+1)}_{ik} (X_i - \wh\mu_k^T{(t+1)})_{(j)} (X_i - \wh\mu_k^T{(t+1)})_{(j)} ^T,
 \end{equation*}
-where $A_{(j)}$ denotes the mode-$j$ matricization of a tensor $A$,
 and the conditional variance of $X_i^{1\dots1}$
 \begin{equation*}
   (\wh\sigma_{1}^{11})^{(t+1)} = \frac{1}{n}\sum_{i=1}^n \sum_{k=1}^K \wh\xi_{ik}^{(t+1)} (X_i^{1\dots1}-(\wh \mu_{k}^{1\dots1})^{(t+1)})^2.
@@ -286,33 +271,20 @@ The target covariance estimator is given by scaling the intermediate covariances
   \end{aligned}
   \right.
 \end{equation*}
+The general process is summarized in Algorithm 1 in Appendix as our Figure \ref{fig:deem}.
 
-In sum, starting from the initial value of $\theta^{(0)}$, we first obtain $\wh B_k^{(1)}$ by solving the optimization problem \eqref{eq-B}. Then we calculate $\xi^{(1)}_{ik}$ using the formula \eqref{eq-xi}. Given $\xi^{(1)}_{ik}$, $\pi_{k}$ and $\mu_k$ can be simply updated as \eqref{eq1}. Finally, combining the intermediate covariance matrices $\overset \smile \Sigma_{ik}^{(1)}$ and the conditional variance $(\wh\sigma_1^{11})^{(1)}$, we obtain the covariance matrix estimators $\wh\Sigma_j^{(1)}$.
-And we repeat this process to update the parameters and get a sequence of $\wh \theta^{(t)}$.
-
-
-
-
-Then, now we are interested in how this sequence of parameters $\wh\theta^{(t)}$ behave.
-In fact, under some initialization condition, it can be seen that there are some constant $C$ and $0<\kappa<1/2$ such that, with a probability $\ge 1- O(\prod_{i=1}^M p_i^{-1})$,
+Now we are interested in how this sequence of parameters $\wh\theta^{(t)}$ behave.
+In fact, under some initialization condition, it can be seen that there are some constant $C$ and $0<\kappa<1/2$ such that for large $t$, with a probability $\ge 1- O(\prod_{i=1}^M p_i^{-1})$,
 $$
-\|\wh B^{(t)} - B\| \le C \kappa^t d_0 + C\sqrt{\frac{s \Sigma_{i=1}^M \log p_i}{n}},
+\|\wh B^{(t)} - B\| \le C\sqrt{\frac{s \Sigma_{i=1}^M \log p_i}{n}},
 $$
 where $s=o(\sqrt{n/\sum_i \log p_i})$ and $d_0$ is a measure of the difference between the initial value $\wh \theta^{(0)}$ and the true parameter $\theta$.
-If  $t$ is large, it follows that
-$$
-\|\wh B^{(t)} - B\| \le C\sqrt{\frac{s \Sigma_{i=1}^M \log p_i}{n}}.
-$$
 This result implies that if the number of iterations $t$ is large, the DEEM estimator $\wh B^{(t)}$ converges to the true parameter $B$.
 Here, the condition $s=o(\sqrt{n/\sum_i \log p_i})$ means the sparsity assumption.
 
 We consider the error rate of DEEM and the optimal clustering rule:
 $$
-R(DEEM)= \min_{\Pi} P(\Pi(\wh Y_i^{DEEM} \neq Y_i))
-$$
-and
-$$
-R(Opt)= P(\wh Y_i^{opt} \neq Y_i),
+R(DEEM)= \min_{\Pi} P(\Pi(\wh Y_i^{DEEM} \neq Y_i)) \quad\text{and}\quad R(Opt)= P(\wh Y_i^{opt} \neq Y_i),
 $$
 where $\Pi$ denotes the permutation operator and $\wh Y_i^{DEEM}= \amax_k \wh\xi_{ik}$.
 Here, the optimal clustering rule is optimal in the sense that it minimizes the clustering error.
@@ -331,22 +303,23 @@ For our simulation studies, we follow the framework used in \cite{mai2022DEEM}. 
 \begin{equation}
     \mathbf{X}_i \sim \sum_{k=1}^K \pi^*_k \mbox{TN} (\boldsymbol{\pi}^*_k; \boldsymbol{\Sigma}^*_1, \cdots, \boldsymbol{\Sigma^*_M}), i = 1, \cdots, n
 \end{equation}
-For $K-1$ mixture groups, the $\mathbf{X}_i$ is given as a given $\mathbf{B}_k$ plus the noise above. For $1$ mixture group, the values are simply the noise. \cite{mai2022DEEM} designate two types of $\boldsymbol{\Sigma}^*_k$: 
+For $K-1$ mixture groups, the $\mathbf{X}_i$ is given as a given $\mathbf{B}_k$ plus the noise above. For $1$ mixture group, the values are simply the noise. \citeauthor{mai2022DEEM} designate two types of $\boldsymbol{\Sigma}^*_k$: 
 \[  \boldsymbol{\Omega} =   \begin{cases}
      AR(\rho): & \omega_{ij} = \rho^{|i-j|} \\
     CS(\rho): & \omega_{ij} = \rho + (1-\rho) 1(i=j).
 \end{cases}\]
-The covariance matrices are thus not sparse if they are set using the two formats above. For each setting, we generate $100$ independent datasets, the same number of replicates as \cite{mai2022DEEM} use, and present the mean error rate and standard deviation. 
+The covariance matrices are not sparse if they are set using the two formats above. For each setting, we generate $100$ independent datasets, the same number of replicates as used by the authors, and present the mean error rate and standard deviation. 
 
 \subsection{Settings}
 
-The settings are provided in Table \ref{tab:sim_setting}. Note that, for ${B}^*_{k}$, the indices not included in the subscript is $0$. In other words, ${B}^*_k$ is a sparse tensor. Both the DEEM and EM algorithms require $K$ to be given, so it is not a tuning parameter. $\lambda$ is a tuning parameter for regularization; however, due to the long computation time, we experiment with several different values of $\lambda$ and set it at $0.05$, since it seems to give a proper degree of regularization. We encourage the interested readers to try out the two functions \textbf{tune\_K} and \textbf{tune\_lambda} in the R package \textbf{TensorClustering} to see how these two parameters can affect the algorithms. 
+The settings are provided in Table \ref{tab:sim_setting}. Note that, for ${B}^*_{k}$, the indices not included in the subscript is $0$. In other words, ${B}^*_k$ is a sparse tensor. Both the DEEM and EM algorithms require $K$ to be given. $\lambda$ is a tuning parameter for regularization; however, due to the long computation time, we experiment with several different values of $\lambda$ and set it at $0.05$ instead of tuning it for each setting. We encourage the interested readers to try out two functions--\textbf{tune\_K} and \textbf{tune\_lambda}--in the R package \textbf{TensorClustering}. 
 
-We choose these four settings from the seven settings, because their settings are increasingly more computationally expensive, and we believe that these four settings demonstrate the advantage of the DEEM algorithm compared to the classical EM algorithm in terms of accuracy, as shown in Table \ref{tab:err}. We also run some extra settings, which we call M8, M9, M10 to avoid confusion with the seven settings in the paper. The results for these extra settings are shown in Tables \ref{tab:err2} and \ref{tab:time2}.
+We choose four settings from the seven settings, because these settings are increasingly more computationally expensive, and we believe that they demonstrate the advantage of the DEEM algorithm compared to the classical EM algorithm in terms of accuracy, as shown in Table \ref{tab:err}. We also run three extra settings, which we call M8, M9, M10 to avoid confusion with the seven settings in the paper. The results for these extra settings are shown in Tables \ref{tab:err2} and \ref{tab:time2}.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{c|p{4in}}
+    \begin{tabular}{|c|p{4in}|}
+    \hline
       Model & Parameters \\
     \hline
     M1  & $K=2, p = 10\times 10 \times 4, \boldsymbol{\Sigma}^*_1 = CS(0.3), \boldsymbol{\Sigma}^*_2 = AR(0.8), \boldsymbol{\Sigma}^*_3 = CS(0.3), \mathbf{B}^*_{2,[1:6,1,1]} = 0.5$  \\
@@ -359,9 +332,10 @@ We choose these four settings from the seven settings, because their settings ar
     \hline
     M8 & $K=2, p = 10 \times 10 \times 10, \boldsymbol{\Sigma}^*_1 = AR(0.5), \boldsymbol{\Sigma}^*_2 = CS(0.5), \boldsymbol{\Sigma}^*_3 = AR(0.5), \mathbf{B}^*_{2,[1:3,1,1]} = 5$\\
     \hline
-    M9 & $K=2, p = 10 \times 10 \times 10, \boldsymbol{\Sigma}^*_1 = \mathbf{I}_10, \boldsymbol{\Sigma}^*_2 = \mathbf{I}_10, \boldsymbol{\Sigma}^*_3 = \mathbf{I}_10, \mathbf{B}^*_{2,[1:3,1,1]} = 3$ \\ 
+    M9 & $K=2, p = 10 \times 10 \times 10, \boldsymbol{\Sigma}^*_1 = \mathbf{I}_{10}, \boldsymbol{\Sigma}^*_2 = \mathbf{I}_{10}, \boldsymbol{\Sigma}^*_3 = \mathbf{I}_{10}, \mathbf{B}^*_{2,[1:3,1,1]} = 3$ \\ 
     \hline
     M10 & $K=2, p = 10 \times 10 \times 4 \times 4 \times 4, \boldsymbol{\Sigma}^*_1 = AR(0.5), \boldsymbol{\Sigma}^*_2 = CS(0.5), \boldsymbol{\Sigma}^*_3 = AR(0.5), \boldsymbol{\Sigma}^*_4 = \mathbf{I}_4, \boldsymbol{\Sigma}^*_5 = \mathbf{I}_4, \mathbf{B}^*_{2,[1:3,1,1]} = 5$ \\
+    \hline
     \end{tabular}
     \caption{Simulation settings}
     \label{tab:sim_setting}
@@ -371,9 +345,7 @@ We choose these four settings from the seven settings, because their settings ar
 
 Note that it is as straightforward to calculate the mean error rate for a clustering problem than it is for a classification problem. Both methods return labels for the groups; however, the group labels do not matter. For example, if there are five observations and if their true group labels are $(1,1,2,2,2)$ and the methods return $(2,2,1,1,1)$, the error rate should be $0$. In the paper, the authors explain that mean clustering error rate is calculated by: 
 \[ \min_\Pi \frac{1}{n} \sum_{i=1}^n 1 (\hat{Y}_i \ne \Pi (Y_i)) \text{ over all possible permutations } \Pi: \{1, \cdots,  \} \mapsto \{1, \cdots, K\} \]
-We thus created a function to permute the true labels, compare the estimated labels and the true labels, and return the lowest error rate. 
-
-To compare the speed of the two methods, we also record the computation time. Table \ref{tab:time} provides the mean computation time and standard error (in parentheses) for each setting. 
+We create a function to permute the true labels, compare the estimated labels and the true labels, and return the lowest error rate. To compare the speed of the two methods, we also record the computation time. Table \ref{tab:time} provides the mean computation time and standard error (in parentheses) for each setting. 
 
 \subsection{External R Packages and Functions}
 
@@ -382,17 +354,21 @@ For the DEEM algorithm, we use the function DEEM; for the standard EM algorithm,
 
 \subsection{Simulation result}
 
-The error rates and computation time are shown in Tables \ref{tab:err} and \ref{tab:time}. It is clear that DEEM has lower mean error rates in all four settings. The computation time tells a different story, however. As seen in Table \ref{tab:time}, DEEM is not always the winner in terms of time. As the setting becomes more complicated and estimating the clusters becomes more challenging, it takes longer for DEEM to converge. In fact, judging from the amount of time it took to run the setting M5, it is possible that DEEM reached the maximum iterations. 
+The error rates and computation time are shown in Tables \ref{tab:err} and \ref{tab:time}. It is clear that DEEM has lower mean error rates in all four settings. The error rates are in general higher than those given in the article, possibly because the hyperparameters are not tuned for each setting in our case.
+
+The computation time tells a different story, however. As seen in Table \ref{tab:time}, DEEM is not always the winner in terms of time. As the setting becomes more complicated and estimating the clusters becomes more challenging, it takes longer for DEEM to converge. For setting M5, it is possible that DEEM reached the maximum iterations for some runs. 
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{c|cc}
+    \begin{tabular}{|c|cc|}
+    \hline
        Model  &  DEEM & EM \\
        \hline
          M1 & 0.41 (0.05) & 0.45 (0.03) \\
          M3 &  0.46 (0.09) & 0.56 (0.05) \\
          M4 &  0.35 (0.03) & 0.57 (0.06) \\ 
          M5 &  0.31 (0.11) & 0.43 (0.06) \\
+    \hline
     \end{tabular}
     \caption{Error Rates from 100 Replicates}
     \label{tab:err}
@@ -400,19 +376,21 @@ The error rates and computation time are shown in Tables \ref{tab:err} and \ref{
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{c|cc}
+    \begin{tabular}{|c|cc|}
+    \hline
        Model  &  DEEM & EM \\
        \hline
          M1 & 0.72 (0.45) & 0.93 (0.39) \\
          M3 &  13.95 (7.78) & 7.74 (3.99) \\
          M4 &  15.8 (0.81) & 21.9 (9.68) \\ 
          M5 &  332.96 (124.38) & 14.66 (5.88) \\
+    \hline
     \end{tabular}
     \caption{Computation Time (seconds) from 100 Replicates}
     \label{tab:time}
 \end{table}
 
-Next we transform the values in the tables into figures, which sometimes tell clearer pictures. As shown in Figure \ref{fig:err}, DEEM always has lower mean error rates. However, as the model becomes complicated, DEEM's error rates become more varied, even though the mean rate is still lower. In Figure \ref{fig:time}, the story seems more complicated. (Note that we cannot make the y-axis all the same for the four plots, because the computation time for DEEM for M5 is so long, which would make some of the boxes very small and not informative.) For the two settings M1 and M4, DEEM has lower computation time. For M3, the computation time for DEEM is much more varied, and EM has overall shorter computation time. For M5, DEEM has very long computation time; in fact, the 100 replicates took almost 10 hours to run. It is unclear if the reduction in error rate is worht the much longer computation time.
+Next we transform the values in the tables into figures. As shown in Figure \ref{fig:err}, DEEM always has lower mean error rates. However, as the model becomes complicated, DEEM's error rates become more varied, even though the mean rate is still lower. In Figure \ref{fig:time}, the story seems more complicated. (Note that we cannot use the same y-axis for all four plots, because the computation time for DEEM for M5 is so long, which would make some of the boxes very small and not informative.) For the two settings M1 and M4, DEEM has lower computation time. For M3, the computation time for DEEM is much more varied, and EM has overall shorter computation time. For M5, DEEM has very long computation time; in fact, the 100 replicates took almost 10 hours. It is unclear if the reduced error rate is worth the computational cost.
 
 \begin{figure}[H]
     \centering
@@ -428,16 +406,18 @@ Next we transform the values in the tables into figures, which sometimes tell cl
     \label{fig:time}
 \end{figure}
 
-In terms of the extra settings, we noticed that the error for DEEM is much lower than EM for M8, for which we set $2$ clusters with the covariance matrices to have moderate correlation. This setting allows DEEM to really outperform EM, perhaps because it is just complicated enough to mess up the classical EM algorithm. For M9, we let the setting to be an easy case, since the covariance matrices are all identity matrices. As expected, the error rates are quite similar. For M10, we use a fifth-order tensor. [add here]
+In terms of the extra settings, we noticed that the error for DEEM is much lower than EM for M8, for which we set $2$ clusters with the covariance matrices to have moderate correlation. This setting allows DEEM to really outperform EM, perhaps because it is just complicated enough to mess up the performance of the EM algorithm. For M9, we let the setting to be an easy case, since the covariance matrices are all identity matrices. As expected, the error rates are quite similar. For M10, we use a fifth-order tensor. [add here]
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{c|cc}
+    \begin{tabular}{|c|cc|}
+    \hline
        Model  &  DEEM & EM \\
        \hline
          M8 & 0.02 (0.10) & 0.33 (0.19) \\
          M9 &  0.03 (0.01) & 0.06 (0.03) \\
-         M10 &  0.35 (0.03) & 0.57 (0.06) \\ 
+         M10 &  0.xx (xxx) & 0.xx (xxx) \\ 
+    \hline
     \end{tabular}
     \caption{Error Rates from 100 Replicates}
     \label{tab:err2}
@@ -445,12 +425,14 @@ In terms of the extra settings, we noticed that the error for DEEM is much lower
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{c|cc}
+    \begin{tabular}{|c|cc|}
+    \hline
        Model  &  DEEM & EM \\
        \hline
          M8 & 3.25 (7.62) & 0.44 (0.37) \\
          M9 &  4.41 (0.88) & 0.14 (0.02) \\
-         M10 &  15.8 (0.81) & 21.9 (9.68) \\ 
+         M10 &  xx.xx (xxx) & xx.xx (xxx) \\ 
+    \hline
     \end{tabular}
     \caption{Computation Time (seconds) from 100 Replicates}
     \label{tab:time2}
@@ -467,10 +449,21 @@ In this blogpost, we review a new method proposed by \cite{mai2022DEEM}, which i
 \end{singlespace}
 
 \section*{Appendix}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 16 cm]{deem.png}
+    \caption{DEEM algorithm}
+    \label{fig:deem}
+\end{figure}
+
+
+
+\begin{comment}
 \algblock{Input}{EndInput} %Helper for writing input for algorithm
 \algblock{Initialize}{EndInitialize} %Helper for writing initial values for algorithm
 \algnotext{EndInput} %Hide the end statement since it's ugly and unnecessary
 \algnotext{EndInitialize}
+
 
 \begin{algorithm}
     \caption{DEEM algorithm}\label{alg:DEEM}
@@ -481,7 +474,7 @@ In this blogpost, we review a new method proposed by \cite{mai2022DEEM}, which i
        \begin{enumerate}
            \item The enhanced E-step: 
            \begin{enumerate}
-               \item Minimize the following convex objective function over \(\mathbf{B}_{2},\dots,\mathbf{B}_k\in \mathbb{R}^{p_1\times \dots \times p_M}\) with Algorithm S.2:
+               \item Minimize the following convex objective function over \(\mathbf{B}_{2},\dots,\mathbf{B}_k\in \mathbb{R}^{p_1\times \dots \times p_M}\):
                \[\sum^k_{k=2}(\langle\mathbf{B}_k,\llbracket\mathbf{B}_k,\wh\Sigma^{(t)}_1,\dots,\wh\Sigma^{(t)}_M\rrbracket\rangle-2\langle\mathbf{B}_k,\wh\mu^{(t)}_k-\wh\mu^{(t)}_1\rangle)+\lambda^{(t+1)}\sum_J\sqrt{\sum^K_{k=2}b^2_{k,J}}\]
                In here, \(\hat{\mathbf{B}}^{(t+1)}_2,\dots,\hat{\mathbf{B}}^{(t+1)}_K\) denote the solution. 
                \item For \(i=1,\dots,n\) and \(k=1,\dots,K\), calculate the probabilities 
@@ -506,5 +499,6 @@ In this blogpost, we review a new method proposed by \cite{mai2022DEEM}, which i
         \State Output \(\wh\xi_{ik}, \wh\pi_k, \wh\Sigma_m\) at convergence.
     \end{algorithmic}
 \end{algorithm}
+\end{comment}
 
 \end{document}

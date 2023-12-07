@@ -5,22 +5,22 @@
 \doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-3011r1}{}{\ignorespaces Mixture of two Gaussian Distributions}}{figure}\relax 
 \doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-3012r2}{}{\ignorespaces Clusters Found by EM algorithm}}{figure}\relax 
 \doTocEntry\tocsubsection{2.2}{\csname a:TocLink\endcsname{1}{x1-40002.2}{QQ2-1-6}{Tensor}}{12}\relax 
-\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-4001r3}{}{\ignorespaces Dimensions and Terminology of a Tensor (from \cite  {kolda2009review})}}{figure}\relax 
+\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-4001r3}{}{\ignorespaces Dimensions and Terminology of a Tensor, taken from \cite  {kolda2009review}}}{figure}\relax 
 \doTocEntry\tocsubsection{2.3}{\csname a:TocLink\endcsname{1}{x1-50002.3}{QQ2-1-8}{Doubly Enhanced EM Algorithm}}{18}\relax 
-\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-60003}{QQ2-1-9}{Simulation Study}}{30}\relax 
-\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-70003.1}{QQ2-1-10}{Data Generation}}{30}\relax 
-\doTocEntry\tocsubsection{3.2}{\csname a:TocLink\endcsname{1}{x1-80003.2}{QQ2-1-11}{Settings}}{31}\relax 
+\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-60003}{QQ2-1-9}{Simulation Study}}{28}\relax 
+\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-70003.1}{QQ2-1-10}{Data Generation}}{28}\relax 
+\doTocEntry\tocsubsection{3.2}{\csname a:TocLink\endcsname{1}{x1-80003.2}{QQ2-1-11}{Settings}}{29}\relax 
 \doTocEntry\toclot{1}{\csname a:TocLink\endcsname{1}{x1-8001r1}{}{\ignorespaces Simulation settings}}{table}\relax 
-\doTocEntry\tocsubsection{3.3}{\csname a:TocLink\endcsname{1}{x1-90003.3}{QQ2-1-13}{Metrics}}{34}\relax 
-\doTocEntry\tocsubsection{3.4}{\csname a:TocLink\endcsname{1}{x1-100003.4}{QQ2-1-14}{External R Packages and Functions}}{34}\relax 
-\doTocEntry\tocsubsection{3.5}{\csname a:TocLink\endcsname{1}{x1-110003.5}{QQ2-1-15}{Simulation result}}{35}\relax 
+\doTocEntry\tocsubsection{3.3}{\csname a:TocLink\endcsname{1}{x1-90003.3}{QQ2-1-13}{Metrics}}{33}\relax 
+\doTocEntry\tocsubsection{3.4}{\csname a:TocLink\endcsname{1}{x1-100003.4}{QQ2-1-14}{External R Packages and Functions}}{33}\relax 
+\doTocEntry\tocsubsection{3.5}{\csname a:TocLink\endcsname{1}{x1-110003.5}{QQ2-1-15}{Simulation result}}{34}\relax 
 \doTocEntry\toclot{2}{\csname a:TocLink\endcsname{1}{x1-11001r2}{}{\ignorespaces Error Rates from 100 Replicates}}{table}\relax 
 \doTocEntry\toclot{3}{\csname a:TocLink\endcsname{1}{x1-11002r3}{}{\ignorespaces Computation Time (seconds) from 100 Replicates}}{table}\relax 
 \doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-11003r4}{}{\ignorespaces Boxplots of Mean Error Rates from 100 Replicates}}{figure}\relax 
 \doTocEntry\toclof{5}{\csname a:TocLink\endcsname{1}{x1-11004r5}{}{\ignorespaces Boxplots of Mean Computation Time (in seconds) from 100 Replicates}}{figure}\relax 
 \doTocEntry\toclot{4}{\csname a:TocLink\endcsname{1}{x1-11005r4}{}{\ignorespaces Error Rates from 100 Replicates}}{table}\relax 
 \doTocEntry\toclot{5}{\csname a:TocLink\endcsname{1}{x1-11006r5}{}{\ignorespaces Computation Time (seconds) from 100 Replicates}}{table}\relax 
-\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-120004}{QQ2-1-22}{Summary}}{53}\relax 
-\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-13000}{QQ2-1-23}{References}}{53}\relax 
-\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-14000}{QQ2-1-24}{Appendix}}{53}\relax 
-\doTocEntry\tocloa{1}{\csname a:TocLink\endcsname{1}{x1-14001r1}{}{\ignorespaces DEEM algorithm}}{algorithm}\relax 
+\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-120004}{QQ2-1-22}{Summary}}{52}\relax 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-13000}{QQ2-1-23}{References}}{52}\relax 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-14000}{QQ2-1-24}{Appendix}}{52}\relax 
+\doTocEntry\toclof{6}{\csname a:TocLink\endcsname{1}{x1-14001r6}{}{\ignorespaces DEEM algorithm}}{figure}\relax 
