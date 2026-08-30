@@ -34,7 +34,7 @@ X <- 1
 
 theta <- seq(true_theta-6, true_theta+6, .1)
 pi_normal <- contour_normal(X, theta)
-plot(theta, pi_normal, type = "l")
+plot(theta, pi_normal, type = "l", xlab = expression(theta), ylab = expression(pi[x](theta)))
 pi_true_theta <- contour_normal(X, true_theta)
 abline(h=pi_true_theta, col = "red")
 
