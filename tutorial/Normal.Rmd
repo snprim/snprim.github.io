@@ -2,7 +2,9 @@
 title: "Normal Distribution"
 author: "Shih-Ni Prim"
 date: "2026-08-30"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
