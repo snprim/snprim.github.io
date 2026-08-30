@@ -1,0 +1,40 @@
+---
+title: "Normal Distribution"
+author: "Shih-Ni Prim"
+date: "2026-08-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Contour function 
+
+This function finds the contour function $\pi_x(\theta)$ given an observation $x$ and the parameter of interest $\theta$.
+
+```{r}
+contour_normal <- function(x, theta){
+  x_bar <- mean(x)
+  n <- length(x)
+  return(2 * (pnorm(abs(x_bar-theta)*sqrt(n), lower.tail = F) ))
+}
+```
+
+
+Now we assume the true parameter is $0$ and sample size is $1$, let's plot the contour function given that we observed $X=1$.
+
+```{r}
+n <- 1
+true_theta <- 0
+# X <- rnorm(n) + true_theta
+X <- 1
+
+theta <- seq(true_theta-6, true_theta+6, .1)
+pi_normal <- contour_normal(X, theta)
+plot(theta, pi_normal, type = "l")
+pi_true_theta <- contour_normal(X, true_theta)
+abline(h=pi_true_theta, col = "red")
+
+```
+
