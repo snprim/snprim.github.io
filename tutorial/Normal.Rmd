@@ -62,7 +62,7 @@ contour_normal <- function(x, theta){
 
 ## Example demonstration 
 
-Now we assume the true parameter is $0$ and sample size is $1$, let's plot the contour function given that we observed $X=1$.
+Now we assume the true parameter is $0$ and sample size is $1$, let's plot the contour function given that we observed $x=1$.
 
 ```{r}
 n <- 1
