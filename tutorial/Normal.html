@@ -1671,7 +1671,7 @@ distribution function for standard Normal distribution. The above
 derivation works for sample size <span class="math inline">\(n=1\)</span>. When <span class="math inline">\(n&gt;1\)</span>, the sample mean (<span class="math inline">\(\bar{x}\)</span>) and the sample variance (<span class="math inline">\(1/\sqrt{n}\)</span>) are used instead.</p>
 <p><span class="math display">\[\pi_x(\theta) = 2 \{ 1 - P(\sqrt{n}
 \cdot |\bar{x} - \theta| ) \}.\]</span></p>
-<p>The code below finds the contour function <span class="math inline">\(\pi_x(\theta)\)</span> given an observation <span class="math inline">\(x\)</span> and the parameter of interest <span class="math inline">\(\theta\)</span>.</p>
+<p>The code below finds the contour function <span class="math inline">\(\pi_x(\theta)\)</span> given observation <span class="math inline">\(x\)</span> and the parameter of interest <span class="math inline">\(\theta\)</span>.</p>
 <pre class="r"><code>contour_normal &lt;- function(x, theta){
   x_bar &lt;- mean(x)
   n &lt;- length(x)

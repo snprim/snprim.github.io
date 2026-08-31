@@ -49,7 +49,7 @@ where $P$ is the cumulative distribution function for standard Normal distributi
 
 $$\pi_x(\theta) = 2 \{ 1 - P(\sqrt{n} \cdot |\bar{x} - \theta| ) \}.$$
 
-The code below finds the contour function $\pi_x(\theta)$ given an observation $x$ and the parameter of interest $\theta$. 
+The code below finds the contour function $\pi_x(\theta)$ given observation $x$ and the parameter of interest $\theta$. 
 
 ```{r}
 contour_normal <- function(x, theta){
