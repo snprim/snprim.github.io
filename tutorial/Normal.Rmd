@@ -13,19 +13,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # IM construction
 
-This page shows a toy example of how to construct a possibilistic inferential model (IM). 
+This page shows a toy example of how to construct a possibilistic inferential model (IM) when the data is assumed to come from a Normal distribution with mean $\theta$ and variance $1$. 
 
 ## Relative likelihood 
 
 To construct an inferential model, we first construct the relative likelihood:
-$$ R(x, \theta) = \frac{p_\theta(x)}{\sup_{\vartheta} p_\vartheta(x)}, $$
-where $p_\theta(x)$ is the likelihood function with parameter $\theta$ and observed data $x$.
+$$ R(x, \theta) = \frac{p_{\theta}(x)}{\sup_{\vartheta} p_\vartheta(x)}, $$
+where $p_{\theta}(x)$ is the likelihood function with parameter $\theta$ and observed data $x$.
 
-Assuming the data $X \sim N(\theta, 1)$ and the sample size $n=1$,
+Assuming we observe $x \in X$ and $X \sim N(\theta, 1)$, the maximum likelihood estimator is $\widehat{\theta}=x$.
 
 $$
 \begin{align}
-R(x,\theta) &= \frac{p_\theta(x)}{p_{\hat{\theta}}(x)} = p_\theta(x) = p(|x-\theta|),
+R(x,\theta) &= \frac{p_{\theta}(x)}{p_{\widehat{\theta}}(x)} = p_{\theta}(x) = p(|x-\theta|),
 \end{align}
 $$
 where $p$ is the density function for standard Normal distribution.
@@ -40,12 +40,14 @@ For the Normal distribution, there is a closed form for the contour.
 
 $$
 \begin{align}
-\pi_x(\theta) &= P_\theta(p(X-\theta) \le p(x-\theta)) \\
-&= P_\theta(|X-\theta| \le |x-\theta|) \\
+\pi_x(\theta) &= P_\theta \{ p(X-\theta) \le p(x-\theta) \} \\
+&= P_\theta \{ |X-\theta| \le |x-\theta|\} \\
 &= 2 \{1 - P(|x-\theta|) \},
 \end{align}
 $$
-where $P$ is the cumulative distribution function for standard Normal distribution. The above derivation works for $n=1$. When $n>1$, the sufficient statistics (sample mean) and the sample variance can be used. 
+where $P$ is the cumulative distribution function for standard Normal distribution. The above derivation works for sample size $n=1$. When $n>1$, the sample mean ($\bar{x}$) and the sample variance ($1/\sqrt{n}$) are used instead.
+
+$$\pi_x(\theta) = 2 \{ 1 - P(\sqrt{n} \cdot |\bar{x} - \theta| ) \}.$$
 
 The code below finds the contour function $\pi_x(\theta)$ given an observation $x$ and the parameter of interest $\theta$. 
 

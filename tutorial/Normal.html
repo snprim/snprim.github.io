@@ -1631,21 +1631,24 @@ display: none;
 <div id="im-construction" class="section level1">
 <h1>IM construction</h1>
 <p>This page shows a toy example of how to construct a possibilistic
-inferential model (IM).</p>
+inferential model (IM) when the data is assumed to come from a Normal
+distribution with mean <span class="math inline">\(\theta\)</span> and
+variance <span class="math inline">\(1\)</span>.</p>
 <div id="relative-likelihood" class="section level2">
 <h2>Relative likelihood</h2>
 <p>To construct an inferential model, we first construct the relative
 likelihood: <span class="math display">\[ R(x, \theta) =
-\frac{p_\theta(x)}{\sup_{\vartheta} p_\vartheta(x)}, \]</span> where
-<span class="math inline">\(p_\theta(x)\)</span> is the likelihood
+\frac{p_{\theta}(x)}{\sup_{\vartheta} p_\vartheta(x)}, \]</span> where
+<span class="math inline">\(p_{\theta}(x)\)</span> is the likelihood
 function with parameter <span class="math inline">\(\theta\)</span> and
 observed data <span class="math inline">\(x\)</span>.</p>
-<p>Assuming the data <span class="math inline">\(X \sim N(\theta,
-1)\)</span> and the sample size <span class="math inline">\(n=1\)</span>,</p>
+<p>Assuming we observe <span class="math inline">\(x \in X\)</span> and
+<span class="math inline">\(X \sim N(\theta, 1)\)</span>, the maximum
+likelihood estimator is <span class="math inline">\(\widehat{\theta}=x\)</span>.</p>
 <p><span class="math display">\[
 \begin{align}
-R(x,\theta) &amp;= \frac{p_\theta(x)}{p_{\hat{\theta}}(x)} = p_\theta(x)
-= p(|x-\theta|),
+R(x,\theta) &amp;= \frac{p_{\theta}(x)}{p_{\widehat{\theta}}(x)} =
+p_{\theta}(x) = p(|x-\theta|),
 \end{align}
 \]</span> where <span class="math inline">\(p\)</span> is the density
 function for standard Normal distribution.</p>
@@ -1659,15 +1662,15 @@ function for standard Normal distribution.</p>
 contour.</p>
 <p><span class="math display">\[
 \begin{align}
-\pi_x(\theta) &amp;= P_\theta(p(X-\theta) \le p(x-\theta)) \\
-&amp;= P_\theta(|X-\theta| \le |x-\theta|) \\
+\pi_x(\theta) &amp;= P_\theta \{ p(X-\theta) \le p(x-\theta) \} \\
+&amp;= P_\theta \{ |X-\theta| \le |x-\theta|\} \\
 &amp;= 2 \{1 - P(|x-\theta|) \},
 \end{align}
 \]</span> where <span class="math inline">\(P\)</span> is the cumulative
 distribution function for standard Normal distribution. The above
-derivation works for <span class="math inline">\(n=1\)</span>. When
-<span class="math inline">\(n&gt;1\)</span>, the sufficient statistics
-(sample mean) and the sample variance can be used.</p>
+derivation works for sample size <span class="math inline">\(n=1\)</span>. When <span class="math inline">\(n&gt;1\)</span>, the sample mean (<span class="math inline">\(\bar{x}\)</span>) and the sample variance (<span class="math inline">\(1/\sqrt{n}\)</span>) are used instead.</p>
+<p><span class="math display">\[\pi_x(\theta) = 2 \{ 1 - P(\sqrt{n}
+\cdot |\bar{x} - \theta| ) \}.\]</span></p>
 <p>The code below finds the contour function <span class="math inline">\(\pi_x(\theta)\)</span> given an observation <span class="math inline">\(x\)</span> and the parameter of interest <span class="math inline">\(\theta\)</span>.</p>
 <pre class="r"><code>contour_normal &lt;- function(x, theta){
   x_bar &lt;- mean(x)
