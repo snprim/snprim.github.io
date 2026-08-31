@@ -11,9 +11,43 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Contour function 
+# IM construction
 
-This function finds the contour function $\pi_x(\theta)$ given an observation $x$ and the parameter of interest $\theta$.
+This page shows a toy example of how to construct a possibilistic inferential model (IM). 
+
+## Relative likelihood 
+
+To construct an inferential model, we first construct the relative likelihood:
+$$ R(x, \theta) = \frac{p_\theta(x)}{\sup_{\vartheta} p_\vartheta(x)}, $$
+where $p_\theta(x)$ is the likelihood function with parameter $\theta$ and observed data $x$.
+
+Assuming the data $X \sim N(\theta, 1)$ and the sample size $n=1$,
+
+$$
+\begin{align}
+R(x,\theta) &= \frac{p_\theta(x)}{p_{\hat{\theta}}(x)} = p_\theta(x) = p(|x-\theta|),
+\end{align}
+$$
+where $p$ is the density function for standard Normal distribution.
+
+## Contour function 
+
+The next step is a validation step:
+
+$$\pi_x(\theta) = P_\theta(R(X, \theta) \le R(x, \theta)).$$
+
+For the Normal distribution, there is a closed form for the contour.
+
+$$
+\begin{align}
+\pi_x(\theta) &= P_\theta(p(X-\theta) \le p(x-\theta)) \\
+&= P_\theta(|X-\theta| \le |x-\theta|) \\
+&= 2 \{1 - P(|x-\theta|) \},
+\end{align}
+$$
+where $P$ is the cumulative distribution function for standard Normal distribution. The above derivation works for $n=1$. When $n>1$, the sufficient statistics (sample mean) and the sample variance can be used. 
+
+The code below finds the contour function $\pi_x(\theta)$ given an observation $x$ and the parameter of interest $\theta$. 
 
 ```{r}
 contour_normal <- function(x, theta){
@@ -24,19 +58,35 @@ contour_normal <- function(x, theta){
 ```
 
 
+## Example demonstration 
+
 Now we assume the true parameter is $0$ and sample size is $1$, let's plot the contour function given that we observed $X=1$.
 
 ```{r}
 n <- 1
 true_theta <- 0
-# X <- rnorm(n) + true_theta
 X <- 1
 
 theta <- seq(true_theta-6, true_theta+6, .1)
 pi_normal <- contour_normal(X, theta)
 plot(theta, pi_normal, type = "l", xlab = expression(theta), ylab = expression(pi[x](theta)))
 pi_true_theta <- contour_normal(X, true_theta)
-abline(h=pi_true_theta, col = "red")
+abline(h=.05, lty=2)
+segments(-1, 0, 0, 0, col="red", lwd=2)
+segments(0, 0, 0, contour_normal(X,0), lty=3, col="red")
+points(0, contour_normal(X,0), col="red", pch=19)
 
 ```
+
+As shown above, the black curve is the contour function for $x=1$. The possibility measure (or upper probability) of the hypothesis $h=[-1,0]$ can be found by maximization:
+
+$$ \Pi_x(h) = \sup_{\theta \in [-1,0]} \pi_x(\theta) \approx 0.317,$$
+where the red circle is. 
+
+To find a $95\%$ confidence set, the black dashed line at $0.05$ shows that the set is approximately $[-1, 3]$.
+
+
+# Reference 
+
+Martin, Ryan. (2026). Possibilistic inferential models: a review. *Journal of American Statistical Association,* 121 (553): 807-826. [Preprint](https://arxiv.org/abs/2507.09007).
 
