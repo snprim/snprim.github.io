@@ -1,0 +1,96 @@
+---
+title: "Binomial"
+author: "Shih-Ni Prim"
+date: "2026-09-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# IM construction
+
+This page shows a toy example of how to construct a possibilistic inferential model (IM) when the data is assumed to come from a Binomial distribution with $n$ trials and probability of success $\theta$. 
+
+## Relative likelihood 
+
+To construct an inferential model, we first construct the relative likelihood:
+$$ R(x, \theta) = \frac{p_{\theta}(x)}{\sup_{\vartheta} p_\vartheta(x)}, $$
+where $p_{\theta}(x)$ is the likelihood function of Bin($n, \theta$):
+
+$$
+p_\theta(x) = \begin{pmatrix} n \\ x \end{pmatrix} \theta^x (1-\theta)^{n-x}, \quad x = 0, 1, \cdots, n, \quad \theta \in [0, 1].
+$$
+The maximum likelihood estimator of a Binomial distribution is $\frac{x}{n}$. Thus the relative likelihood is:
+
+$$R(x, \theta) = \frac{p_\theta(x)}{p_{\widehat{\theta}}(x)} = \left( \frac{n\theta}{x}\right)^x \left( \frac{n - n\theta}{n-x}\right)^{n-x} $$
+
+## Contour function 
+
+The next step is a validation step:
+
+$$\pi_x(\theta) = P_\theta(R(X, \theta) \le R(x, \theta)).$$
+
+For the Binomial distribution, there is a closed form for the contour.
+
+$$
+\pi_x(\theta) = \sum_{y=0}^n 1 \{ R(y, \theta) \le R(x, \theta) \} p_\theta(y).
+$$
+
+The code below finds the contour function $\pi_x(\theta)$ given observation $x$ and the parameter of interest $\theta$. 
+
+```{r}
+R_binomial <- function(x, n, theta){
+  
+  R <- (n*theta/x)^x * (n*(1-theta)/(n-x))^(n-x)
+  return(R)
+  
+}
+
+# closed form for x=n
+contour_binomial <- function(theta, n, x){
+  
+  RHS <- R_binomial(x, n, theta)
+  total <- 0
+  for (i in 0:n){
+    total <- total + (1*(R_binomial(i, n, theta) <= RHS)) * dbinom(i, n, theta)
+  }
+  return(total)
+  
+}
+
+```
+
+
+## Example demonstration 
+
+Now assume we observe $6$ successes from $10$ trilas, let's plot the contour function.
+
+```{r}
+n <- 10
+x <- 6
+
+theta <- seq(0.01, .99, by = .005)
+
+pi_binomial <- contour_binomial(theta, n, x)
+plot(theta, pi_binomial, type = "l", xlab = expression(theta), ylab = expression(pi[x](theta)))
+abline(h=.05, lty=2)
+segments(0.3, 0, 0.5, 0, col="red", lwd=2)
+segments(0.5, 0, 0.5, contour_binomial(0.5, n, x), lty=3, col="red")
+points(0.5, contour_binomial(0.5, n, x), col="red", pch=19)
+
+```
+
+As shown above, the black curve is the contour function for $x=6$. The possibility measure (or upper probability) of the hypothesis $h=[0.3,0.5]$ can be found by maximization:
+
+$$ \Pi_x(h) = \sup_{\theta \in [0.3,0.5]} \pi_x(\theta) \approx 0.754,$$
+where the red circle is. 
+
+To find a $95\%$ confidence set, the black dashed line at $0.05$ shows that the set is approximately $[0.25, 0.85]$.
+
+
+# Reference 
+
+Martin, Ryan. (2026). Possibilistic inferential models: a review. *Journal of American Statistical Association,* 121 (553): 807-826. [Preprint](https://arxiv.org/abs/2507.09007).
+
